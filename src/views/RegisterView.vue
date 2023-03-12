@@ -1,59 +1,44 @@
 <template>
-  <div class="body">
-    <div class="container">
-      <h1>基于深度学习的医疗辅助系统</h1>
-      <form>
-        <div class="form-control">
-          <input type="text" required name="username" id="username">
-          <label>账号：</label>
+    <div class="body">
+        <div class="container">
+        <h1>注册表</h1>
+        <form>
+            <div class="form-control">
+            <input type="text" required name="username" id="username">
+            <label>账号：</label>
+            </div>
+            <div class="form-control">
+            <input type="text" required name="nickname" id="nickname">
+            <label>昵称：</label>
+            </div>
+            <div class="form-control">
+            <input type="password" required name="password" id="password">
+            <label>密码：</label>
+            </div>
+            <div class="form-control">
+            <input type="password" required name="password2" id="password2">
+            <label>再次输入密码：</label>
+            </div>
+            <button class="btn" id="reguser">注册</button>
+            <p class="text">已有账号? <router-link to="/login">立即登录</router-link> </p>
+        </form>
         </div>
-
-        <div class="form-control">
-          <input type="password" required name="password" id="password">
-          <label>密码：</label>
-        </div>
-
-        <button class="btn" id="login">登录</button>
-
-        <p class="text">还没有注册账号? <router-link to="/register">立即注册</router-link> </p>
-      </form>
     </div>
-  </div>
 </template>
 <script>
-import http from '@/util/http'
-export default {
-  mounted () {
-    http({
-      method: 'post',
-      url: '/api/login',
-      headers: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      data: {
-        username: '722',
-        password: '722',
-        time_1: new Date().getTime()
-      }
-    }).then(res => {
-      console.log(res)
-    })
-  }
-}
 </script>
 <style scoped>
-
 .body {
-  background-color: #2d3a4e;
-  color: #fff;
-  font-family: 'Muli', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  overflow: hidden;
-  margin: 0;
+    background-color: #2d3a4e;
+    color: #fff;
+    font-family: 'Muli', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
 }
 
 .container {
@@ -99,7 +84,7 @@ export default {
 .form-control {
   position: relative;
   margin: 20px 0 40px;
-  width: 400px;
+  width: 300px;
 }
 
 .form-control input {
@@ -138,4 +123,5 @@ export default {
   color: lightblue;
   transform: translateY(-30px);
 }
+
 </style>
