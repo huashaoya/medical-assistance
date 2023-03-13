@@ -4,42 +4,79 @@
       <h1>基于深度学习的医疗辅助系统</h1>
       <form>
         <div class="form-control">
-          <input type="text" required name="username" id="username">
+          <input type="text" required name="username" id="username" v-model="username">
           <label>账号：</label>
         </div>
 
         <div class="form-control">
-          <input type="password" required name="password" id="password">
+          <input type="password" required name="password" id="password" v-model="password">
           <label>密码：</label>
         </div>
 
-        <button class="btn" id="login">登录</button>
+        <button class="btn" id="login" @click.prevent="login">登录</button>
 
         <p class="text">还没有注册账号? <router-link to="/register">立即注册</router-link> </p>
       </form>
     </div>
   </div>
 </template>
-<script>
+<script scoped>
 import http from '@/util/http'
+import { ElNotification } from 'element-plus'
+
 export default {
+  data () {
+    return {
+      username: null,
+      password: null
+    }
+  },
   mounted () {
-    http({
-      method: 'post',
-      url: '/api/login',
-      headers: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      data: {
-        username: '722',
-        password: '722',
-        time_1: new Date().getTime()
-      }
-    }).then(res => {
-      console.log(res)
+    // 标题跳动
+    const labels = document.querySelectorAll('.form-control label')
+    labels.forEach(label => {
+      label.innerHTML = label.innerText
+        .split('')
+        .map((letter, idx) => `<span style="transition-delay:${idx * 50}ms">${letter}</span>`)
+        .join('')
     })
+  },
+  methods: {
+    login () {
+      // 请求登录接口
+      http({
+        method: 'post',
+        url: '/api/login',
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        data: {
+          username: this.username,
+          password: this.password,
+          time_1: new Date().getTime()
+        }
+      }).then(res => {
+        if (res.data.status === 0) { // 登录成功
+          ElNotification({
+            title: 'Success',
+            message: '登录成功,欢迎访问',
+            type: 'success'
+          })
+          window.localStorage.setItem('token', res.data.token)
+          this.$router.push('/')
+        } else {
+          ElNotification({
+            title: 'warning',
+            message: res.data.msg,
+            type: 'warning'
+          })
+        }
+      })
+    }
+
   }
 }
+
 </script>
 <style scoped>
 
@@ -126,13 +163,15 @@ export default {
   pointer-events: none;
 }
 
+</style>
+
+<style>
 .form-control label span {
   display: inline-block;
   font-size: 18px;
   min-width: 5px;
   transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-
 .form-control input:focus + label span,
 .form-control input:valid + label span {
   color: lightblue;

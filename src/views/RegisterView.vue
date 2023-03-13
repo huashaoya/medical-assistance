@@ -4,28 +4,91 @@
         <h1>注册表</h1>
         <form>
             <div class="form-control">
-            <input type="text" required name="username" id="username">
+            <input type="text" required name="username" id="username" v-model="username">
             <label>账号：</label>
             </div>
             <div class="form-control">
-            <input type="text" required name="nickname" id="nickname">
+            <input type="text" required name="nickname" id="nickname" v-model="nickname">
             <label>昵称：</label>
             </div>
             <div class="form-control">
-            <input type="password" required name="password" id="password">
+            <input type="password" required name="password" id="password" v-model="password_1">
             <label>密码：</label>
             </div>
             <div class="form-control">
-            <input type="password" required name="password2" id="password2">
+            <input type="password" required name="password2" id="password2" v-model="password_2">
             <label>再次输入密码：</label>
             </div>
-            <button class="btn" id="reguser">注册</button>
+            <button class="btn" id="reguser" @click.prevent="register">注册</button>
             <p class="text">已有账号? <router-link to="/login">立即登录</router-link> </p>
         </form>
         </div>
     </div>
 </template>
 <script>
+import http from '@/util/http'
+import { ElNotification } from 'element-plus'
+export default {
+  data () {
+    return {
+      username: null,
+      password_1: null,
+      password_2: null,
+      nickname: null
+    }
+  },
+  mounted () {
+    const labels = document.querySelectorAll('.form-control label')
+    labels.forEach(label => { // 标题跳动
+      label.innerHTML = label.innerText
+        .split('')
+        .map((letter, idx) => `<span style="transition-delay:${idx * 50}ms">${letter}</span>`)
+        .join('')
+    })
+  },
+  methods: {
+    // 注册接口
+    register () {
+      // 校验完整性
+      if (this.password_1 !== this.password_2) {
+        ElNotification({
+          title: 'warning',
+          message: '两次输入密码不一致',
+          type: 'warning'
+        })
+      } else {
+        http({
+          method: 'post',
+          url: '/api/reguser',
+          headers: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          data: {
+            username: this.username,
+            password: this.password_1,
+            nickname: this.nickname,
+            time_r: new Date().getTime()
+          }
+        }).then(res => {
+          if (res.data.status === 0) {
+            ElNotification({
+              title: 'Success',
+              message: '注册成功',
+              type: 'success'
+            })
+          } else {
+            ElNotification({
+              title: 'warning',
+              message: res.data.msg,
+              type: 'warning'
+            })
+          }
+        })
+      }
+    }
+  }
+}
+
 </script>
 <style scoped>
 .body {
@@ -111,6 +174,8 @@
   pointer-events: none;
 }
 
+</style>
+<style>
 .form-control label span {
   display: inline-block;
   font-size: 18px;
