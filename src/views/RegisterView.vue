@@ -50,7 +50,14 @@ export default {
     // 注册接口
     register () {
       // 校验完整性
-      if (this.password_1 !== this.password_2) {
+      // 校验表单完整性
+      if (!this.username || !this.password_1) {
+        ElNotification({
+          title: 'warning',
+          message: '账号或密码不能为空！',
+          type: 'warning'
+        })
+      } else if (this.password_1 !== this.password_2) {
         ElNotification({
           title: 'warning',
           message: '两次输入密码不一致',

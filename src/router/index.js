@@ -2,12 +2,36 @@ import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '@/views/LoginView.vue'
 import RegisterView from '@/views/RegisterView.vue'
 import AppView from '@/views/AppView.vue'
+import IndexOne from '@/views/AppView/IndexOne.vue'
+import IndexTwo from '@/views/AppView/IndexTwo.vue'
+import IndexThree from '@/views/AppView/IndexThree.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: AppView
+    component: AppView,
+    children: [
+      {
+        path: '/indexOne',
+        name: '/indexOne',
+        component: IndexOne
+      },
+      {
+        path: '/indexTwo',
+        name: '/indexTwo',
+        component: IndexTwo
+      },
+      {
+        path: '/indexThree',
+        name: '/indexThree',
+        component: IndexThree
+      },
+      {
+        path: '/',
+        redirect: '/indexOne'
+      }
+    ]
   },
   {
     path: '/login',

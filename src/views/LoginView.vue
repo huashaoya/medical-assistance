@@ -43,37 +43,45 @@ export default {
   },
   methods: {
     login () {
+      // 校验表单完整性
+      if (!this.username || !this.password) {
+        ElNotification({
+          title: 'warning',
+          message: '账号或密码不能为空！',
+          type: 'warning'
+        })
+      } else {
       // 请求登录接口
-      http({
-        method: 'post',
-        url: '/api/login',
-        headers: {
-          'content-type': 'application/x-www-form-urlencoded'
-        },
-        data: {
-          username: this.username,
-          password: this.password,
-          time_1: new Date().getTime()
-        }
-      }).then(res => {
-        if (res.data.status === 0) { // 登录成功
-          ElNotification({
-            title: 'Success',
-            message: '登录成功,欢迎访问',
-            type: 'success'
-          })
-          window.localStorage.setItem('token', res.data.token)
-          this.$router.push('/')
-        } else {
-          ElNotification({
-            title: 'warning',
-            message: res.data.msg,
-            type: 'warning'
-          })
-        }
-      })
+        http({
+          method: 'post',
+          url: '/api/login',
+          headers: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          data: {
+            username: this.username,
+            password: this.password,
+            time_1: new Date().getTime()
+          }
+        }).then(res => {
+          if (res.data.status === 0) { // 登录成功
+            ElNotification({
+              title: 'Success',
+              message: '登录成功,欢迎访问',
+              type: 'success'
+            })
+            window.localStorage.setItem('token', res.data.token)
+            this.$router.push('/')
+          } else {
+            ElNotification({
+              title: 'warning',
+              message: res.data.msg,
+              type: 'warning'
+            })
+          }
+        })
+      }
     }
-
   }
 }
 
@@ -136,7 +144,7 @@ export default {
 .form-control {
   position: relative;
   margin: 20px 0 40px;
-  width: 400px;
+  width: 416px;
 }
 
 .form-control input {
