@@ -1,22 +1,28 @@
 <template>
   <div class="body">
-    <div class="container">
-      <h1>基于深度学习的医疗辅助系统</h1>
-      <form>
-        <div class="form-control">
-          <input type="text" required name="username" id="username" v-model="username">
-          <label>账号：</label>
+    <div class="bg">
+      <div class="box-bgl"></div>
+      <div class="box-bgr"></div>
+      <div class="box-bgi">
+        <div class="container">
+          <h1>基于深度学习的医疗辅助系统</h1>
+          <form>
+            <div class="form-control">
+              <input type="text" required name="username" id="username" v-model="username">
+              <label>账号：</label>
+            </div>
+
+            <div class="form-control">
+              <input type="password" required name="password" id="password" v-model="password">
+              <label>密码：</label>
+            </div>
+
+            <button class="btn" id="login" @click.prevent="login">登录</button>
+
+            <p class="text">还没有注册账号? <router-link to="/register">立即注册</router-link> </p>
+          </form>
         </div>
-
-        <div class="form-control">
-          <input type="password" required name="password" id="password" v-model="password">
-          <label>密码：</label>
-        </div>
-
-        <button class="btn" id="login" @click.prevent="login">登录</button>
-
-        <p class="text">还没有注册账号? <router-link to="/register">立即注册</router-link> </p>
-      </form>
+      </div>
     </div>
   </div>
 </template>
@@ -43,53 +49,44 @@ export default {
   },
   methods: {
     login () {
-      // 校验表单完整性
-      if (!this.username || !this.password) {
-        ElNotification({
-          title: 'warning',
-          message: '账号或密码不能为空！',
-          type: 'warning'
-        })
-      } else {
       // 请求登录接口
-        http({
-          method: 'post',
-          url: '/api/login',
-          headers: {
-            'content-type': 'application/x-www-form-urlencoded'
-          },
-          data: {
-            username: this.username,
-            password: this.password,
-            time_1: new Date().getTime()
-          }
-        }).then(res => {
-          if (res.data.status === 0) { // 登录成功
-            ElNotification({
-              title: 'Success',
-              message: '登录成功,欢迎访问',
-              type: 'success'
-            })
-            window.localStorage.setItem('token', res.data.token)
-            this.$router.push('/')
-          } else {
-            ElNotification({
-              title: 'warning',
-              message: res.data.msg,
-              type: 'warning'
-            })
-          }
-        })
-      }
+      http({
+        method: 'post',
+        url: '/api/login',
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        data: {
+          username: this.username,
+          password: this.password,
+          time_1: new Date().getTime()
+        }
+      }).then(res => {
+        if (res.data.status === 0) { // 登录成功
+          ElNotification({
+            title: 'Success',
+            message: '登录成功,欢迎访问',
+            type: 'success'
+          })
+          window.localStorage.setItem('token', res.data.token)
+          this.$router.push('/')
+        } else {
+          ElNotification({
+            title: 'warning',
+            message: res.data.msg,
+            type: 'warning'
+          })
+        }
+      })
     }
+
   }
 }
 
 </script>
 <style scoped>
-
 .body {
-  background-color: #2d3a4e;
+  background-color: #edf5f5;
   color: #fff;
   font-family: 'Muli', sans-serif;
   display: flex;
@@ -101,15 +98,54 @@ export default {
   margin: 0;
 }
 
+.bg {
+  position: relative;
+  /* opacity: 0.9; */
+}
+
+.box-bgl {
+  position: absolute;
+  left: -349px;
+  top: 0;
+  height: 524px;
+  width: 350px;
+  background-image: url(../assets/bg-side.jpg);
+}
+
+.box-bgr {
+  position: absolute;
+  right: -349px;
+  top: 0;
+  height: 524px;
+  width: 350px;
+  background-image: url(../assets/bg-side.jpg);
+}
+
+.box-bgi {
+  position: relative;
+  margin: auto;
+  height: 525px;
+  width: 1166px;
+  background-image: url(../assets/background-picture.png);
+}
+
 .container {
+  position: absolute;
+  left: 900px;
+  top: 56px;
+  width: 500px;
   background-color: rgba(0, 0, 0, 0.4);
   padding: 20px 40px;
   border-radius: 5px;
 }
 
 .container h1 {
+  font-size: 28px;
   text-align: center;
+  padding: 10px 0;
   margin-bottom: 30px;
+  border: #edf5f5 solid 1px;
+  background-color: lightblue;
 }
 
 .container a {
@@ -144,7 +180,7 @@ export default {
 .form-control {
   position: relative;
   margin: 20px 0 40px;
-  width: 416px;
+  width: 400px;
 }
 
 .form-control input {
@@ -170,7 +206,6 @@ export default {
   left: 0;
   pointer-events: none;
 }
-
 </style>
 
 <style>
@@ -180,8 +215,9 @@ export default {
   min-width: 5px;
   transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.form-control input:focus + label span,
-.form-control input:valid + label span {
+
+.form-control input:focus+label span,
+.form-control input:valid+label span {
   color: lightblue;
   transform: translateY(-30px);
 }
