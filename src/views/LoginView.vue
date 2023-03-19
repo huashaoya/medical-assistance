@@ -1,26 +1,84 @@
 <template>
   <div class="body">
+    <!-- 背景 -->
+    <div class="area">
+      <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <!-- 标题 -->
+    <h1 class="headline-text">基于深度学习的医疗辅助系统</h1>
+    <!-- 中间栏背景 -->
     <div class="bg">
-      <div class="box-bgl"></div>
+      <!-- <div class="box-bgl"></div>
       <div class="box-bgr"></div>
-      <div class="box-bgi">
-        <div class="container">
-          <h1>基于深度学习的医疗辅助系统</h1>
-          <form>
-            <div class="form-control">
-              <input type="text" required name="username" id="username" v-model="username">
-              <label>账号：</label>
-            </div>
+      <div class="box-bgi"> -->
+      <!-- 登陆注册界面 -->
+      <input class="checkbox" type="checkbox" id="back" name="back">
+      <label for="back">反面</label>
+    </div>
+    <div class="contain mx-auto">
+      <div class="container">
 
-            <div class="form-control">
-              <input type="password" required name="password" id="password" v-model="password">
-              <label>密码：</label>
-            </div>
+        <div class="container-font">
+          <div class="contain-center">
+            <h1>登陆界面</h1>
+            <form>
+              <div class="form-control">
+                <input type="text" required name="username" id="username" v-model="username">
+                <label>账号：</label>
+              </div>
 
-            <button class="btn" id="login" @click.prevent="login">登录</button>
+              <div class="form-control">
+                <input type="password" required name="password" id="password" v-model="password">
+                <label>密码：</label>
+              </div>
 
-            <p class="text">还没有注册账号? <router-link to="/register">立即注册</router-link> </p>
-          </form>
+              <button class="btn" id="login" @click.prevent="login">登录</button>
+
+              <p class="text">还没有注册账号?
+                <span>立即注册</span>
+              </p>
+            </form>
+          </div>
+        </div>
+
+        <div class="container-back">
+          <div class="contain-center">
+            <h1>注册表</h1>
+            <form>
+              <div class="form-control">
+                <input type="text" required name="username" id="username" v-model="username">
+                <label>账号：</label>
+              </div>
+              <div class="form-control">
+                <input type="text" required name="nickname" id="nickname" v-model="nickname">
+                <label>昵称：</label>
+              </div>
+              <div class="form-control">
+                <input type="password" required name="password" id="password" v-model="password_1">
+                <label>密码：</label>
+              </div>
+              <div class="form-control">
+                <input type="password" required name="password2" id="password2" v-model="password_2">
+                <label>再次输入密码：</label>
+              </div>
+              <button class="btn" id="reguser" @click.prevent="register">注册</button>
+              <p class="text">已有账号?
+                <span>立即登录</span>
+              </p>
+            </form>
+          </div>
+
         </div>
       </div>
     </div>
@@ -79,146 +137,9 @@ export default {
         }
       })
     }
-
   }
 }
-
 </script>
-<style scoped>
-.body {
-  background-color: #edf5f5;
-  color: #fff;
-  font-family: 'Muli', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  overflow: hidden;
-  margin: 0;
-}
 
-.bg {
-  position: relative;
-  /* opacity: 0.9; */
-}
-
-.box-bgl {
-  position: absolute;
-  left: -349px;
-  top: 0;
-  height: 524px;
-  width: 350px;
-  background-image: url(../assets/bg-side.jpg);
-}
-
-.box-bgr {
-  position: absolute;
-  right: -349px;
-  top: 0;
-  height: 524px;
-  width: 350px;
-  background-image: url(../assets/bg-side.jpg);
-}
-
-.box-bgi {
-  position: relative;
-  margin: auto;
-  height: 525px;
-  width: 1166px;
-  background-image: url(../assets/background-picture.png);
-}
-
-.container {
-  position: absolute;
-  left: 900px;
-  top: 56px;
-  width: 500px;
-  background-color: rgba(0, 0, 0, 0.4);
-  padding: 20px 40px;
-  border-radius: 5px;
-}
-
-.container h1 {
-  font-size: 28px;
-  text-align: center;
-  padding: 10px 0;
-  margin-bottom: 30px;
-  border: #edf5f5 solid 1px;
-  background-color: lightblue;
-}
-
-.container a {
-  text-decoration: none;
-  color: lightblue;
-}
-
-.btn {
-  cursor: pointer;
-  display: inline-block;
-  width: 100%;
-  background: lightblue;
-  padding: 15px;
-  font-family: inherit;
-  font-size: 16px;
-  border: 0;
-  border-radius: 5px;
-}
-
-.btn:focus {
-  outline: 0;
-}
-
-.btn:active {
-  transform: scale(0.98);
-}
-
-.text {
-  margin-top: 30px;
-}
-
-.form-control {
-  position: relative;
-  margin: 20px 0 40px;
-  width: 400px;
-}
-
-.form-control input {
-  background-color: transparent;
-  border: 0;
-  border-bottom: 2px #fff solid;
-  display: block;
-  width: 100%;
-  padding: 15px 0;
-  font-size: 18px;
-  color: #fff;
-}
-
-.form-control input:focus,
-.form-control input:valid {
-  outline: 0;
-  border-bottom-color: lightblue;
-}
-
-.form-control label {
-  position: absolute;
-  top: 15px;
-  left: 0;
-  pointer-events: none;
-}
-</style>
-
-<style>
-.form-control label span {
-  display: inline-block;
-  font-size: 18px;
-  min-width: 5px;
-  transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-.form-control input:focus+label span,
-.form-control input:valid+label span {
-  color: lightblue;
-  transform: translateY(-30px);
-}
-</style>
+<style src="./CSS/LoginView.css"></style>
+<!-- <script src="./JS/LoginView.js"></script> -->
