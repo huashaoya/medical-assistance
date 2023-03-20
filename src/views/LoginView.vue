@@ -19,9 +19,6 @@
     <h1 class="headline-text">基于深度学习的医疗辅助系统</h1>
     <!-- 中间栏背景 -->
     <div class="bg">
-      <!-- <div class="box-bgl"></div>
-      <div class="box-bgr"></div>
-      <div class="box-bgi"> -->
       <!-- 登陆注册界面 -->
       <input class="checkbox" type="checkbox" id="back" name="back">
       <label for="back">反面</label>
