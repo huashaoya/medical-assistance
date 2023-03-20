@@ -18,13 +18,13 @@
     <!-- 标题 -->
     <h1 class="headline-text">基于深度学习的医疗辅助系统</h1>
     <!-- 中间栏背景 -->
-    <div class="bg">
-      <!-- 登陆注册界面 -->
-      <input class="checkbox" type="checkbox" id="back" name="back">
-      <label for="back">反面</label>
-    </div>
+
+    <!-- 登陆注册界面 -->
+
     <div class="contain mx-auto">
-      <div class="container">
+      <!-- <input class="checkbox" type="checkbox" id="back" name="back">
+      <label for="back" style="font-size: 2em;">立即注册 立即登陆</label> -->
+      <div class="container" :class="{ active: isActive }">
 
         <div class="container-font">
           <div class="contain-center">
@@ -43,7 +43,7 @@
               <button class="btn" id="login" @click.prevent="login">登录</button>
 
               <p class="text">还没有注册账号?
-                <span>立即注册</span>
+                <span @click="pageTurning">立即注册</span>
               </p>
             </form>
           </div>
@@ -71,7 +71,7 @@
               </div>
               <button class="btn" id="reguser" @click.prevent="register">注册</button>
               <p class="text">已有账号?
-                <span>立即登录</span>
+                <span @click="pageTurning">立即登录</span>
               </p>
             </form>
           </div>
@@ -89,7 +89,8 @@ export default {
   data () {
     return {
       username: null,
-      password: null
+      password: null,
+      isActive: false
     }
   },
   mounted () {
@@ -103,6 +104,14 @@ export default {
     })
   },
   methods: {
+    pageTurning () {
+      if (this.isActive) {
+        this.isActive = false
+      } else {
+        this.isActive = true
+      }
+    },
+
     login () {
       // 请求登录接口
       http({
@@ -136,7 +145,13 @@ export default {
     }
   }
 }
-</script>
 
-<style src="./CSS/LoginView.css"></style>
+// let turnBtn = document.querySelector('#page-turning')
+// let container = document.querySelector('.container')
+
+// turnBtn.onclick = function () {
+//   container.style = 'transform: rotateY(180deg)'
+// }
+</script>
 <!-- <script src="./JS/LoginView.js"></script> -->
+<style src="./CSS/LoginView.css"></style>

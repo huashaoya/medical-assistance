@@ -4,5 +4,5 @@ module.exports = defineConfig({
 })
 
 module.exports = {
-  lintOnSave: true // 暂时关闭代码格式检测
+  lintOnSave: false // 暂时关闭代码格式检测
 }
