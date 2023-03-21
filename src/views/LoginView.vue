@@ -54,19 +54,19 @@
             <h1>注册表</h1>
             <form>
               <div class="form-control">
-                <input type="text" required name="username" id="username" v-model="username">
+                <input type="text" required  v-model="username_register">
                 <label>账号：</label>
               </div>
               <div class="form-control">
-                <input type="text" required name="nickname" id="nickname" v-model="nickname">
+                <input type="text" required   v-model="nickname">
                 <label>昵称：</label>
               </div>
               <div class="form-control">
-                <input type="password" required name="password" id="password" v-model="password_1">
+                <input type="password" required  v-model="password_1">
                 <label>密码：</label>
               </div>
               <div class="form-control">
-                <input type="password" required name="password2" id="password2" v-model="password_2">
+                <input type="password" required   v-model="password_2">
                 <label>再次输入密码：</label>
               </div>
               <button class="btn" id="reguser" @click.prevent="register">注册</button>
@@ -90,7 +90,11 @@ export default {
     return {
       username: null,
       password: null,
-      isActive: false
+      isActive: false,
+      username_register: null,
+      password_1: null,
+      password_2: null,
+      nickname: null
     }
   },
   mounted () {
@@ -142,6 +146,51 @@ export default {
           })
         }
       })
+    },
+    // 注册接口
+    register () {
+      // 校验完整性
+      if (this.password_1 == null || this.password_2 == null) {
+        ElNotification({
+          title: 'warning',
+          message: '密码不能为空',
+          type: 'warning'
+        })
+      } else if (this.password_1 !== this.password_2) {
+        ElNotification({
+          title: 'warning',
+          message: '两次输入密码不一致',
+          type: 'warning'
+        })
+      } else {
+        http({
+          method: 'post',
+          url: '/api/reguser',
+          headers: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          data: {
+            username: this.username_register,
+            password: this.password_1,
+            nickname: this.nickname,
+            time_r: new Date().getTime()
+          }
+        }).then(res => {
+          if (res.data.status === 0) {
+            ElNotification({
+              title: 'Success',
+              message: '注册成功',
+              type: 'success'
+            })
+          } else {
+            ElNotification({
+              title: 'warning',
+              message: res.data.msg,
+              type: 'warning'
+            })
+          }
+        })
+      }
     }
   }
 }

@@ -26,7 +26,7 @@ export default {
         if (res.data.status === 0) {
           ElNotification({
             title: 'Welcome',
-            message: res.data.data.username + ' 登录',
+            message: res.data.data.nickname + ' 登录',
             type: 'success'
           })
         } else {
