@@ -1,13 +1,27 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '@/views/LoginView.vue'
 import RegisterView from '@/views/RegisterView.vue'
+import mainPageView from '@/views/mainPageView.vue'
+import secondPageView from '@/views/secondPageView.vue'
 import AppView from '@/views/AppView.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: AppView
+    component: AppView,
+    children: [
+      {
+        path: '/',
+        name: 'mainPage',
+        component: mainPageView
+      },
+      {
+        path: '/secondPage',
+        name: 'secondPage',
+        component: secondPageView
+      }
+    ]
   },
   {
     path: '/login',
