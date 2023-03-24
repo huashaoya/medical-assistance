@@ -35,6 +35,8 @@ export default {
         this.$router.push('/')
       } else if (key === '2') {
         this.$router.push('/secondPage')
+      } else if (key === '3') {
+        this.$router.push('/pageOne')
       }
     },
     checkToken () { // 校验token
