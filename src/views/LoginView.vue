@@ -14,68 +14,70 @@
         <li></li>
         <li></li>
       </ul>
-    </div>
-    <!-- 标题 -->
-    <h1 class="headline-text">基于深度学习的医疗辅助系统</h1>
-    <!-- 中间栏背景 -->
-
-    <!-- 登陆注册界面 -->
-
-    <div class="contain mx-auto">
-      <!-- <input class="checkbox" type="checkbox" id="back" name="back">
-      <label for="back" style="font-size: 2em;">立即注册 立即登陆</label> -->
-      <div class="container" :class="{ active: isActive }">
-
-        <div class="container-font">
-          <div class="contain-center">
-            <h1>登陆界面</h1>
-            <form>
-              <div class="form-control">
-                <input type="text" required name="username" id="username" v-model="username">
-                <label>账号：</label>
-              </div>
-
-              <div class="form-control">
-                <input type="password" required name="password" id="password" v-model="password">
-                <label>密码：</label>
-              </div>
-
-              <button class="btn" id="login" @click.prevent="login">登录</button>
-
-              <p class="text">还没有注册账号?
-                <span @click="pageTurning">立即注册</span>
-              </p>
-            </form>
-          </div>
+      <!-- 标题 -->
+      <h1 class="headline-text">基于癌症治疗的医疗辅助系统</h1>
+      <!-- 中间栏背景 -->
+      <div class="intermediate-format">
+        <!-- 左侧背景 -->
+        <div class="format-left">
+          <img src="../assets/bg-center.png" alt="">
         </div>
+        <!-- 登陆注册界面 -->
+        <div class="contain mx-auto">
+          <div class="container" :class="{ active: isActive }">
 
-        <div class="container-back">
-          <div class="contain-center">
-            <h1>注册表</h1>
-            <form>
-              <div class="form-control">
-                <input type="text" required  v-model="username_register">
-                <label>账号：</label>
+            <div class="container-font">
+              <div class="contain-center">
+                <h1>登陆界面</h1>
+                <form>
+                  <div class="form-control">
+                    <input type="text" required name="username" id="username" v-model="username">
+                    <label>账号：</label>
+                  </div>
+
+                  <div class="form-control">
+                    <input type="password" required name="password" id="password" v-model="password">
+                    <label>密码：</label>
+                  </div>
+
+                  <button class="btn" id="login" @click.prevent="login">登录</button>
+
+                  <p class="text">还没有注册账号?
+                    <span class="turning" @click="pageTurning">立即注册</span>
+                  </p>
+                </form>
               </div>
-              <div class="form-control">
-                <input type="text" required   v-model="nickname">
-                <label>昵称：</label>
+            </div>
+
+            <div class="container-back">
+              <div class="contain-center">
+                <h1>注册表</h1>
+                <form>
+                  <div class="form-control">
+                    <input type="text" required v-model="username_register">
+                    <label>账号：</label>
+                  </div>
+                  <div class="form-control">
+                    <input type="text" required v-model="nickname">
+                    <label>昵称：</label>
+                  </div>
+                  <div class="form-control">
+                    <input type="password" required v-model="password_1">
+                    <label>密码：</label>
+                  </div>
+                  <div class="form-control">
+                    <input type="password" required v-model="password_2">
+                    <label>再次输入密码：</label>
+                  </div>
+                  <button class="btn" id="reguser" @click.prevent="register">注册</button>
+                  <p class="text">已有账号?
+                    <span class="turning" @click="pageTurning">立即登录</span>
+                  </p>
+                </form>
               </div>
-              <div class="form-control">
-                <input type="password" required  v-model="password_1">
-                <label>密码：</label>
-              </div>
-              <div class="form-control">
-                <input type="password" required   v-model="password_2">
-                <label>再次输入密码：</label>
-              </div>
-              <button class="btn" id="reguser" @click.prevent="register">注册</button>
-              <p class="text">已有账号?
-                <span @click="pageTurning">立即登录</span>
-              </p>
-            </form>
+
+            </div>
           </div>
-
         </div>
       </div>
     </div>
@@ -195,12 +197,6 @@ export default {
   }
 }
 
-// let turnBtn = document.querySelector('#page-turning')
-// let container = document.querySelector('.container')
-
-// turnBtn.onclick = function () {
-//   container.style = 'transform: rotateY(180deg)'
-// }
 </script>
 <!-- <script src="./JS/LoginView.js"></script> -->
 <style src="./CSS/LoginView.css"></style>
