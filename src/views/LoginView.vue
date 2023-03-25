@@ -495,6 +495,8 @@ strong {
 .text {
   margin-top: 30px;
 }
+</style>
+<style>
 
 .form-control {
   position: relative;
