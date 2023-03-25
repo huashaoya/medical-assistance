@@ -1,3 +1,4 @@
+
 <template>
   <div class="body">
     <!-- 背景 -->
@@ -83,6 +84,7 @@
     </div>
   </div>
 </template>
+
 <script scoped>
 import http from '@/util/http'
 import { ElNotification } from 'element-plus'
@@ -198,5 +200,345 @@ export default {
 }
 
 </script>
-<!-- <script src="./JS/LoginView.js"></script> -->
-<style src="./CSS/LoginView.css"></style>
+
+<style scoped>
+.body {
+  position: relative;
+  background-color: #edf5f5;
+  color: #000;
+  font-family: 'Muli', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+/* 背景 */
+.area {
+  /* background: #4e54c8; */
+  background: #1c82f0;
+  background: -webkit-linear-gradient(to left, #4094ee, #1c82f0);
+  width: 100%;
+  height: 100vh;
+}
+
+.circles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.circles li {
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  animation: animate 25s linear infinite;
+  bottom: -150px;
+
+}
+
+.circles li:nth-child(1) {
+  left: 25%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+}
+
+.circles li:nth-child(2) {
+  left: 10%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+
+.circles li:nth-child(3) {
+  left: 70%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 4s;
+}
+
+.circles li:nth-child(4) {
+  left: 40%;
+  width: 60px;
+  height: 60px;
+  animation-delay: 0s;
+  animation-duration: 18s;
+}
+
+.circles li:nth-child(5) {
+  left: 65%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 0s;
+}
+
+.circles li:nth-child(6) {
+  left: 75%;
+  width: 110px;
+  height: 110px;
+  animation-delay: 3s;
+}
+
+.circles li:nth-child(7) {
+  left: 35%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 7s;
+}
+
+.circles li:nth-child(8) {
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  animation-delay: 15s;
+  animation-duration: 45s;
+}
+
+.circles li:nth-child(9) {
+  left: 20%;
+  width: 15px;
+  height: 15px;
+  animation-delay: 2s;
+  animation-duration: 35s;
+}
+
+.circles li:nth-child(10) {
+  left: 85%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 0s;
+  animation-duration: 11s;
+}
+
+@keyframes animate {
+
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+    border-radius: 0;
+  }
+
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+    border-radius: 50%;
+  }
+
+}
+
+/* 标题效果 */
+.headline-text {
+  /* position: absolute;
+    left: 0px;
+    top: 0px; */
+  color: black;
+  font-size: 40px;
+  margin-top: 100px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* JS使用的css */
+/* 实现字体3D效果 */
+.headline-text:hover {
+  text-shadow: 0 1px 0 hsl(174, 5%, 80%), 0 2px 0 hsl(174, 5%, 75%),
+    0 3px 0 hsl(174, 5%, 70%), 0 4px 0 hsl(174, 5%, 66%),
+    0 5px 0 hsl(174, 5%, 64%), 0 6px 0 hsl(174, 5%, 62%),
+    0 7px 0 hsl(174, 5%, 61%), 0 8px 0 hsl(174, 5%, 60%),
+    0 0 5px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.2),
+    0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.2),
+    0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.3);
+}
+
+/*
+strong {
+  font-size: 200px;
+} */
+
+.area .intermediate-format {
+  position: relative;
+  width: 1000px;
+  height: 600px;
+  background-color: #f3f3f3;
+  margin: 15px auto;
+  border-radius: 5px;
+  /* overflow: hidden; */
+}
+
+.area .intermediate-format .format-left {
+  height: 100%;
+  width: 60%;
+}
+
+.area .intermediate-format .format-left img {
+  height: 100%;
+  width: 100%;
+}
+
+.area .intermediate-format .contain {
+  /* float: right; */
+  position: absolute;
+  top: 60px;
+  right: 53px;
+  width: 30%;
+  max-width: 100%;
+  height: 80%;
+  margin-left: -50%;
+  transition: all 0.7s linear;
+  /* box-shadow: 1px 1px 1px black; */
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  perspective: 800px;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  transition: all 1000ms ease-out;
+}
+
+.contain:hover {
+  transform: scale(1.1);
+  transition: all 0.7s linear;
+}
+
+.container-font,
+.container-back {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  /* background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg'); */
+  /* background-position: bottom center; */
+  /* background-repeat: no-repeat; */
+  /* background-size: 300%; */
+  position: absolute;
+  border-radius: 6px;
+  left: 0;
+  top: 0;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.container-back {
+  transform: rotateY(180deg);
+}
+
+.active {
+  transform: rotateY(180deg);
+}
+
+.contain-center {
+  position: absolute;
+  width: 100%;
+  padding: 0 40px;
+  top: 50%;
+  left: 0;
+  transform: translate3d(0, -50%, 10px) perspective(100px);
+  z-index: 20;
+  display: block;
+}
+
+.container h1 {
+  font-size: 24px;
+  text-align: center;
+  padding: 10px 0;
+  margin-bottom: 30px;
+}
+
+.container .contain-center .turning {
+  color: red;
+  cursor: pointer;
+}
+
+.btn {
+  cursor: pointer;
+  display: inline-block;
+  width: 100%;
+  background: #000000;
+  color: #fff;
+  padding: 15px;
+  font-family: inherit;
+  font-size: 16px;
+  border: 0;
+  border-radius: 5px;
+}
+
+.btn:focus {
+  outline: 0;
+}
+
+.btn:active {
+  transform: scale(0.98);
+  /* transition: all 0.3s; */
+}
+
+.text {
+  margin-top: 30px;
+}
+
+.form-control {
+  position: relative;
+  margin: 15px 0 15px;
+  /* width: 400px; */
+  width: 100%;
+}
+
+.form-control input {
+  background-color: transparent;
+  border: 0;
+  /* border-bottom: 2px #fff solid; */
+  display: block;
+  width: 100%;
+  padding: 15px 0;
+  font-size: 18px;
+  color: #000;
+}
+
+.form-control input:focus,
+.form-control input:valid {
+  outline: 0;
+  border-bottom: 1px #000 solid;
+  /* border-bottom-color: #000; */
+}
+
+.contain-center .form-control label {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  color: #000;
+  pointer-events: none;
+}
+
+.form-control label span {
+  display: inline-block;
+  font-size: 18px;
+  min-width: 5px;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.form-control input:focus+label span,
+.form-control input:valid+label span {
+  /* color: #000; */
+  transform: translateY(-30px);
+}
+</style>
