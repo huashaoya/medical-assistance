@@ -25,7 +25,7 @@
                         <img v-if="imageUrl" :src="imageUrl" class="avatar" />
                         <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
                     </el-upload>
-                    <el-button type="primary" size="large">开始分割</el-button>
+                    <el-button type="primary" size="large" color="midnightblue">开始分割</el-button>
                 </div>
                 <div class="result">
                     <div class="pic">

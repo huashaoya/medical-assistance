@@ -2,12 +2,12 @@
   <el-menu
     :default-active="activeIndex"
     mode="horizontal"
-    background-color="#545c64"
+    background-color="midnightblue"
     text-color="#fff"
-    active-text-color="#ffd04b"
+    active-text-color="lightskyblue"
     @select="handleSelect"
   >
-    <el-menu-item index="1">主页面</el-menu-item>
+    <el-menu-item index="1" style="font-size:20px">-基于癌症治疗的医疗辅助系统-</el-menu-item>
     <el-menu-item index="2">监控页</el-menu-item>
     <el-menu-item index="3">乳腺癌</el-menu-item>
     <el-menu-item index="4">血癌</el-menu-item>
