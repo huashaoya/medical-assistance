@@ -70,7 +70,7 @@ export default {
 }
 
 </script>
-<style scoped>
+<!-- <style scoped>
 .body {
   background-color: #2d3a4e;
   color: #fff;
@@ -167,4 +167,4 @@ export default {
   color: lightblue;
   transform: translateY(-30px);
 }
-</style>
+</style> -->
