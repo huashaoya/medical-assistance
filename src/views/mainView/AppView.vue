@@ -8,10 +8,10 @@
     @select="handleSelect"
   >
     <el-menu-item index="1">主页面</el-menu-item>
-    <el-menu-item index="2">副页面</el-menu-item>
-    <el-menu-item index="3">癌1</el-menu-item>
-    <el-menu-item index="4">癌2</el-menu-item>
-    <el-menu-item index="5">癌3</el-menu-item>
+    <el-menu-item index="2">监控页</el-menu-item>
+    <el-menu-item index="3">乳腺癌</el-menu-item>
+    <el-menu-item index="4">血癌</el-menu-item>
+    <el-menu-item index="5">喉癌和下咽癌</el-menu-item>
   </el-menu>
   <router-view></router-view>
 </template>
