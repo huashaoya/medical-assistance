@@ -16,7 +16,7 @@
         <li></li>
       </ul>
       <!-- 标题 -->
-      <h1 class="headline-text">基于癌症治疗的医疗辅助系统</h1>
+      <h1 class="headline-text">-基于癌症治疗的医疗辅助系统-</h1>
       <!-- 中间栏背景 -->
       <div class="intermediate-format">
         <!-- 左侧背景 -->
@@ -29,7 +29,7 @@
 
             <div class="container-font">
               <div class="contain-center">
-                <h1>登陆界面</h1>
+                <h1>请登陆</h1>
                 <form>
                   <div class="form-control">
                     <input type="text" required name="username" id="username" v-model="username">
@@ -43,7 +43,7 @@
 
                   <button class="btn" id="login" @click.prevent="login">登录</button>
 
-                  <p class="text">还没有注册账号?
+                  <p class="text">还没有账号?
                     <span class="turning" @click="pageTurning">立即注册</span>
                   </p>
                 </form>
@@ -347,6 +347,9 @@ export default {
   margin-top: 100px;
   text-transform: uppercase;
   cursor: pointer;
+  text-shadow: rgb(100, 169, 212) 4px 4px 2px ;
+  /* background-color: #000; */
+  color:white;
 }
 
 /* JS使用的css */
@@ -474,7 +477,8 @@ strong {
   cursor: pointer;
   display: inline-block;
   width: 100%;
-  background: #000000;
+  /* background: #000000; */
+  background-color: #1c82f0;
   color: #fff;
   padding: 15px;
   font-family: inherit;

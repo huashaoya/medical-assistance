@@ -36,6 +36,10 @@
                         <img v-if="imageUrl" :src="imageUrl" class="avatar" />
                         <div></div>
                     </div>
+                    <div class="pic">
+                        <img v-if="imageUrl" :src="imageUrl" class="avatar" />
+                        <div></div>
+                    </div>
                 </div>
 
             </div>
@@ -64,6 +68,10 @@ export default {
   data () {
     return {
       options: [
+        {
+          label: '图像处理',
+          value: 'option1'
+        },
         {
           label: '图像分割',
           value: 'option1'
@@ -108,6 +116,7 @@ export default {
             height: 50%;
             display: flex;
             border-bottom: 2px dashed var(--el-border-color);
+            overflow-x: auto;
             .option{
                 width:240px;
                 height: 100%;
