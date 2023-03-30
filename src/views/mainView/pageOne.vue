@@ -99,13 +99,14 @@ export default {
   }
 }
 </script>
+
 <style scoped lang="scss">
 .body{
     background-color: rgb(255, 255, 255);
     height: calc(100vh - 60px);
     display: flex;
     flex-direction: row;
-    .work{
+     .work{
         width:80%;
         height:100%;
         display: flex;
