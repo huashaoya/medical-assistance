@@ -41,96 +41,96 @@ const theme = {
     smooth: true
   },
   bar: {
-    itemStyle: {
+    emphasis: {
 
       barBorderWidth: 0,
       barBorderColor: '#ccc',
 
-      emphasis: {
+      itemStyle: {
         barBorderWidth: 0,
         barBorderColor: '#ccc'
       }
     }
   },
   pie: {
-    itemStyle: {
+    emphasis: {
 
       borderWidth: 0,
       borderColor: '#ccc',
 
-      emphasis: {
+      itemStyle: {
         borderWidth: 0,
         borderColor: '#ccc'
       }
     }
   },
   scatter: {
-    itemStyle: {
+    emphasis: {
 
       borderWidth: 0,
       borderColor: '#ccc',
 
-      emphasis: {
+      itemStyle: {
         borderWidth: 0,
         borderColor: '#ccc'
       }
     }
   },
   boxplot: {
-    itemStyle: {
+    emphasis: {
 
       borderWidth: 0,
       borderColor: '#ccc',
 
-      emphasis: {
+      itemStyle: {
         borderWidth: 0,
         borderColor: '#ccc'
       }
     }
   },
   parallel: {
-    itemStyle: {
+    emphasis: {
 
       borderWidth: 0,
       borderColor: '#ccc',
 
-      emphasis: {
+      itemStyle: {
         borderWidth: 0,
         borderColor: '#ccc'
       }
     }
   },
   sankey: {
-    itemStyle: {
+    emphasis: {
 
       borderWidth: 0,
       borderColor: '#ccc',
 
-      emphasis: {
+      itemStyle: {
         borderWidth: 0,
         borderColor: '#ccc'
       }
     }
   },
   funnel: {
-    itemStyle: {
+    emphasis: {
 
       borderWidth: 0,
       borderColor: '#ccc',
 
-      emphasis: {
+      itemStyle: {
         borderWidth: 0,
         borderColor: '#ccc'
       }
     }
   },
   gauge: {
-    itemStyle: {
+    emphasis: {
 
       borderWidth: 0,
       borderColor: '#ccc',
 
-      emphasis: {
+      itemStyle: {
         borderWidth: 0,
         borderColor: '#ccc'
       }
@@ -171,13 +171,13 @@ const theme = {
     }
   },
   map: {
-    itemStyle: {
+    emphasis: {
 
       areaColor: '#f3f3f3',
       borderColor: '#516b91',
       borderWidth: 0.5,
 
-      emphasis: {
+      itemStyle: {
         areaColor: 'rgba(165,231,240,1)',
         borderColor: '#516b91',
         borderWidth: 1
@@ -193,13 +193,13 @@ const theme = {
     }
   },
   geo: {
-    itemStyle: {
+    emphasis: {
 
       areaColor: '#f3f3f3',
       borderColor: '#516b91',
       borderWidth: 0.5,
 
-      emphasis: {
+      itemStyle: {
         areaColor: 'rgba(165,231,240,1)',
         borderColor: '#516b91',
         borderWidth: 1
