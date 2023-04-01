@@ -6,8 +6,7 @@
         <div class="d-flex jc-center">
           <dv-decoration-10 class="dv-dec-10" />
           <div class="d-flex jc-center">
-            <dv-decoration-8 class="dv-dec-8"   />
-            <!-- :color="decorationColors" -->
+            <dv-decoration-8 class="dv-dec-8"  :color="decorationColors" />
             <div class="title">
               <span class="title-text">{{ title }}</span>
               <dv-decoration-6
@@ -19,9 +18,8 @@
             <dv-decoration-8
               class="dv-dec-8"
               :reverse="true"
-
+              :color="decorationColors"
             />
-             <!-- :color="decorationColors" -->
           </div>
           <dv-decoration-10 class="dv-dec-10-s" />
         </div>
@@ -177,7 +175,8 @@ export default defineComponent({
       appRef,
       title,
       subtitle,
-      moduleInfo
+      moduleInfo,
+      decorationColors
     }
   }
 })

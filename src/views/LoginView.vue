@@ -86,7 +86,7 @@
 </template>
 
 <script scoped>
-import http from '@/util/http'
+import http from '@/utils/http'
 import { ElNotification } from 'element-plus'
 
 export default {
