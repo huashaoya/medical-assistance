@@ -2,19 +2,35 @@
   <el-menu
     :default-active="activeIndex"
     mode="horizontal"
-    background-color="midnightblue"
+    background-color="#0d1223"
     text-color="#fff"
-    active-text-color="lightskyblue"
+    active-text-color="#0199ca"
     @select="handleSelect"
   >
     <el-menu-item index="1" style="font-size:20px">-基于癌症治疗的医疗辅助系统-</el-menu-item>
     <el-menu-item index="2">监控页</el-menu-item>
-    <el-menu-item index="3">乳腺癌</el-menu-item>
-    <el-menu-item index="4">血癌</el-menu-item>
-    <el-menu-item index="5">喉癌和下咽癌</el-menu-item>
+    <el-menu-item index="3">图像处理</el-menu-item>
+    <el-sub-menu index="4">
+      <template #title>乳腺癌</template>
+      <el-menu-item index="4-1">图像分割</el-menu-item>
+      <el-menu-item index="4-2">目标检测</el-menu-item>
+    </el-sub-menu>
+    <el-sub-menu index="5">
+      <template #title>血癌</template>
+      <el-menu-item index="5-1">图像分割</el-menu-item>
+      <el-menu-item index="5-2">目标检测</el-menu-item>
+    </el-sub-menu>
+    <el-sub-menu index="6">
+      <template #title>喉癌和下咽癌</template>
+      <el-menu-item index="6-1">图像分割</el-menu-item>
+      <el-menu-item index="6-2">目标检测</el-menu-item>
+    </el-sub-menu>
   </el-menu>
-  <router-view></router-view>
+
+    <router-view></router-view>
+
 </template>
+
 <script>
 import http from '@/util/http'
 import { ElNotification } from 'element-plus'
@@ -71,5 +87,10 @@ export default {
   }
 }
 </script>
-<style>
+
+<style scoped>
+/* 取消菜单下边的白条 */
+.el-menu--horizontal{
+  border-bottom:0 solid black !important;
+}
 </style>

@@ -29,4 +29,8 @@ ul,li{
 .fade-enter, .fade-leave-to {
   opacity: 0;
 }
+html{
+  height: 100vh;
+  background: url('@/assets/pageBg.png') center center no-repeat;
+}
 </style>

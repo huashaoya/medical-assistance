@@ -1,8 +1,8 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import LoginView from '@/views/LoginView.vue'
 import RegisterView from '@/views/RegisterView.vue'
-import mainPageView from '@/views/mainView/mainPageView.vue'
 import secondPageView from '@/views/mainView/secondPageView.vue'
+import dataV from '@/views/dataV/index/indexView.vue'
 import pageOne from '@/views/mainView/pageOne.vue'
 import AppView from '@/views/mainView/AppView.vue'
 
@@ -15,7 +15,7 @@ const routes = [
       {
         path: '/',
         name: 'mainPage',
-        component: mainPageView
+        component: dataV
       },
       {
         path: '/secondPage',
