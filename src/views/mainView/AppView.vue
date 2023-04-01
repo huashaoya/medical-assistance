@@ -26,9 +26,7 @@
       <el-menu-item index="6-2">目标检测</el-menu-item>
     </el-sub-menu>
   </el-menu>
-
-    <router-view></router-view>
-
+  <router-view></router-view>
 </template>
 
 <script>
@@ -51,7 +49,7 @@ export default {
         this.$router.push('/')
       } else if (key === '2') {
         this.$router.push('/secondPage')
-      } else if (key === '3') {
+      } else if (key === '4-1') {
         this.$router.push('/pageOne')
       }
     },

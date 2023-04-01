@@ -1,50 +1,7 @@
 <template>
     <div class="body">
         <div class="work">
-            <div class="main">
-                <div class="option">
-                    <el-select v-model="value" class="m-2" placeholder="Select" size="large" placement="top">
-                        <el-option
-                        v-for="item in options"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value"
-                        />
-                    </el-select>
-                    <div class="console">
-                    </div>
-                </div>
-                <div class="upload">
-                    <el-upload
-                    class="avatar-uploader"
-                    action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
-                    :show-file-list="false"
-                    :on-success="handleAvatarSuccess"
-                    :before-upload="beforeAvatarUpload"
-                    >
-                        <img v-if="imageUrl" :src="imageUrl" class="avatar" />
-                        <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
-                    </el-upload>
-                    <el-button type="primary" size="large" color="midnightblue">开始分割</el-button>
-                </div>
-                <div class="result">
-                    <div class="pic">
-                        <img v-if="imageUrl" :src="imageUrl" class="avatar" />
-                        <div></div>
-                    </div>
-                    <div class="pic">
-                        <img v-if="imageUrl" :src="imageUrl" class="avatar" />
-                        <div></div>
-                    </div>
-                    <div class="pic">
-                        <img v-if="imageUrl" :src="imageUrl" class="avatar" />
-                        <div></div>
-                    </div>
-                </div>
 
-            </div>
-
-            <div class="info"></div>
         </div>
         <div class="history">
             <h2>历史记录</h2>
@@ -67,20 +24,6 @@ import { Plus } from '@element-plus/icons-vue'
 export default {
   data () {
     return {
-      options: [
-        {
-          label: '图像处理',
-          value: 'option1'
-        },
-        {
-          label: '图像分割',
-          value: 'option1'
-        },
-        {
-          label: '目标检测',
-          value: 'option2'
-        }
-      ],
       history: [
         {
           id: '6435131',
@@ -101,58 +44,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
+body{
+  background-color: rgba(0,0,0,0);
+}
 .body{
-    background-color: rgb(255, 255, 255);
-    height: calc(100vh - 60px);
+    height: calc(100vh - 58px);
     display: flex;
     flex-direction: row;
      .work{
-        width:80%;
-        height:100%;
-        display: flex;
-        flex-direction: column;
-        border-right:2px dashed var(--el-border-color);;
-        .main{
-            width:100%;
-            height: 50%;
-            display: flex;
-            border-bottom: 2px dashed var(--el-border-color);
-            overflow-x: auto;
-            .option{
-                width:240px;
-                height: 100%;
-                border-right: 2px dashed var(--el-border-color);
-                padding-top: 20px;
-                .console{
-                    width:calc(100% - 20px);
-                    height: calc(100% - 60px);
-                    margin: 10px;
-                    border-radius: 10px;
-                    border: 1px dashed var(--el-border-color);
-                }
-            }
-            .upload{
-                width:300px;
-                background-color: white;
-                border-right: 2px dashed var(--el-border-color);
-            }
-            .result{
-                display: flex;
-                .pic{
-                    width:260px;
-                    margin: 20px;
-                    // background-color: aquamarine;
-                    height:calc(100% - 40px);
-                    border: 1px dashed var(--el-border-color);
-                    border-radius: 10px;
-                }
-            }
-        }
-        .info{
-            width:100%;
-            height: 50%;
-            // background-color: aqua;
-        }
+      width:80%;
+      border-right: 1px dashed var(--el-border-color);;
     }
     .history{
         // background-color: green;

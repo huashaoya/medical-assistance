@@ -192,9 +192,7 @@ const theme = {
         }
       },
       emphasis: {
-        textStyle: {
-          color: 'rgb(81,107,145)'
-        }
+        color: 'rgb(81,107,145)'
       }
     }
   },
@@ -213,14 +211,10 @@ const theme = {
     },
     label: {
       normal: {
-        textStyle: {
-          color: '#000'
-        }
+        color: '#000'
       },
       emphasis: {
-        textStyle: {
-          color: 'rgb(81,107,145)'
-        }
+        color: 'rgb(81,107,145)'
       }
     }
   },
