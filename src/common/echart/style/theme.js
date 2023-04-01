@@ -1,25 +1,25 @@
 const theme = {
   color: ['#2d8cf0', '#19be6b', '#ff9900', '#E46CBB', '#9A66E4', '#ed3f14'],
   backgroundColor: 'rgba(0,0,0,0)',
-  textStyle: {},
+
   title: {
-    textStyle: {
-      color: '#516b91'
-    },
+
+    color: '#516b91',
+
     subtextStyle: {
       color: '#93b7e3'
     }
   },
   line: {
     itemStyle: {
-      normal: {
-        borderWidth: '2'
-      }
+
+      borderWidth: '2'
+
     },
     lineStyle: {
-      normal: {
-        width: '2'
-      }
+
+      width: '2'
+
     },
     symbolSize: '6',
     symbol: 'emptyCircle',
@@ -27,14 +27,14 @@ const theme = {
   },
   radar: {
     itemStyle: {
-      normal: {
-        borderWidth: '2'
-      }
+
+      borderWidth: '2'
+
     },
     lineStyle: {
-      normal: {
-        width: '2'
-      }
+
+      width: '2'
+
     },
     symbolSize: '6',
     symbol: 'emptyCircle',
@@ -42,10 +42,10 @@ const theme = {
   },
   bar: {
     itemStyle: {
-      normal: {
-        barBorderWidth: 0,
-        barBorderColor: '#ccc'
-      },
+
+      barBorderWidth: 0,
+      barBorderColor: '#ccc',
+
       emphasis: {
         barBorderWidth: 0,
         barBorderColor: '#ccc'
@@ -54,10 +54,10 @@ const theme = {
   },
   pie: {
     itemStyle: {
-      normal: {
-        borderWidth: 0,
-        borderColor: '#ccc'
-      },
+
+      borderWidth: 0,
+      borderColor: '#ccc',
+
       emphasis: {
         borderWidth: 0,
         borderColor: '#ccc'
@@ -66,10 +66,10 @@ const theme = {
   },
   scatter: {
     itemStyle: {
-      normal: {
-        borderWidth: 0,
-        borderColor: '#ccc'
-      },
+
+      borderWidth: 0,
+      borderColor: '#ccc',
+
       emphasis: {
         borderWidth: 0,
         borderColor: '#ccc'
@@ -78,10 +78,10 @@ const theme = {
   },
   boxplot: {
     itemStyle: {
-      normal: {
-        borderWidth: 0,
-        borderColor: '#ccc'
-      },
+
+      borderWidth: 0,
+      borderColor: '#ccc',
+
       emphasis: {
         borderWidth: 0,
         borderColor: '#ccc'
@@ -90,10 +90,10 @@ const theme = {
   },
   parallel: {
     itemStyle: {
-      normal: {
-        borderWidth: 0,
-        borderColor: '#ccc'
-      },
+
+      borderWidth: 0,
+      borderColor: '#ccc',
+
       emphasis: {
         borderWidth: 0,
         borderColor: '#ccc'
@@ -102,10 +102,10 @@ const theme = {
   },
   sankey: {
     itemStyle: {
-      normal: {
-        borderWidth: 0,
-        borderColor: '#ccc'
-      },
+
+      borderWidth: 0,
+      borderColor: '#ccc',
+
       emphasis: {
         borderWidth: 0,
         borderColor: '#ccc'
@@ -114,10 +114,10 @@ const theme = {
   },
   funnel: {
     itemStyle: {
-      normal: {
-        borderWidth: 0,
-        borderColor: '#ccc'
-      },
+
+      borderWidth: 0,
+      borderColor: '#ccc',
+
       emphasis: {
         borderWidth: 0,
         borderColor: '#ccc'
@@ -126,10 +126,10 @@ const theme = {
   },
   gauge: {
     itemStyle: {
-      normal: {
-        borderWidth: 0,
-        borderColor: '#ccc'
-      },
+
+      borderWidth: 0,
+      borderColor: '#ccc',
+
       emphasis: {
         borderWidth: 0,
         borderColor: '#ccc'
@@ -138,47 +138,45 @@ const theme = {
   },
   candlestick: {
     itemStyle: {
-      normal: {
-        color: '#edafda',
-        color0: 'transparent',
-        borderColor: '#d680bc',
-        borderColor0: '#8fd3e8',
-        borderWidth: '2'
-      }
+
+      color: '#edafda',
+      color0: 'transparent',
+      borderColor: '#d680bc',
+      borderColor0: '#8fd3e8',
+      borderWidth: '2'
+
     }
   },
   graph: {
     itemStyle: {
-      normal: {
-        borderWidth: 0,
-        borderColor: '#ccc'
-      }
+
+      borderWidth: 0,
+      borderColor: '#ccc'
+
     },
     lineStyle: {
-      normal: {
-        width: 1,
-        color: '#aaa'
-      }
+
+      width: 1,
+      color: '#aaa'
+
     },
     symbolSize: '6',
     symbol: 'emptyCircle',
     smooth: true,
     color: ['#2d8cf0', '#19be6b', '#f5ae4a', '#9189d5', '#56cae2', '#cbb0e3'],
     label: {
-      normal: {
-        textStyle: {
-          color: '#eee'
-        }
-      }
+
+      color: '#eee'
+
     }
   },
   map: {
     itemStyle: {
-      normal: {
-        areaColor: '#f3f3f3',
-        borderColor: '#516b91',
-        borderWidth: 0.5
-      },
+
+      areaColor: '#f3f3f3',
+      borderColor: '#516b91',
+      borderWidth: 0.5,
+
       emphasis: {
         areaColor: 'rgba(165,231,240,1)',
         borderColor: '#516b91',
@@ -186,11 +184,9 @@ const theme = {
       }
     },
     label: {
-      normal: {
-        textStyle: {
-          color: '#000'
-        }
-      },
+
+      color: '#000',
+
       emphasis: {
         color: 'rgb(81,107,145)'
       }
@@ -198,11 +194,11 @@ const theme = {
   },
   geo: {
     itemStyle: {
-      normal: {
-        areaColor: '#f3f3f3',
-        borderColor: '#516b91',
-        borderWidth: 0.5
-      },
+
+      areaColor: '#f3f3f3',
+      borderColor: '#516b91',
+      borderWidth: 0.5,
+
       emphasis: {
         areaColor: 'rgba(165,231,240,1)',
         borderColor: '#516b91',
@@ -210,9 +206,9 @@ const theme = {
       }
     },
     label: {
-      normal: {
-        color: '#000'
-      },
+
+      color: '#000',
+
       emphasis: {
         color: 'rgb(81,107,145)'
       }
@@ -233,9 +229,7 @@ const theme = {
     },
     axisLabel: {
       show: true,
-      textStyle: {
-        color: '#fff'
-      }
+      color: '#fff'
     },
     splitLine: {
       show: false,
@@ -265,9 +259,7 @@ const theme = {
     },
     axisLabel: {
       show: true,
-      textStyle: {
-        color: '#fff'
-      }
+      color: '#fff'
     },
     splitLine: {
       show: false,
@@ -297,9 +289,9 @@ const theme = {
     },
     axisLabel: {
       show: true,
-      textStyle: {
-        color: '#999999'
-      }
+
+      color: '#999999'
+
     },
     splitLine: {
       show: true,
@@ -329,9 +321,9 @@ const theme = {
     },
     axisLabel: {
       show: true,
-      textStyle: {
-        color: '#999999'
-      }
+
+      color: '#999999'
+
     },
     splitLine: {
       show: true,
@@ -348,18 +340,18 @@ const theme = {
   },
   toolbox: {
     iconStyle: {
-      normal: {
-        borderColor: '#999'
-      },
+
+      borderColor: '#999',
+
       emphasis: {
         borderColor: '#666'
       }
     }
   },
   legend: {
-    textStyle: {
-      color: '#fff'
-    }
+
+    color: '#fff'
+
   },
   tooltip: {
     axisPointer: {
@@ -379,20 +371,20 @@ const theme = {
       width: 1
     },
     itemStyle: {
-      normal: {
-        color: '#8fd3e8',
-        borderWidth: 1
-      },
+
+      color: '#8fd3e8',
+      borderWidth: 1,
+
       emphasis: {
         color: '#8fd3e8'
       }
     },
     controlStyle: {
-      normal: {
-        color: '#8fd3e8',
-        borderColor: '#8fd3e8',
-        borderWidth: 0.5
-      },
+
+      color: '#8fd3e8',
+      borderColor: '#8fd3e8',
+      borderWidth: 0.5,
+
       emphasis: {
         color: '#8fd3e8',
         borderColor: '#8fd3e8',
@@ -404,15 +396,13 @@ const theme = {
       borderColor: 'rgba(138,124,168,0.37)'
     },
     label: {
-      normal: {
-        textStyle: {
-          color: '#8fd3e8'
-        }
-      },
+
+      color: '#8fd3e8',
+
       emphasis: {
-        textStyle: {
-          color: '#8fd3e8'
-        }
+
+        color: '#8fd3e8'
+
       }
     }
   },
@@ -425,21 +415,19 @@ const theme = {
     fillerColor: 'rgba(167,183,204,0.4)',
     handleColor: '#a7b7cc',
     handleSize: '100%',
-    textStyle: {
-      color: '#333'
-    }
+
+    color: '#333'
+
   },
   markPoint: {
     label: {
-      normal: {
-        textStyle: {
-          color: '#eee'
-        }
-      },
+
+      color: '#eee',
+
       emphasis: {
-        textStyle: {
-          color: '#eee'
-        }
+
+        color: '#eee'
+
       }
     }
   }
