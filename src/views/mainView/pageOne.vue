@@ -1,7 +1,7 @@
 <template>
     <div class="body">
         <div class="work">
-
+          <dv-border-box-1>dv-border-box-1</dv-border-box-1>
         </div>
         <div class="history">
             <h2>历史记录</h2>
