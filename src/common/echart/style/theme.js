@@ -11,7 +11,7 @@ const theme = {
     }
   },
   line: {
-    itemStyle: {
+    emphasis: {
 
       borderWidth: '2'
 
@@ -26,7 +26,7 @@ const theme = {
     smooth: true
   },
   radar: {
-    itemStyle: {
+    emphasis: {
 
       borderWidth: '2'
 
@@ -137,7 +137,7 @@ const theme = {
     }
   },
   candlestick: {
-    itemStyle: {
+    emphasis: {
 
       color: '#edafda',
       color0: 'transparent',
@@ -148,7 +148,7 @@ const theme = {
     }
   },
   graph: {
-    itemStyle: {
+    emphasis: {
 
       borderWidth: 0,
       borderColor: '#ccc'
@@ -181,13 +181,11 @@ const theme = {
         areaColor: 'rgba(165,231,240,1)',
         borderColor: '#516b91',
         borderWidth: 1
-      }
-    },
-    label: {
+      },
 
       color: '#000',
 
-      emphasis: {
+      label: {
         color: 'rgb(81,107,145)'
       }
     }
@@ -203,13 +201,11 @@ const theme = {
         areaColor: 'rgba(165,231,240,1)',
         borderColor: '#516b91',
         borderWidth: 1
-      }
-    },
-    label: {
+      },
 
       color: '#000',
 
-      emphasis: {
+      label: {
         color: 'rgb(81,107,145)'
       }
     }
@@ -339,11 +335,11 @@ const theme = {
     }
   },
   toolbox: {
-    iconStyle: {
+    emphasis: {
 
       borderColor: '#999',
 
-      emphasis: {
+      iconStyle: {
         borderColor: '#666'
       }
     }
@@ -370,22 +366,21 @@ const theme = {
       color: '#8fd3e8',
       width: 1
     },
-    itemStyle: {
+    emphasis: {
 
       color: '#8fd3e8',
       borderWidth: 1,
 
-      emphasis: {
+      itemStyle: {
         color: '#8fd3e8'
-      }
-    },
-    controlStyle: {
+      },
 
-      color: '#8fd3e8',
-      borderColor: '#8fd3e8',
-      borderWidth: 0.5,
+      label: {
 
-      emphasis: {
+        color: '#8fd3e8'
+
+      },
+      controlStyle: {
         color: '#8fd3e8',
         borderColor: '#8fd3e8',
         borderWidth: 0.5
@@ -394,17 +389,8 @@ const theme = {
     checkpointStyle: {
       color: '#8fd3e8',
       borderColor: 'rgba(138,124,168,0.37)'
-    },
-    label: {
-
-      color: '#8fd3e8',
-
-      emphasis: {
-
-        color: '#8fd3e8'
-
-      }
     }
+
   },
   visualMap: {
     color: ['#516b91', '#59c4e6', '#a5e7f0']
@@ -420,11 +406,11 @@ const theme = {
 
   },
   markPoint: {
-    label: {
+    emphasis: {
 
       color: '#eee',
 
-      emphasis: {
+      label: {
 
         color: '#eee'
 
