@@ -37,7 +37,8 @@ export default {
         ],
         headerBGC: '#0f1325', // 表头
         oddRowBGC: '#0f1325', // 奇数行
-        evenRowBGC: '#171c33' // 偶数行
+        evenRowBGC: '#171c33', // 偶数行
+        waitTime: 2300
       },
       Ringconfig: {
         data: [
@@ -86,7 +87,10 @@ export default {
         display:flex;
         .ring{
             width:200px;
-            display: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             flex-direction: column;
         }
         .scroll{

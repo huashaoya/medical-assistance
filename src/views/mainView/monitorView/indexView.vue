@@ -13,22 +13,19 @@
                   </dv-border-box-12>
                </div>
                <div class="item">
-                  <dv-border-box-12></dv-border-box-12>
-                  <!-- <div class="title">
-                     <h3>科室使用情况</h3>
-                  </div> -->
-               </div>
-               <div class="item">
                   <dv-border-box-12>
-                     <ChartThree></ChartThree>
+                    <ChartThree></ChartThree>
                   </dv-border-box-12>
                </div>
                <div class="item">
-                  <dv-border-box-12></dv-border-box-12>
-                  <!-- <div class="title">
-                     <h3>CT房使用情况</h3>
-                  </div>
-                  <div id="chart-2" class="chart"></div> -->
+                  <dv-border-box-12>
+                     <ChartTwo></ChartTwo>
+                  </dv-border-box-12>
+               </div>
+               <div class="item">
+                  <dv-border-box-12>
+                     <ChartFour></ChartFour>
+                  </dv-border-box-12>
                </div>
             </div>
             </dv-border-box-7>
@@ -55,7 +52,9 @@
 import History from './historyView.vue'
 import Attender from './attenderView.vue'
 import ChartOne from './chartOne.vue'
+import ChartTwo from './chartTwo.vue'
 import ChartThree from './chartThree.vue'
+import ChartFour from './chartFour.vue'
 export default {
   data () {
     return {
@@ -66,7 +65,9 @@ export default {
     History,
     Attender,
     ChartOne,
-    ChartThree
+    ChartThree,
+    ChartTwo,
+    ChartFour
   },
   mounted () {
     this.cancelLoading()

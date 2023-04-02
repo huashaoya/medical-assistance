@@ -4,7 +4,7 @@
             <span>
             <i class="iconfont icon-tongji4" />
             </span>
-            <span class="fs-xl text mx-2">CT超室使用情况</span>
+            <span class="fs-xl text mx-2">CT室使用情况</span>
             <dv-decoration-3 style="width:250px;height:20px;" />
         </div>
         <div class="content">
