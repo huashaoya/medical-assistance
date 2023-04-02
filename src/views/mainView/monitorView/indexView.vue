@@ -9,12 +9,8 @@
                <div class="content">
                <div class="item">
                   <dv-border-box-12>
-                     <dv-scroll-board :config="config-one" style="width:100%;height:100%" />
+                     <ChartOne></ChartOne>
                   </dv-border-box-12>
-                  <!-- <div class="title">
-
-                     <h3>科室使用情况</h3>
-                  </div> -->
                </div>
                <div class="item">
                   <dv-border-box-12></dv-border-box-12>
@@ -23,11 +19,9 @@
                   </div> -->
                </div>
                <div class="item">
-                  <dv-border-box-12></dv-border-box-12>
-                  <!-- <div class="title">
-                     <h3>手术室使用情况</h3>
-                  </div>
-                  <div id="chart-1" class="chart"></div> -->
+                  <dv-border-box-12>
+                     <ChartThree></ChartThree>
+                  </dv-border-box-12>
                </div>
                <div class="item">
                   <dv-border-box-12></dv-border-box-12>
@@ -60,6 +54,8 @@
 <script>
 import History from './historyView.vue'
 import Attender from './attenderView.vue'
+import ChartOne from './chartOne.vue'
+import ChartThree from './chartThree.vue'
 export default {
   data () {
     return {
@@ -68,7 +64,9 @@ export default {
   },
   components: {
     History,
-    Attender
+    Attender,
+    ChartOne,
+    ChartThree
   },
   mounted () {
     this.cancelLoading()
