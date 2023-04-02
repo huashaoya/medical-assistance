@@ -45,7 +45,7 @@ export default {
 
 <style scoped lang="scss">
 body{
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0,0,0,0)!important;
 }
 .body{
     height: calc(100vh - 58px);

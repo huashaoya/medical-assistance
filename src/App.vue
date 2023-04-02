@@ -15,6 +15,9 @@
   text-align: center;
   color: #2c3e50;
 }
+body{
+  background-color: rgba(0,0,0,0)!important;
+}
 * {
   box-sizing: border-box;
   margin: 0;
