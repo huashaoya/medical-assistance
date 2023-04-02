@@ -9,7 +9,7 @@
         </div>
         <div class="content">
             <div class="ring">
-                <dv-decoration-12 style="width:200px;height:60px;"></dv-decoration-12>
+                <dv-active-ring-chart :config="Ringconfig" style="width:180px;height:200px" />
             </div>
             <div class="scroll">
                 <dv-scroll-board :config="config" style="width:100%;height:100%" @click="click"/>
