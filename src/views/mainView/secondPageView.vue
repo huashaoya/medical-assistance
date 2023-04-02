@@ -82,12 +82,29 @@ export default {
           }
         ]
       }
-
       option && myChart.setOption(option)
     }
   }
 }
 </script>
+<!-- <style>
+.bgimage {
+   position: relative;
+   border-width: 51px 38px 20px 132px;
+   -o-border-image: url(../../assets/border.png);
+   border-image: url(../../assets/border.png);
+   border-image-slice: 51 38 20 132;
+}
+
+.inner {
+   position: absolute;
+   top: -51px;
+   left: -132px;
+   right: -38px;
+   bottom: -20px;
+}
+</style> -->
+
 <style scoped lang="scss">
 .body {
    height: calc(100vh - 60px);
@@ -103,20 +120,11 @@ export default {
       padding: 20px;
 
       .item {
-         position: relative;
          width: calc(100% - 40px);
          height: calc(100% - 40px);
          border: lightskyblue 1px solid;
-         // border-width: 51px 38px 20px 132px;
-         // border-image: url(../../assets/border.png);
-         // border-image-slice: 51 38 20 132;
 
          .title {
-            // position: absolute;
-            // top: -51px;
-            // left: -132px;
-            // right: -38px;
-            // bottom: -20px;
             background: linear-gradient(to right, #4cb4e7, transparent);
             text-align: center;
             color: white;
@@ -154,6 +162,7 @@ export default {
       flex-direction: column;
 
       .item {
+
          width: calc(100% - 40px);
          height: calc(50% - 40px);
          border: lightskyblue 1px solid;
