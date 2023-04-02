@@ -9,7 +9,7 @@
                <div class="content">
                <div class="item">
                   <dv-border-box-12>
-                     <dv-scroll-board :config="config-one" style="width:500px;height:220px" />
+                     <dv-scroll-board :config="config-one" style="width:100%;height:100%" />
                   </dv-border-box-12>
                   <!-- <div class="title">
 
@@ -46,12 +46,18 @@
       </div>
       <div class="second">
          <div class="item">
-            <!-- <div class="title"><h2>历史记录</h2></div> -->
-            <dv-border-box-8>dv-border-box-10</dv-border-box-8>
+            <dv-border-box-8>
+               <dv-decoration-3 style="width:250px;height:20px;" />
+               <div class="chart">
+                  <dv-scroll-board :config="configHistory"  style="width:100%;height:100%" />
+               </div>
+            </dv-border-box-8>
          </div>
          <div class="item">
             <!-- <div class="title"><h2>医生出勤信息</h2></div> -->
-            <dv-border-box-10>dv-border-box-10</dv-border-box-10>
+            <dv-border-box-10>
+               <dv-decoration-7 style="width:150px;height:30px;">Decoration</dv-decoration-7> -->
+            </dv-border-box-10>
          </div>
       </div>
     </div>
@@ -62,7 +68,22 @@ import * as echarts from 'echarts'
 export default {
   data () {
     return {
-      loading: true
+      loading: true,
+      configHistory: {
+        header: ['列1', '列2', '列3'],
+        data: [
+          ['行1列1', '行1列2', '行1列3'],
+          ['行2列1', '行2列2', '行2列3'],
+          ['行3列1', '行3列2', '行3列3'],
+          ['行4列1', '行4列2', '行4列3'],
+          ['行5列1', '行5列2', '行5列3'],
+          ['行6列1', '行6列2', '行6列3'],
+          ['行7列1', '行7列2', '行7列3'],
+          ['行8列1', '行8列2', '行8列3'],
+          ['行9列1', '行9列2', '行9列3'],
+          ['行10列1', '行10列2', '行10列3']
+        ]
+      }
     }
   },
   mounted () {
@@ -157,11 +178,11 @@ export default {
          height:calc(50% - 40px);
          // border:lightskyblue 1px solid;
          margin-bottom: 40px;
-         .title{
-            padding:5px;
-            background: linear-gradient(to right, #4cb4e7, transparent);
-            text-align: center;
-            color:white;
+         .chart{
+            margin: 2%;
+            margin-top: 0;
+            width:96%;
+            height:calc(96% - 20px);
          }
       }
    }

@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import LoginView from '@/views/LoginView.vue'
 import secondPageView from '@/views/mainView/secondPageView.vue'
-import dataV from '@/views/dataV/index/indexView.vue'
+import dataV from '@/views/mainView/dataV/index/indexView.vue'
 import pageOne from '@/views/mainView/pageOne.vue'
 import AppView from '@/views/mainView/AppView.vue'
 
