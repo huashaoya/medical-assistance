@@ -1,7 +1,9 @@
 <template>
     <div class="body">
         <div class="work">
-          <dv-border-box-1>dv-border-box-1</dv-border-box-1>
+          <dv-border-box-1>
+            <Work></Work>
+          </dv-border-box-1>
         </div>
         <div class="history">
             <h2>历史记录</h2>
@@ -17,11 +19,12 @@
         </div>
     </div>
 </template>
-<script setup>
-import { Plus } from '@element-plus/icons-vue'
-</script>
 <script>
+import Work from './workView.vue'
 export default {
+  components: {
+    Work
+  },
   data () {
     return {
       history: [
@@ -44,9 +47,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-body{
-  background-color: rgba(0,0,0,0)!important;
-}
 .body{
     height: calc(100vh - 58px);
     display: flex;
@@ -76,26 +76,4 @@ body{
 </style>
 
 <style>
-.avatar-uploader .el-upload {
-  border: 1px dashed var(--el-border-color);
-  border-radius: 6px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: var(--el-transition-duration-fast);
-  margin-top:20px;
-  margin-bottom:40px;
-}
-
-.avatar-uploader .el-upload:hover {
-  border-color: var(--el-color-primary);
-}
-
-.el-icon.avatar-uploader-icon {
-  font-size: 28px;
-  color: #8c939d;
-  width: 238px;
-  height: 238px;
-  text-align: center;
-}
 </style>
