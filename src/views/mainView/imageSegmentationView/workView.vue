@@ -5,8 +5,11 @@
                 <el-upload
                     class="avatar-uploader"
                     :show-file-list="false"
+                    action="http://127.0.0.1:8000/judge/"
                     :on-change="onChange"
                     :auto-upload="false"
+                    :on-success="success"
+                    ref="uploadRef"
                 >
                     <el-image
                     v-if="imageUrl"
@@ -17,12 +20,12 @@
                     />
                     <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
                 </el-upload>
-                <el-button type="primary" class="btn">开始处理</el-button>
+                <el-button type="primary" class="btn" @click="submitUpload">开始处理</el-button>
             </div>
             <div class="item">
                 <el-image
                     style="width: 300px; height: 300px"
-                    :src="url"
+                    :src="img1"
                     :zoom-rate="1.2"
                     :preview-src-list="srcList"
                     :initial-index="0"
@@ -37,7 +40,7 @@
             </div>
             <div class="item"><el-image
                     style="width: 300px; height: 300px"
-                    :src="url"
+                    :src="img2"
                     :zoom-rate="1.2"
                     :preview-src-list="srcList"
                     :initial-index="0"
@@ -53,7 +56,7 @@
             <div class="item">
                 <el-image
                     style="width: 300px; height: 300px"
-                    :src="url"
+                    :src="img3"
                     :zoom-rate="1.2"
                     :preview-src-list="srcList"
                     :initial-index="0"
@@ -76,18 +79,27 @@
 </template>
 <script setup>
 import { Plus, Picture as IconPicture } from '@element-plus/icons-vue'
+import http from '@/utils/judge'
 </script>
 <script>
 export default {
   data () {
     return {
-      url: '',
+      img1: '',
+      img2: '',
+      img3: '',
       srcList: [],
       imageUrl: '',
       consoleList: ['控制台已开启', '等待上传图片..']
     }
   },
   methods: {
+    success (res) {
+      console.log(res)
+      this.img1 = res.img1
+      this.img2 = res.img2
+      this.img3 = res.img3
+    },
     onChange (event) {
       console.log(event)
       let URL = null
@@ -104,6 +116,9 @@ export default {
       // 转换后的地址为 blob:http://xxx/7bf54338-74bb-47b9-9a7f-7a7093c716b5
       this.imageUrl = URL
       this.consoleList.push('选择图片：' + event.name)
+    },
+    submitUpload () {
+      this.$refs.uploadRef.submit()
     }
   }
 }
