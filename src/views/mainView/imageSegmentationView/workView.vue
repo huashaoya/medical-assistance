@@ -52,7 +52,7 @@
                     :src="img2"
                     :zoom-rate="1.2"
                     :preview-src-list="srcList"
-                    :initial-index="0"
+                    :initial-index="1"
                     fit="cover"
                 >
                     <template #error>
@@ -68,7 +68,7 @@
                     :src="img3"
                     :zoom-rate="1.2"
                     :preview-src-list="srcList"
-                    :initial-index="0"
+                    :initial-index="2"
                     fit="cover"
                 >
                     <template #error>
@@ -130,11 +130,12 @@ export default {
   },
   methods: {
     success (res) {
-      console.log(res)
+      // console.log(res)
       this.img1 = res.img1
       this.img2 = res.img2
       this.img3 = res.img3
       this.loading = false
+      this.srcList.push(res.img1, res.img2, res.img3)
     },
     onChange (event) {
       console.log(event)
@@ -159,6 +160,7 @@ export default {
         this.img2 = ''
         this.img3 = ''
         this.disabled = false
+        this.srcList = []
       }
     },
     submitUpload () {
