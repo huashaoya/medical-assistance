@@ -49,12 +49,16 @@ export default {
         this.$router.push('/')
       } else if (key === '2') {
         this.$router.push('/secondPage')
+      } else if (key === '3') {
+        this.$router.push('/imageProcessing')
       } else if (key === '4-1') {
-        this.$router.replace({ path: '/pageOne', query: { type: '0' } })
+        this.$router.push({ path: '/pageOne', query: { type: '0' } })
       } else if (key === '5-1') {
-        this.$router.replace({ path: '/pageOne', query: { type: '1' } })
+        this.$router.push({ path: '/pageOne', query: { type: '1' } })
       } else if (key === '6-1') {
-        this.$router.replace({ path: '/pageOne', query: { type: '2' } })
+        this.$router.push({ path: '/pageOne', query: { type: '2' } })
+      } else {
+        this.$router.push('/pageOne-2')
       }
     },
     checkToken () { // 校验token
