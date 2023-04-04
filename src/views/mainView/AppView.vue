@@ -50,7 +50,11 @@ export default {
       } else if (key === '2') {
         this.$router.push('/secondPage')
       } else if (key === '4-1') {
-        this.$router.push('/pageOne')
+        this.$router.replace({ path: '/pageOne', query: { type: '0' } })
+      } else if (key === '5-1') {
+        this.$router.replace({ path: '/pageOne', query: { type: '1' } })
+      } else if (key === '6-1') {
+        this.$router.replace({ path: '/pageOne', query: { type: '2' } })
       }
     },
     checkToken () { // 校验token

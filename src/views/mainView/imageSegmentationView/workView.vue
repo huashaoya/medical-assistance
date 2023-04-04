@@ -1,15 +1,24 @@
 <template>
-    <div class="box">
-        <div class="image">
+    <div class="box"
+        v-loading="loading"
+        element-loading-text="处理中..."
+        :element-loading-spinner="svg"
+        element-loading-svg-view-box="-10, -10, 50, 50"
+        element-loading-background="rgba(0, 0, 0, 0.8)"
+    >
+        <div class="image" >
             <div class="item">
                 <el-upload
                     class="avatar-uploader"
                     :show-file-list="false"
                     action="http://127.0.0.1:8000/judge/"
+                    :data="{type:$route.query.type}"
                     :on-change="onChange"
                     :auto-upload="false"
                     :on-success="success"
+                    :limit="1"
                     ref="uploadRef"
+                    :on-exceed="handleExceed"
                 >
                     <el-image
                     v-if="imageUrl"
@@ -20,7 +29,7 @@
                     />
                     <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
                 </el-upload>
-                <el-button type="primary" class="btn" @click="submitUpload">开始处理</el-button>
+                <el-button type="primary" class="btn" @click="submitUpload" :disabled="disabled">开始处理</el-button>
             </div>
             <div class="item">
                 <el-image
@@ -77,10 +86,34 @@
         </div>
     </div>
 </template>
+
 <script setup>
 import { Plus, Picture as IconPicture } from '@element-plus/icons-vue'
-import http from '@/utils/judge'
+// import http from '@/utils/judge'
+import { ref } from 'vue'
+import { genFileId } from 'element-plus'
+
+const uploadRef = ref()
+
+const handleExceed = (files) => {
+  uploadRef.value.clearFiles()
+  const file = files[0]
+  file.uid = genFileId()
+  uploadRef.value.handleStart(file)
+}
+
+const svg = `
+        <path class="path" d="
+          M 30 15
+          L 28 17
+          M 25.61 25.61
+          A 15 15, 0, 0, 1, 15 30
+          A 15 15, 0, 1, 1, 27.99 7.5
+          L 15 15
+        " style="stroke-width: 4px; fill: rgba(0, 0, 0, 0)"/>
+      `
 </script>
+
 <script>
 export default {
   data () {
@@ -90,7 +123,9 @@ export default {
       img3: '',
       srcList: [],
       imageUrl: '',
-      consoleList: ['控制台已开启', '等待上传图片..']
+      consoleList: ['控制台已开启', '等待上传图片..'],
+      loading: false,
+      disabled: true
     }
   },
   methods: {
@@ -99,6 +134,7 @@ export default {
       this.img1 = res.img1
       this.img2 = res.img2
       this.img3 = res.img3
+      this.loading = false
     },
     onChange (event) {
       console.log(event)
@@ -115,10 +151,19 @@ export default {
       }
       // 转换后的地址为 blob:http://xxx/7bf54338-74bb-47b9-9a7f-7a7093c716b5
       this.imageUrl = URL
+      // console.log(this.imageUrl)
       this.consoleList.push('选择图片：' + event.name)
+      this.disabled = true
+      if (event.percentage === 0) {
+        this.img1 = ''
+        this.img2 = ''
+        this.img3 = ''
+        this.disabled = false
+      }
     },
     submitUpload () {
       this.$refs.uploadRef.submit()
+      this.loading = true
     }
   }
 }

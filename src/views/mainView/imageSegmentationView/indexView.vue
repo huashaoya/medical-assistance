@@ -27,6 +27,7 @@ export default {
   },
   data () {
     return {
+
       history: [
         {
           id: '6435131',
