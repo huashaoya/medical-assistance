@@ -5,7 +5,7 @@ export default defineComponent({
   components: {
     Draw
   },
-  setup () {
+  setup() {
     let intervalInstance = null
     const cdata = reactive({
       xData: ['数据1', '数据2', '数据3', '数据4', '数据5', '数据6'],

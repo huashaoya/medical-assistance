@@ -4,9 +4,10 @@ export default defineComponent({
   components: {
     Draw
   },
-  setup () {
+  setup() {
     const cdata = reactive({
       indicatorData: [
+        // 雷达图
         { name: '数据1', max: 300 },
         { name: '数据2', max: 250 },
         { name: '数据3', max: 300 },

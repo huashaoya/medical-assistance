@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
    <div class="body">
       <div class="main">
          <div class="item">
@@ -29,6 +30,51 @@
                   <div id="chart-2" class="chart"></div>
                </div>
             </div>
+=======
+   <div class="body" v-if="loading">
+      <dv-loading>Loading...</dv-loading>
+   </div>
+   <div class="body" v-else>
+      <div class="main">
+         <div class="item">
+            <dv-border-box-7>dv-border-box-10
+               <div class="content">
+                  <div class="item">
+                     <dv-border-box-12>
+                        <dv-scroll-board :config="config - one" style="width:500px;height:220px" />
+                     </dv-border-box-12>
+                     <!-- <div class="title">
+
+                     <h3>科室使用情况</h3>
+                  </div> -->
+                  </div>
+                  <div class="item">
+                     <dv-border-box-12>dv-border-box-12</dv-border-box-12>
+                     <!-- <div class="title">
+                     <h3>科室使用情况</h3>
+                  </div> -->
+                  </div>
+                  <div class="item">
+                     <dv-border-box-12>dv-border-box-12</dv-border-box-12>
+                     <!-- <div class="title">
+                     <h3>手术室使用情况</h3>
+                  </div>
+                  <div id="chart-1" class="chart"></div> -->
+                  </div>
+                  <div class="item">
+                     <dv-border-box-12>dv-border-box-12</dv-border-box-12>
+                     <!-- <div class="title">
+                     <h3>CT房使用情况</h3>
+                  </div>
+                  <div id="chart-2" class="chart"></div> -->
+                  </div>
+               </div>
+            </dv-border-box-7>
+            <!-- <div class="title">
+               <h2>科室使用情况</h2>
+            </div> -->
+
+>>>>>>> 797c44d (4.3)
          </div>
       </div>
       <div class="second">
@@ -49,6 +95,7 @@
 import * as echarts from 'echarts'
 
 export default {
+<<<<<<< HEAD
   data () {
     return {
 
@@ -85,25 +132,52 @@ export default {
       option && myChart.setOption(option)
     }
   }
+=======
+   data() {
+      return {
+         loading: true
+      }
+   },
+   mounted() {
+      //  this.drawChart('chart-1')
+      //  this.drawChart('chart-2')
+      this.cancelLoading()
+   },
+   methods: {
+      drawChart(id) {
+         const chartDom = document.getElementById(id)
+         const myChart = echarts.init(chartDom)
+
+         const option = {
+            xAxis: {
+               type: 'category',
+               data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            },
+            yAxis: {
+               type: 'value'
+            },
+            series: [
+               {
+                  data: [120, 200, 150, 80, 70, 110, 130],
+                  type: 'bar',
+                  showBackground: true,
+                  backgroundStyle: {
+                     color: 'rgba(180, 180, 180, 0.2)'
+                  }
+               }
+            ]
+         }
+         option && myChart.setOption(option)
+      },
+      cancelLoading() {
+         setTimeout(() => {
+            this.loading = false
+         }, 500)
+      }
+   }
+>>>>>>> 797c44d (4.3)
 }
 </script>
-<!-- <style>
-.bgimage {
-   position: relative;
-   border-width: 51px 38px 20px 132px;
-   -o-border-image: url(../../assets/border.png);
-   border-image: url(../../assets/border.png);
-   border-image-slice: 51 38 20 132;
-}
-
-.inner {
-   position: absolute;
-   top: -51px;
-   left: -132px;
-   right: -38px;
-   bottom: -20px;
-}
-</style> -->
 
 <style scoped lang="scss">
 .body {
@@ -122,10 +196,17 @@ export default {
       .item {
          width: calc(100% - 40px);
          height: calc(100% - 40px);
+<<<<<<< HEAD
          border: lightskyblue 1px solid;
 
          .title {
             background: linear-gradient(to right, #4cb4e7, transparent);
+=======
+
+         // border:lightskyblue 1px solid;
+         .title {
+            background: linear-gradient(to right, #0199ca, transparent);
+>>>>>>> 797c44d (4.3)
             text-align: center;
             color: white;
             padding: 5px;
@@ -138,10 +219,17 @@ export default {
             align-content: flex-start;
 
             .item {
+<<<<<<< HEAD
                width: 40%;
                margin: 0 5%;
                height: 40%;
                margin-top: 3%;
+=======
+               width: 48%;
+               margin: 0 1%;
+               height: 48%;
+               margin-top: .3%;
+>>>>>>> 797c44d (4.3)
                margin-bottom: 0;
 
                .chart {
@@ -163,9 +251,16 @@ export default {
 
       .item {
 
+<<<<<<< HEAD
          width: calc(100% - 40px);
          height: calc(50% - 40px);
          border: lightskyblue 1px solid;
+=======
+      .item {
+         width: calc(100% - 40px);
+         height: calc(50% - 40px);
+         // border:lightskyblue 1px solid;
+>>>>>>> 797c44d (4.3)
          margin-bottom: 40px;
 
          .title {
