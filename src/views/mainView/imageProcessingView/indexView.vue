@@ -85,7 +85,11 @@ export default {
 .avatar-uploader .el-upload:hover {
   border-color: var(--el-color-primary);
 }
-
+.el-form-item__label{
+    color: rgb(229, 229, 229)!important;
+    font-size: 15px;
+    font-weight: 600;
+}
 .el-icon.avatar-uploader-icon {
     font-size: 28px;
     color: #8c939d;
@@ -105,6 +109,6 @@ export default {
   background-color: #2c3147;
 }
 .el-button{
-    color:rgb(171, 171, 171);
+    color:white;
 }
 </style>

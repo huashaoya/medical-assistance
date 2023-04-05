@@ -60,8 +60,12 @@ export default {
         // background-color: green;
         width:20%;
         height:100%;
+        color:#339999;
+            font-size: 20px;
+            line-height: 36px;
         .item{
             // background-color: aqua;
+            color:rgb(198, 198, 198);
             margin: 10px;
             padding:10px;
             border: 1px dashed var(--el-border-color);

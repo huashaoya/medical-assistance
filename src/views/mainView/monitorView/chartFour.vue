@@ -1,6 +1,6 @@
 <template>
     <div class="box">
-        <dv-decoration-7 style="width:150px;height:30px;">CT室使用情况</dv-decoration-7>
+        <dv-decoration-7 class="desc">CT室使用情况</dv-decoration-7>
         <div class="content">
             <div class="info">
                 <div style="margin-top:10px">今日手术人数</div>
@@ -68,6 +68,13 @@ export default {
         padding:20px;
         width:100%;
         height: 100%;
+        .desc{
+              width:180px;
+              height:30px;
+              padding: 0 5px;
+              color:#339999;
+              font-size: 16px;
+        }
         .content{
             width:100%;
             height:calc(100% - 30px);

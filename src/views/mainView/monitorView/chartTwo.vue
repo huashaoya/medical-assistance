@@ -1,14 +1,14 @@
 <template>
     <div class="box">
-        <dv-decoration-7 style="width:150px;height:30px;">B超室使用情况</dv-decoration-7>
+        <dv-decoration-7 class="desc">B超室使用情况</dv-decoration-7>
         <div class="content">
             <div class="info">
                 <div style="margin-top:10px">今日手术人数</div>
-                <div>23</div>
+                <div class="num">23</div>
                 <div style="margin-top:10px">昨日手术人数</div>
-                <div>33</div>
+                <div class="num">33</div>
                 <div style="margin-top:10px">年住院手术人数</div>
-                <div>4586</div>
+                <div class="num">4586</div>
             </div>
             <div class="chart" id="chart"></div>
         </div>
@@ -68,6 +68,13 @@ export default {
         padding:20px;
         width:100%;
         height: 100%;
+        .desc{
+              width:180px;
+              height:30px;
+              padding: 0 5px;
+              color:#339999;
+              font-size: 16px;
+        }
         .content{
             width:100%;
             height:calc(100% - 30px);

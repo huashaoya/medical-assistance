@@ -29,7 +29,10 @@
                     />
                     <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
                 </el-upload>
-                <el-button type="primary" class="btn" @click="submitUpload" :disabled="disabled">开始处理</el-button>
+                <dv-decoration-7 class="desc">
+                  <el-button type="primary"  @click="submitUpload" :disabled="disabled" text>开始处理</el-button>
+                </dv-decoration-7>
+
             </div>
             <div class="item">
                 <el-image
@@ -46,6 +49,7 @@
                         </div>
                     </template>
                 </el-image>
+                <dv-decoration-7 class="desc">目标形状</dv-decoration-7>
             </div>
             <div class="item"><el-image
                     style="width: 300px; height: 300px"
@@ -61,6 +65,7 @@
                         </div>
                     </template>
                 </el-image>
+                <dv-decoration-7 class="desc">原图目标</dv-decoration-7>
             </div>
             <div class="item">
                 <el-image
@@ -77,12 +82,27 @@
                         </div>
                     </template>
                 </el-image>
+                <dv-decoration-7 class="desc">轮廓检测</dv-decoration-7>
             </div>
         </div>
-        <div class="console">
-            <ul>
-                <li v-for="item in consoleList" :key="item">{{ item }}</li>
+        <div class="info">
+          <div class="console item">
+            <div class="title">
+              控制台
+              <dv-decoration-1 style="width:200px;height:30px;" />
+            </div>
+
+             <ul>
+                <li v-for="(item, index) in consoleList" :key="item">[{{index+1}}] {{'  '+  item }}</li>
             </ul>
+          </div>
+          <div class="img-info item">
+            <div class="title">
+              图片参数
+              <dv-decoration-1 style="width:200px;height:30px;" />
+            </div>
+          </div>
+
         </div>
     </div>
 </template>
@@ -192,20 +212,46 @@ export default {
             align-items: center;
             flex-direction: column;
             position: relative;
-            .btn{
-                position: absolute;
-                bottom: 0;
+            .desc{
+              width:150px;
+              height:30px;
+              margin-top: 10px;
+              padding: 0 5px;
+              color:#339999;
+              font-size: 18px;
+              font-weight: 600;
             }
         }
     }
-    .console{
-        width:30%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.391);
+    .info{
+        width:28%;
+        height: 98%;
+        margin:1%;
+        // background-color: rgba(0, 0, 0, 0.391);
         color:white;
         text-align: start;
-        padding:20px;
-        padding-top:40px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        .item{
+          margin:2%;
+          width:96%;
+          height:46%;
+          background-color: #0f132598;
+          padding:10px;
+          .title{
+            display: flex;
+            margin:10px;
+            color:#339999;
+            font-size: 20px;
+            line-height: 36px;
+            font-weight: 600;
+            justify-content: space-between;
+          }
+          li{
+            margin:8px;
+          }
+        }
     }
 }
 .image-slot {
@@ -222,7 +268,7 @@ export default {
   font-size: 30px;
 }
 </style>
-<style>
+<style scoped>
 .avatar-uploader .el-upload {
   border: 1px dashed var(--el-border-color);
   border-radius: 6px;
@@ -239,7 +285,7 @@ export default {
 .el-icon.avatar-uploader-icon {
   font-size: 28px;
   color: #8c939d;
-  width: 300px;
+  width: 300px!important;
   height: 300px;
   text-align: center;
 }

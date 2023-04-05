@@ -28,11 +28,7 @@
                      </dv-border-box-12>
                   </div>
                </div>
-            </div>
             </dv-border-box-7>
-            <!-- <div class="title">
-               <h2>科室使用情况</h2>
-            </div> -->
          </div>
       </div>
       <div class="second">
@@ -57,12 +53,6 @@ import ChartTwo from './chartTwo.vue'
 import ChartThree from './chartThree.vue'
 import ChartFour from './chartFour.vue'
 export default {
-<<<<<<< HEAD
-  data () {
-    return {
-      loading: true
-    }
-  },
   components: {
     History,
     Attender,
@@ -81,31 +71,6 @@ export default {
       }, 500)
     }
   }
-=======
-   data() {
-      return {
-         loading: true
-      }
-   },
-   components: {
-      History,
-      Attender,
-      ChartOne,
-      ChartThree,
-      ChartTwo,
-      ChartFour
-   },
-   mounted() {
-      this.cancelLoading()
-   },
-   methods: {
-      cancelLoading() {
-         setTimeout(() => {
-            this.loading = false
-         }, 500)
-      }
-   }
->>>>>>> b2204c9 (CTRoom)
 }
 </script>
 <style scoped lang="scss">
