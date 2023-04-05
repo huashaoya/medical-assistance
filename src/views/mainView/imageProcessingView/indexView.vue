@@ -6,27 +6,32 @@
         </div>
         <div class="item">
             <div class="title right">形态学腐蚀<dv-decoration-8 :reverse="true" style="width:230px;height:30px;" /></div>
-            <oneView/>
+            <twoView/>
         </div>
         <div class="item">
             <div class="title"><dv-decoration-8 style="width:230px;height:30px;" />中值滤波</div>
-            <oneView/>
+            <threeView/>
         </div>
         <div class="item">
             <div class="title right">尺寸修改<dv-decoration-8 :reverse="true" style="width:230px;height:30px;" /></div>
-            <oneView/>
+            <fourView/>
         </div>
         <div class="item"><div class="title"><dv-decoration-8 style="width:230px;height:30px;" />双边滤波</div>
-            <oneView/>
+            <fiveView/>
         </div>
         <div class="item"> <div class="title right">形态学膨胀<dv-decoration-8 :reverse="true" style="width:230px;height:30px;" /></div>
-            <oneView/>
+            <sixView/>
         </div>
     </div>
 </template>
 
 <script>
 import oneView from './oneView.vue'
+import twoView from './twoView.vue'
+import threeView from './threeView.vue'
+import fourView from './fourView.vue'
+import fiveView from './fiveView.vue'
+import sixView from './sixView.vue'
 export default {
   data: function () {
     return {
@@ -34,7 +39,12 @@ export default {
     }
   },
   components: {
-    oneView
+    oneView,
+    twoView,
+    threeView,
+    fourView,
+    fiveView,
+    sixView
   }
 }
 </script>

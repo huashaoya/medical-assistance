@@ -2,16 +2,13 @@
     <div class="content">
         <div class="content-item">
             <el-form  label-width="120px">
-                <el-form-item label="高斯核形状">
-                    <el-row :gutter="10">
-                        <el-col :span="12"><el-input/></el-col>
-                        <el-col :span="12"><el-input/></el-col>
-                    </el-row>
-                </el-form-item>
-                <el-form-item label="x轴标准差">
+                <el-form-item label="领域直径">
                     <el-input/>
                 </el-form-item>
-                <el-form-item label="y轴标准差">
+                <el-form-item label="灰度值标准差">
+                    <el-input/>
+                </el-form-item>
+                <el-form-item label="空间标准差">
                     <el-input/>
                 </el-form-item>
             </el-form>
