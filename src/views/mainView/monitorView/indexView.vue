@@ -1,6 +1,6 @@
- <template>
+<template>
    <div class="body" v-if="loading">
-      <dv-loading >Loading...</dv-loading>
+      <dv-loading>Loading...</dv-loading>
    </div>
    <div class="body" v-else>
       <div class="main">
@@ -43,8 +43,8 @@
             </dv-border-box-13>
          </div>
       </div>
-    </div>
- </template>
+   </div>
+</template>
 <script>
 import History from './historyView.vue'
 import Attender from './attenderView.vue'
@@ -53,6 +53,11 @@ import ChartTwo from './chartTwo.vue'
 import ChartThree from './chartThree.vue'
 import ChartFour from './chartFour.vue'
 export default {
+  data () {
+    return {
+      loading: true
+    }
+  },
   components: {
     History,
     Attender,
@@ -74,58 +79,65 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-.body{
+.body {
    height: calc(100vh - 60px);
    background: url('@/assets/pageBg.png') center center no-repeat;
    display: flex;
    flex-direction: row;
-   .main{
-      width:70%;
+
+   .main {
+      width: 70%;
       // background-color: red;
       height: calc(100vh - 60px);
       padding: 20px;
-      .item{
-         width:calc(100% - 40px);
-         height:calc(100% - 40px);
+
+      .item {
+         width: calc(100% - 40px);
+         height: calc(100% - 40px);
+
          // border:lightskyblue 1px solid;
-         .title{
+         .title {
             background: linear-gradient(to right, #0199ca, transparent);
             text-align: center;
-            color:white;
-            padding:5px;
+            color: white;
+            padding: 5px;
          }
-         .content{
-            display:flex;
+
+         .content {
+            display: flex;
             flex-wrap: wrap;
             height: 100%;
             align-content: flex-start;
-            .item{
-               width:48%;
-               margin:0 1%;
+
+            .item {
+               width: 48%;
+               margin: 0 1%;
                height: 48%;
                margin-top: .3%;
                margin-bottom: 0;
-               .chart{
-                  width:100%;
+
+               .chart {
+                  width: 100%;
                   height: calc(100% - 25px);
                }
             }
          }
       }
    }
-   .second{
-      width:30%;
+
+   .second {
+      width: 30%;
       // background-color: aqua;
       height: calc(100vh - 60px);
       padding: 20px;
       display: flex;
       flex-direction: column;
-      .item{
-         width:calc(100% - 40px);
-         height:calc(50% - 40px);
+
+      .item {
+         width: calc(100% - 40px);
+         height: calc(50% - 40px);
          // border:lightskyblue 1px solid;
          margin-bottom: 40px;
       }
    }
-}
-</style>
+}</style>

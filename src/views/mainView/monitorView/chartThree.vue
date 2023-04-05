@@ -28,16 +28,16 @@ export default {
       config: {
         header: ['楼层', '房间号', '使用状态'],
         data: [
-          ['<span style="color:#37a2da;">行1列1</span>', '行1列2', '行1列3'],
-          ['行2列1', '<span style="color:#32c5e9;">行2列2</span>', '行2列3'],
-          ['行3列1', '行3列2', '<span style="color:#67e0e3;">行3列3</span>'],
-          ['行4列1', '<span style="color:#9fe6b8;">行4列2</span>', '行4列3'],
-          ['<span style="color:#ffdb5c;">行5列1</span>', '行5列2', '<span  ><a href="https://www.baidu.com/" target="_blank" style="color:#ffdb5c;">空闲|查看</a></span> '],
-          ['行6列1', '<span style="color:#ff9f7f;">行6列2</span>', '行6列3'],
-          ['行7列1', '行7列2', '<span style="color:#fb7293;">行7列3</span>'],
-          ['行8列1', '<span style="color:#e062ae;">行8列2</span>', '行8列3'],
-          ['<span style="color:#e690d1;">行9列1</span>', '行9列2', '行9列3'],
-          ['行10列1', '<span style="color:#e7bcf3;">行10列2</span>', '行10列3']
+          ['门诊楼八楼', '803', '<span ><a href="http://106.55.171.221/medical-assistance/CTRoom/CTRoom2/index.html" target="_blank" style="color:#00ff22;">空闲|查看</a></span> '],
+          ['门诊楼八楼', '804', '<span style="color:yellow;">忙碌中</span>'],
+          ['门诊楼八楼', '805', '<span style="color:yellow;">忙碌中</span>'],
+          ['门诊楼八楼', '806', '<span style="color:red;">停用</span>'],
+          ['门诊楼八楼', '807', '<span style="color:yellow;">忙碌中</span>'],
+          ['门诊楼九楼', '908', '<span style="color:yellow;">忙碌中</span>'],
+          ['门诊楼九楼', '909', '<span style="color:yellow;">忙碌中</span>'],
+          ['门诊楼九楼', '910', '<span ><a href="http://106.55.171.221/medical-assistance/CTRoom/CTRoom3/index.html" target="_blank" style="color:#00ff22;">空闲|查看</a></span> '],
+          ['门诊楼九楼', '911', '<span style="color:yellow;">忙碌中</span>'],
+          ['门诊楼九楼', '912', '<span style="color:yellow;">忙碌中</span>']
         ],
         headerBGC: '#0f1325', // 表头
         oddRowBGC: '#0f1325', // 奇数行
@@ -47,15 +47,15 @@ export default {
         data: [
           {
             name: '空闲',
-            value: 10
+            value: 2
           },
           {
-            name: '使用中',
-            value: 25
+            name: '忙碌中',
+            value: 7
           },
           {
             name: '停用',
-            value: 5
+            value: 1
           }
         ],
         color: ['#95d475', '#409eff', '#f56c6c'],
@@ -70,9 +70,6 @@ export default {
         console.log(e.columnIndex)
       }
     }
-    // jumpHtml() {
-    //   window.Location.href = "../../../static/CTRoom2/index.html"
-    // }
   }
 }
 </script>
