@@ -9,7 +9,7 @@
     </div>
     <div class="content">
       <div class="ring">
-        <dv-active-ring-chart :config="Ringconfig" style="width:180px;height:200px" />
+        <dv-active-ring-chart :config="Ringconfig" style="width:180px;height:200px;" />
       </div>
       <div class="scroll">
         <dv-scroll-board :config="config" style="width:100%;height:100%" @click="click" />
@@ -24,16 +24,16 @@ export default {
       config: {
         header: ['楼层', '房间号', '使用状态'],
         data: [
-          ['<span style="color:#37a2da;">行1列1</span>', '行1列2', '行1列3'],
-          ['行2列1', '<span style="color:#32c5e9;">行2列2</span>', '行2列3'],
-          ['行3列1', '行3列2', '<span style="color:#67e0e3;">行3列3</span>'],
-          ['行4列1', '<span style="color:#9fe6b8;">行4列2</span>', '行4列3'],
-          ['<span style="color:#ffdb5c;">行5列1</span>', '行5列2', '<span ><a href="https://www.baidu.com/" target="_blank" style="color:#ffdb5c;">空闲|查看</a></span> '],
-          ['行6列1', '<span style="color:#ff9f7f;">行6列2</span>', '行6列3'],
-          ['行7列1', '行7列2', '<span style="color:#fb7293;">行7列3</span>'],
-          ['行8列1', '<span style="color:#e062ae;">行8列2</span>', '行8列3'],
-          ['<span style="color:#e690d1;">行9列1</span>', '行9列2', '行9列3'],
-          ['行10列1', '<span style="color:#e7bcf3;">行10列2</span>', '行10列3']
+          ['门诊楼二楼', '207', '<span style="color:yellow;">忙碌中</span>'],
+          ['门诊楼二楼', '208', '<span style="color:yellow;">忙碌中</span>'],
+          ['门诊楼二楼', '209', '<span ><a href="javascript:;" target="_blank" style="color:#00ff22;">空闲|查看</a></span> '],
+          ['门诊楼二楼', '210', '<span style="color:yellow;">忙碌中</span>'],
+          ['门诊楼二楼', '211', '<span style="color:yellow;">忙碌中</span>'],
+          ['门诊楼三楼', '301', '<span style="color:yellow;">忙碌中</span>'],
+          ['门诊楼三楼', '302', '<span ><a href="javascript:;" target="_blank" style="color:#00ff22;">空闲|查看</a></span> '],
+          ['门诊楼三楼', '303', '<span style="color:yellow;">忙碌中</span>'],
+          ['门诊楼三楼', '304', '<span style="color:yellow;">忙碌中</span>'],
+          ['门诊楼三楼', '305', '<span style="color:red;">停用</span>']
         ],
         headerBGC: '#0f1325', // 表头
         oddRowBGC: '#0f1325', // 奇数行
@@ -44,15 +44,15 @@ export default {
         data: [
           {
             name: '空闲',
-            value: 10
+            value: 1
           },
           {
-            name: '使用中',
-            value: 25
+            name: '忙碌中',
+            value: 8
           },
           {
             name: '停用',
-            value: 5
+            value: 1
           }
         ],
         color: ['#95d475', '#409eff', '#f56c6c'],

@@ -6,7 +6,7 @@
           <i class="iconfont icon-layer-group" />
         </span>
         <div class="d-flex">
-          <span class="fs-xl text mx-2">地域癌症发病率统计</span>
+          <span class="fs-xl text mx-2">地域癌症发病人数统计</span>
           <dv-decoration-1 class="dv-dec-1" />
         </div>
       </div>
@@ -61,4 +61,5 @@ export default defineComponent({
       padding-top: 10px;
     }
   }
-}</style>
+}
+</style>
