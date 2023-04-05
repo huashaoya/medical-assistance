@@ -342,6 +342,7 @@ export default {
   /* position: absolute;
     left: 0px;
     top: 0px; */
+  /* border: #000 2px solid; */
   color: black;
   font-size: 40px;
   margin-top: 100px;
@@ -501,7 +502,6 @@ strong {
 }
 </style>
 <style>
-
 .form-control {
   position: relative;
   margin: 15px 0 15px;
