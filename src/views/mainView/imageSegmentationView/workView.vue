@@ -180,7 +180,7 @@ export default {
         height: 100%;
         display: flex;
         flex-wrap: wrap;
-        justify-content: start;
+        justify-content:flex-start;
         border-radius:20px;
         .item{
             width:50%;

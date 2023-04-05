@@ -5,7 +5,7 @@ import dataV from '@/views/mainView/dataV/index/indexView.vue'
 import pageOne from '@/views/mainView/imageSegmentationView/indexView.vue'
 import pageOneTwo from '@/views/mainView/pageOne-2.vue'
 import AppView from '@/views/mainView/AppView.vue'
-import imageProcessingView from '@/views/mainView/imageProcessingView.vue'
+import imageProcessingView from '@/views/mainView/imageProcessingView/indexView.vue'
 const routes = [
   {
     path: '/',
