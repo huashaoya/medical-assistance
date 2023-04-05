@@ -14,6 +14,9 @@
                 <el-form-item label="y轴标准差">
                     <el-input/>
                 </el-form-item>
+                <el-form-item>
+                    <el-button type="primary" @click="onSubmit" color="#2c3147" >开始处理</el-button>
+                </el-form-item>
             </el-form>
         </div>
         <div class="content-image">
@@ -77,7 +80,7 @@ export default {
     width: 180px;
     height: 180px;
     background: #2c3147;
-    color:white;
+    color:rgb(171, 171, 171);
     font-size: 30px;
 }
 .image-slot .el-icon {

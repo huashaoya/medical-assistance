@@ -104,4 +104,7 @@ export default {
   color:#00ccff;
   background-color: #2c3147;
 }
+.el-button{
+    color:rgb(171, 171, 171);
+}
 </style>
