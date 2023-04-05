@@ -261,7 +261,7 @@ export default {
   width: 100%;
   height: 100%;
   background: #2c3147;
-  color:white;
+  color:rgb(189, 189, 189);
   font-size: 30px;
 }
 .image-slot .el-icon {
