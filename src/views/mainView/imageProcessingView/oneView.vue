@@ -1,30 +1,43 @@
 <template>
-    <div class="content">
+    <div class="content"
+        v-loading="loading"
+        element-loading-text="处理中..."
+        :element-loading-spinner="svg"
+        element-loading-svg-view-box="-10, -10, 50, 50"
+        element-loading-background="rgba(0, 0, 0, 0.8)"
+    >
         <div class="content-item">
             <el-form  label-width="120px">
                 <el-form-item label="高斯核形状">
                     <el-row :gutter="10">
-                        <el-col :span="12"><el-input/></el-col>
-                        <el-col :span="12"><el-input/></el-col>
+                        <el-col :span="12"><el-input v-model="input_1"/></el-col>
+                        <el-col :span="12"><el-input v-model="input_2"/></el-col>
                     </el-row>
                 </el-form-item>
                 <el-form-item label="x轴标准差">
-                    <el-input/>
+                    <el-input v-model="input_3"/>
                 </el-form-item>
                 <el-form-item label="y轴标准差">
-                    <el-input/>
+                    <el-input v-model="input_4"/>
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary" @click="onSubmit" color="#2c3147" >开始处理</el-button>
+                    <el-button type="primary" @click="submitUpload" color="#2c3147" >开始处理</el-button>
                 </el-form-item>
             </el-form>
         </div>
         <div class="content-image">
+            <div style="width:30px"></div>
             <el-upload
             class="avatar-uploader"
             :show-file-list="false"
-            action="http://127.0.0.1:8000/judge/"
-            :data="{type:$route.query.type}"
+            action="http://127.0.0.1:8000/imageProcessing/"
+            :data="{
+                'type':0,
+                'input_1':input_1,
+                'input_2':input_2,
+                'input_3':input_3,
+                'input_4':input_4,
+            }"
             :on-change="onChange"
             :auto-upload="false"
             :on-success="success"
@@ -36,13 +49,14 @@
             v-if="imageUrl"
             :src="imageUrl"
             class="avatar"
-            style="width: 300px; height: 300px"
+            style="width: 180px; height: 180px"
             fit="contain"
             />
             <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
         </el-upload>
+        <div style="width:30px"></div>
         <el-image
-            style="width: 300px; height: 300px"
+            style="width: 180px; height: 180px"
             :src="img"
             :zoom-rate="1.2"
             :preview-src-list="srcList"
@@ -60,20 +74,84 @@
 </template>
 <script setup>
 import { Plus, Picture as IconPicture } from '@element-plus/icons-vue'
+import { ref } from 'vue'
+import { genFileId } from 'element-plus'
+
+const uploadRef = ref()
+
+const handleExceed = (files) => {
+  uploadRef.value.clearFiles()
+  const file = files[0]
+  file.uid = genFileId()
+  uploadRef.value.handleStart(file)
+}
+
+const svg = `
+        <path class="path" d="
+          M 30 15
+          L 28 17
+          M 25.61 25.61
+          A 15 15, 0, 0, 1, 15 30
+          A 15 15, 0, 1, 1, 27.99 7.5
+          L 15 15
+        " style="stroke-width: 4px; fill: rgba(0, 0, 0, 0)"/>
+      `
 </script>
 <script>
 export default {
   data () {
     return {
       imageUrl: '',
-      img: ''
+      img: '',
+      disabled: true,
+      loading: false,
+      input_1: null,
+      input_2: null,
+      input_3: null,
+      input_4: null
+    }
+  },
+  methods: {
+    success (res) {
+      console.log(res)
+      this.img = res.img1
+      //   this.img2 = res.img2
+      //   this.img3 = res.img3
+      this.loading = false
+    //   this.srcList.push(res.img1, res.img2, res.img3)
+    },
+    onChange (event) {
+      // console.log(event)
+      let URL = null
+      if (window.createObjectURL !== undefined) {
+        // basic
+        URL = window.createObjectURL(event.raw)
+      } else if (window.URL !== undefined) {
+        // mozilla(firefox)
+        URL = window.URL.createObjectURL(event.raw)
+      } else if (window.webkitURL !== undefined) {
+        // webkit or chrome
+        URL = window.webkitURL.createObjectURL(event.raw)
+      }
+      // 转换后的地址为 blob:http://xxx/7bf54338-74bb-47b9-9a7f-7a7093c716b5
+      this.imageUrl = URL
+      // console.log(this.imageUrl)
+      this.disabled = true
+      if (event.percentage === 0) {
+        this.img = ''
+        this.disabled = false
+        this.srcList = []
+      }
+    },
+    submitUpload () {
+      this.$refs.uploadRef.submit()
+      this.loading = true
     }
   }
 }
 </script>
 <style lang="scss" scoped>
 .image-slot {
-    margin-left: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -100,7 +178,6 @@ export default {
         width:70%;
         height:100%;
         display: flex;
-        justify-content: right;
     }
 }
 </style>

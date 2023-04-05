@@ -16,12 +16,6 @@ from tqdm import tqdm
 import albumentations as albu
 import judgeMain.archs as archs
 
-current_path = os.path.dirname(__file__)  # 当前路径
-
-"""
-需要指定参数：--name dsb2018_96_NestedUNet_woDS
-"""
-
 def mask_find_bboxs(mask):
     retval, labels, stats, centroids = cv2.connectedComponentsWithStats(mask, connectivity=4)  # connectivity参数的默认值为8
     stats = stats[stats[:, 4].argsort()]
@@ -29,15 +23,12 @@ def mask_find_bboxs(mask):
 
 def parse_args():
     parser = argparse.ArgumentParser()
-
     parser.add_argument('--name', default='breast_cancer_promotion',
                         help='model name')
-
     args = parser.parse_args()
-
     return args
 
-def upload(request):#先保存上传的文件
+def upload(request):#保存上传的文件并返回绝对路径
     try:
         file = request.FILES.get('file', '')
         file_path = os.path.join(current_path, 'uploadFile')
@@ -53,18 +44,19 @@ def upload(request):#先保存上传的文件
         return ''
     return path#返回文件的保存路径
 
+current_path = os.path.dirname(__file__)  # 当前路径
 
+def listorders(request):#图像分割入口函数
 
-
-def listorders(request):
     type=request.POST.dict().get('type')
     img1 =''
     img2=''
     img3=''
-    filePath = upload(request)
+
+    filePath = upload(request)#保存上传的文件并返回绝对路径
+
     global y, x
-    #args = parse_args()
-    #with open('models/%s/config.yml' % args.name, 'r') as f:
+
     modelUrl=''
     if(type=='0'):
         modelUrl='models/breast_cancer_promotion/config.yml'
@@ -72,6 +64,7 @@ def listorders(request):
     else:
         modelUrl = 'models/blood_cancer/config.yml'
         print('血癌')
+
     with open(os.path.join(current_path,modelUrl), 'r') as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
 
@@ -228,3 +221,120 @@ def listorders(request):
               }
 
     return HttpResponse(json.dumps(result), content_type="application/json")
+
+def imageProcessing(request):#图像处理入口函数
+    props = request.POST.dict()
+    print(props)
+    type=props.get('type')
+
+    filePath = upload(request)  # 保存上传的文件并返回绝对路径
+    img1 = str('{:.0f}'.format(time.time())) + '.jpg'
+
+    #高斯滤波
+    if type=='0':
+        input_1 = int(props.get('input_1'))
+        input_2 = int(props.get('input_2'))
+        input_3 = int(props.get('input_3'))
+        input_4 = int(props.get('input_4'))
+
+        img = cv2.imread(filePath,cv2.IMREAD_COLOR)#高斯滤波输入图片
+        img = cv2.GaussianBlur(img,(input_1,input_2),input_3,input_4)
+        cv2.imwrite(os.path.join(current_path,'output',img1),img)#高斯滤波输出图片
+
+    if type=='1':
+        input_9= int(props.get('input_1'))
+        input_10 = int(props.get('input_2'))
+        input_11 = int(props.get('input_3'))
+        input_12 = int(props.get('input_4'))
+
+        img = cv2.imread(filePath,cv2.IMREAD_COLOR)#形态学腐蚀输入图片
+        kernel_1 = np.ones((input_11,input_11),np.uint8)
+        img = cv2.erode(img,kernel=kernel_1,anchor=(input_9,input_10),iterations=input_12)
+        cv2.imwrite(os.path.join(current_path,'output',img1),img)#形态学腐蚀输出图片
+
+    if type == '2':
+        input_5 = int(props.get('input_1'))
+        img = cv2.imread(filePath, cv2.IMREAD_COLOR)  # 中值滤波输入图片
+        img = cv2.medianBlur(img,input_5)
+        cv2.imwrite(os.path.join(current_path,'output',img1),img)#中值滤波输出图片
+
+    if type == '3':
+        input_13 = int(props.get('input_1'))
+        input_14 = int(props.get('input_2'))
+        img = cv2.imread(filePath,cv2.IMREAD_COLOR)#尺寸修改输入图片
+        img = cv2.resize(img,(input_13,input_14))
+        cv2.imwrite(os.path.join(current_path,'output',img1),img)#尺寸修改输出图片
+
+    if type == '4':
+        input_6 = int(props.get('input_1'))
+        input_7 = int(props.get('input_2'))
+        input_8 = int(props.get('input_3'))
+        img = cv2.imread(filePath,cv2.IMREAD_COLOR)#双边滤波输入图片
+        img = cv2.bilateralFilter(img,input_6,input_7,input_8)
+        cv2.imwrite(os.path.join(current_path,'output',img1),img)#双边滤波输出图片
+
+    if type == '5':
+        input_15 = int(props.get('input_1'))
+        input_16 = int(props.get('input_2'))
+        input_17 = int(props.get('input_3'))
+        input_18 = int(props.get('input_4'))
+        img = cv2.imread(filePath,cv2.IMREAD_COLOR)#形态学膨胀输入图片
+        kernel_2 = np.ones((input_17,input_17),np.uint8)
+        img = cv2.dilate(img,kernel=kernel_2,anchor=(input_15,input_16),iterations=input_18)
+        cv2.imwrite(os.path.join(current_path,'output',img1),img)#形态学膨胀输出图片
+
+    result = {"message": 'success', "code": '200',
+              "img1": 'http://127.0.0.1:8000/static/' + img1,
+              }
+
+    return HttpResponse(json.dumps(result), content_type="application/json")
+# input_1 = 3#一定要单数,高斯卷积核
+# input_2 = 3#一定要单数，高斯卷积核
+# input_3 = 0#x轴标准差
+# input_4 = 0#y轴标准差
+#
+# input_5 = 5#中值滤波，卷积核大小
+#
+# input_6 = 11#领域直径
+# input_7 = 40#灰度值标准差
+# input_8 = 40#空间标准差
+#
+# input_9 = -1#锚点
+# input_10 = -1#锚点
+# input_11 = 5#腐蚀卷积核
+# input_12 = 1#腐蚀次数
+#
+# input_13 = 512#尺寸大小
+# input_14 = 512#尺寸大小
+#
+# input_15 = -1#锚点
+# input_16 = -1#锚点
+# input_17 = 5#膨胀卷积核
+# input_18 = 1#膨胀次数
+#
+# img = cv2.imread(r'图片路径',cv2.IMREAD_COLOR)#高斯滤波输入图片
+# img = cv2.GaussianBlur(img,(input_1,input_2),input_3,input_4)
+# cv2.imwrite(r'保存图片路径',img)#高斯滤波输出图片
+#
+# img = cv2.imread(r'图片路径',cv2.IMREAD_COLOR)#中值滤波输入图片
+# img = cv2.medianBlur(img,input_5)
+# cv2.imwrite(r'保存图片路径',img)#中值滤波输出图片
+#
+# img = cv2.imread(r'图片路径',cv2.IMREAD_COLOR)#双边滤波输入图片
+# img = cv2.bilateralFilter(img,input_6,input_7,input_8)
+# cv2.imwrite(r'保存图片路径',img)#双边滤波输出图片
+#
+# img = cv2.imread(r'图片路径',cv2.IMREAD_COLOR)#形态学腐蚀输入图片
+# kernel_1 = np.ones((input_11,input_11),np.uint8)
+# img = cv2.erode(img,kernel=kernel_1,anchor=(input_9,input_10),iterations=input_12)
+# cv2.imwrite(r'保存图片路径',img)#形态学腐蚀输出图片
+#
+# img = cv2.imread(r'图片路径',cv2.IMREAD_COLOR)#尺寸修改输入图片
+# img = cv2.resize(img,(input_13,input_14))
+# cv2.imwrite(r'保存图片路径',img)#尺寸修改输出图片
+#
+#
+# img = cv2.imread(r'图片路径',cv2.IMREAD_COLOR)#形态学膨胀输入图片
+# kernel_2 = np.ones((input_17,input_17),np.uint8)
+# img = cv2.dilate(img,kernel=kernel_2,anchor=(input_15,input_16),iterations=input_18)
+# cv2.imwrite(r'保存图片路径',img)#形态学膨胀输出图片
