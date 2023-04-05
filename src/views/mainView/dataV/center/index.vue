@@ -1,11 +1,7 @@
 <template>
   <div class="center">
     <div class="up">
-      <div
-        class="bg-color-black item"
-        v-for="item in titleItem"
-        :key="item.title"
-      >
+      <div class="bg-color-black item" v-for="item in titleItem" :key="item.title">
         <p class="ml-3 colorBlue fw-b">{{ item.title }}</p>
         <div>
           <dv-digital-flop class="dv-dig-flop ml-1 mt-1 pl-3" :config="item.config" />
@@ -17,23 +13,17 @@
         <span>
           <i class="iconfont icon-tongji2"></i>
         </span>
-        <span class="fs-xl text mx-2 mb-1">年度负责人组件达标榜</span>
+        <span class="fs-xl text mx-2 mb-1">致癌物质排行榜</span>
         <dv-scroll-ranking-board class="dv-scr-rank-board" :config="ranking" />
       </div>
       <div class="percent">
         <div class="item bg-color-black">
-          <span>今日任务通过率</span>
-          <chart
-            :tips="rate[0].tips"
-            :colorObj="rate[0].colorData"
-          />
+          <span>中国致癌率</span>
+          <chart :tips="rate[0].tips" :colorObj="rate[0].colorData" />
         </div>
         <div class="item bg-color-black">
-          <span>今日任务达标率</span>
-          <chart
-            :tips="rate[1].tips"
-            :colorObj="rate[1].colorData"
-          />
+          <span>癌症致死率</span>
+          <chart :tips="rate[1].tips" :colorObj="rate[1].colorData" />
         </div>
         <div class="water">
           <dv-water-level-pond class="dv-wa-le-po" :config="water" />
@@ -51,7 +41,7 @@ export default defineComponent({
   components: {
     Chart
   },
-  setup () {
+  setup() {
     // 下层数据
     const titleDate = [
       {
@@ -89,48 +79,47 @@ export default defineComponent({
     const ranking = reactive({
       data: [
         {
-          name: '周口',
-          value: 55
-        },
-        {
-          name: '南阳',
-          value: 120
-        },
-        {
-          name: '西峡',
-          value: 78
-        },
-        {
-          name: '驻马店',
-          value: 66
-        },
-        {
-          name: '新乡',
+          name: '丙二醇',
           value: 80
         },
         {
-          name: '新乡2',
+          name: '二乙醇胺',
           value: 80
         },
         {
-          name: '新乡3',
+          name: '甲苯',
           value: 80
         },
         {
-          name: '新乡4',
+          name: '滑石粉',
           value: 80
         },
         {
-          name: '新乡5',
+          name: '丙酸钙',
           value: 80
         },
         {
-          name: '新乡6',
+          name: '甲醛',
+          value: 80
+        },
+        {
+          name: '十二烷基硫酸钠',
+          value: 80
+        },
+        {
+          name: '酒精',
+          value: 80
+        },
+        {
+          name: '苯二胺',
+          value: 80
+        },
+        {
+          name: '氟化物',
           value: 80
         }
       ],
-      carousel: 'single',
-      unit: '人'
+      carousel: 'single'
     })
 
     const water = reactive({
@@ -143,7 +132,7 @@ export default defineComponent({
     const rate = reactive([
       {
         id: 'centerRate1',
-        tips: 60,
+        tips: 20.6,
         colorData: {
           textStyle: '#3fc0fb',
           series: {
@@ -157,7 +146,7 @@ export default defineComponent({
       },
       {
         id: 'centerRate2',
-        tips: 40,
+        tips: 23.87,
         colorData: {
           textStyle: '#67e0e3',
           series: {
@@ -202,23 +191,27 @@ export default defineComponent({
 .center {
   display: flex;
   flex-direction: column;
+
   .up {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+
     .item {
       border-radius: 6px;
       padding-top: 8px;
       margin-top: 8px;
       width: 32%;
       height: 70px;
+
       .dv-dig-flop {
         width: 150px;
         height: 30px;
       }
     }
   }
+
   .down {
     padding: 6px 4px;
     padding-bottom: 0;
@@ -226,23 +219,29 @@ export default defineComponent({
     display: flex;
     height: 255px;
     justify-content: space-between;
+
     .bg-color-black {
       border-radius: 5px;
     }
+
     .ranking {
       padding: 10px;
       width: 59%;
+
       .dv-scr-rank-board {
         height: 220px;
       }
     }
+
     .percent {
       width: 40%;
       display: flex;
       flex-wrap: wrap;
+
       .item {
         width: 50%;
         height: 120px;
+
         span {
           margin-top: 8px;
           font-size: 14px;
@@ -250,8 +249,10 @@ export default defineComponent({
           justify-content: center;
         }
       }
+
       .water {
         width: 100%;
+
         .dv-wa-le-po {
           height: 120px;
         }

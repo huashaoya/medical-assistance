@@ -1,25 +1,25 @@
 <template>
-    <div class="history">
-        <div class="title">
-            <span>
-            <i class="iconfont icon-tongji4" />
-            </span>
-            <span class="fs-xl text mx-2">B超室使用情况</span>
-            <dv-decoration-3 style="width:250px;height:20px;" />
-        </div>
-        <div class="content">
-            <div class="ring">
-                <dv-active-ring-chart :config="Ringconfig" style="width:180px;height:200px" />
-            </div>
-            <div class="scroll">
-                <dv-scroll-board :config="config" style="width:100%;height:100%" @click="click"/>
-            </div>
-        </div>
+  <div class="history">
+    <div class="title">
+      <span>
+        <i class="iconfont icon-tongji4" />
+      </span>
+      <span class="fs-xl text mx-2">B超室使用情况</span>
+      <dv-decoration-3 style="width:250px;height:20px;" />
     </div>
+    <div class="content">
+      <div class="ring">
+        <dv-active-ring-chart :config="Ringconfig" style="width:180px;height:200px" />
+      </div>
+      <div class="scroll">
+        <dv-scroll-board :config="config" style="width:100%;height:100%" @click="click" />
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 export default {
-  data () {
+  data() {
     return {
       config: {
         header: ['楼层', '房间号', '使用状态'],
@@ -28,7 +28,7 @@ export default {
           ['行2列1', '<span style="color:#32c5e9;">行2列2</span>', '行2列3'],
           ['行3列1', '行3列2', '<span style="color:#67e0e3;">行3列3</span>'],
           ['行4列1', '<span style="color:#9fe6b8;">行4列2</span>', '行4列3'],
-          ['<span style="color:#ffdb5c;">行5列1</span>', '行5列2', '<span style="color:#ffdb5c;">空闲|查看</span> '],
+          ['<span style="color:#ffdb5c;">行5列1</span>', '行5列2', '<span ><a href="https://www.baidu.com/" target="_blank" style="color:#ffdb5c;">空闲|查看</a></span> '],
           ['行6列1', '<span style="color:#ff9f7f;">行6列2</span>', '行6列3'],
           ['行7列1', '行7列2', '<span style="color:#fb7293;">行7列3</span>'],
           ['行8列1', '<span style="color:#e062ae;">行8列2</span>', '行8列3'],
@@ -61,7 +61,7 @@ export default {
     }
   },
   methods: { // 点击事件
-    click (e) {
+    click(e) {
       if (e.row) { // 根据点击的index判断跳转到模型页
         console.log(e.rowIndex)
         console.log(e.columnIndex)
@@ -71,31 +71,35 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-.history{
-    color:white;
+.history {
+  color: white;
+  width: 100%;
+  padding: 20px;
+  height: 100%;
+
+  .title {
     width: 100%;
-    padding: 20px;
-    height: 100%;
-    .title{
-        width: 100%;
-        display: flex;
-        margin-bottom: 10px;
+    display: flex;
+    margin-bottom: 10px;
+  }
+
+  .content {
+    width: 100%;
+    height: calc(100% - 30px);
+    display: flex;
+
+    .ring {
+      width: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
     }
-    .content{
-        width:100%;
-        height:calc(100% - 30px);
-        display:flex;
-        .ring{
-            width:200px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-        .scroll{
-            width:calc(100% - 180px);
-        }
+
+    .scroll {
+      width: calc(100% - 180px);
     }
+  }
 }
 </style>

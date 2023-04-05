@@ -90,7 +90,7 @@ import http from '@/utils/http'
 import { ElNotification } from 'element-plus'
 
 export default {
-  data () {
+  data() {
     return {
       username: null,
       password: null,
@@ -101,7 +101,7 @@ export default {
       nickname: null
     }
   },
-  mounted () {
+  mounted() {
     // 标题跳动
     const labels = document.querySelectorAll('.form-control label')
     labels.forEach(label => {
@@ -112,7 +112,7 @@ export default {
     })
   },
   methods: {
-    pageTurning () {
+    pageTurning() {
       if (this.isActive) {
         this.isActive = false
       } else {
@@ -120,7 +120,7 @@ export default {
       }
     },
 
-    login () {
+    login() {
       // 请求登录接口
       http({
         method: 'post',
@@ -152,7 +152,7 @@ export default {
       })
     },
     // 注册接口
-    register () {
+    register() {
       // 校验完整性
       if (this.password_1 == null || this.password_2 == null) {
         ElNotification({
@@ -348,9 +348,9 @@ export default {
   margin-top: 100px;
   text-transform: uppercase;
   cursor: pointer;
-  text-shadow: rgb(100, 169, 212) 4px 4px 2px ;
+  text-shadow: rgb(100, 169, 212) 4px 4px 2px;
   /* background-color: #000; */
-  color:white;
+  color: white;
 }
 
 /* JS使用的css */
@@ -427,10 +427,6 @@ strong {
   width: 100%;
   height: 100%;
   background-color: #fff;
-  /* background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg'); */
-  /* background-position: bottom center; */
-  /* background-repeat: no-repeat; */
-  /* background-size: 300%; */
   position: absolute;
   border-radius: 6px;
   left: 0;

@@ -6,7 +6,7 @@
           <i class="iconfont icon-layer-group" />
         </span>
         <div class="d-flex">
-          <span class="fs-xl text mx-2">地图数据</span>
+          <span class="fs-xl text mx-2">地域癌症发病率统计</span>
           <dv-decoration-1 class="dv-dec-1" />
         </div>
       </div>
@@ -35,26 +35,30 @@ export default defineComponent({
   height: $box-height;
   min-width: $box-width;
   border-radius: 5px;
+
   .bg-color-black {
     height: $box-height - 30px;
     border-radius: 10px;
   }
+
   .text {
     color: #c3cbde;
   }
+
   .dv-dec-1 {
     position: relative;
     width: 100px;
     height: 20px;
     top: -3px;
   }
+
   .chart-box {
     margin-top: 16px;
     width: 170px;
     height: 170px;
+
     .active-ring-name {
       padding-top: 10px;
     }
   }
-}
-</style>
+}</style>

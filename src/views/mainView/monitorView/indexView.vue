@@ -2,30 +2,31 @@
    <div class="body" v-if="loading">
       <dv-loading >Loading...</dv-loading>
    </div>
-    <div class="body" v-else>
-      <div class="main" >
-         <div  class="item">
+   <div class="body" v-else>
+      <div class="main">
+         <div class="item">
             <dv-border-box-7>
                <div class="content">
-               <div class="item">
-                  <dv-border-box-12>
-                     <ChartOne></ChartOne>
-                  </dv-border-box-12>
-               </div>
-               <div class="item">
-                  <dv-border-box-12>
-                    <ChartThree></ChartThree>
-                  </dv-border-box-12>
-               </div>
-               <div class="item">
-                  <dv-border-box-12>
-                     <ChartTwo></ChartTwo>
-                  </dv-border-box-12>
-               </div>
-               <div class="item">
-                  <dv-border-box-12>
-                     <ChartFour></ChartFour>
-                  </dv-border-box-12>
+                  <div class="item">
+                     <dv-border-box-12>
+                        <ChartOne></ChartOne>
+                     </dv-border-box-12>
+                  </div>
+                  <div class="item">
+                     <dv-border-box-12>
+                        <ChartThree></ChartThree>
+                     </dv-border-box-12>
+                  </div>
+                  <div class="item">
+                     <dv-border-box-12>
+                        <ChartTwo></ChartTwo>
+                     </dv-border-box-12>
+                  </div>
+                  <div class="item">
+                     <dv-border-box-12>
+                        <ChartFour></ChartFour>
+                     </dv-border-box-12>
+                  </div>
                </div>
             </div>
             </dv-border-box-7>
@@ -56,6 +57,7 @@ import ChartTwo from './chartTwo.vue'
 import ChartThree from './chartThree.vue'
 import ChartFour from './chartFour.vue'
 export default {
+<<<<<<< HEAD
   data () {
     return {
       loading: true
@@ -79,6 +81,31 @@ export default {
       }, 500)
     }
   }
+=======
+   data() {
+      return {
+         loading: true
+      }
+   },
+   components: {
+      History,
+      Attender,
+      ChartOne,
+      ChartThree,
+      ChartTwo,
+      ChartFour
+   },
+   mounted() {
+      this.cancelLoading()
+   },
+   methods: {
+      cancelLoading() {
+         setTimeout(() => {
+            this.loading = false
+         }, 500)
+      }
+   }
+>>>>>>> b2204c9 (CTRoom)
 }
 </script>
 <style scoped lang="scss">

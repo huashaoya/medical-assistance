@@ -14,7 +14,7 @@ export const moduleInfo: ModuleInfo = [
     icon: 'icon-chart-bar'
   },
   {
-    name: '地图数据',
+    name: '地域癌症发病率统计',
     icon: 'icon-tongji4'
   },
   {

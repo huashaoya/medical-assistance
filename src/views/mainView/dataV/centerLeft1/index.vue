@@ -6,7 +6,7 @@
           <i class="iconfont icon-tongji4" />
         </span>
         <div class="d-flex">
-          <span class="fs-xl text mx-2">任务通过率</span>
+          <span class="fs-xl text mx-2">致癌物质数据分类</span>
           <dv-decoration-3 class="dv-dec-3" />
         </div>
       </div>
@@ -15,11 +15,7 @@
       </div>
       <!-- 4个主要的数据 -->
       <div class="bottom-data">
-        <div
-          class="item-box mt-2"
-          v-for="(item, index) in numberData"
-          :key="index"
-        >
+        <div class="item-box mt-2" v-for="(item, index) in numberData" :key="index">
           <div class="d-flex jc-end">
             <i class="iconfont" :class="[iconFont[index]]" />
             <dv-digital-flop class="dv-digital-flop" :config="item.config" />
@@ -41,7 +37,7 @@ export default defineComponent({
   components: {
     Chart
   },
-  setup () {
+  setup() {
     // 下层数据
     const dataArr = [
       {
@@ -120,13 +116,16 @@ $box-height: 410px;
   height: $box-height;
   width: $box-width;
   border-radius: 10px;
+
   .bg-color-black {
     height: $box-height - 30px;
     border-radius: 10px;
   }
+
   .text {
     color: #c3cbde;
   }
+
   .dv-dec-3 {
     position: relative;
     width: 100px;
@@ -136,26 +135,31 @@ $box-height: 410px;
 
   .bottom-data {
     .item-box {
-      & > div {
+      &>div {
         padding-right: 5px;
       }
+
       font-size: 14px;
       float: right;
       position: relative;
       width: 50%;
       color: #d3d6dd;
+
       .dv-digital-flop {
         width: 120px;
         height: 30px;
       }
+
       i {
         font-size: 20px;
         line-height: 30px;
         margin-left: 20px;
       }
+
       .colorYellow {
         color: yellowgreen;
       }
+
       p {
         text-align: center;
       }
