@@ -91,8 +91,7 @@
               控制台
               <dv-decoration-1 style="width:200px;height:30px;" />
             </div>
-
-             <ul>
+             <ul ref="ul">
                 <li v-for="(item, index) in consoleList" :key="item">[{{index+1}}] {{'  '+  item }}</li>
             </ul>
           </div>
@@ -101,6 +100,9 @@
               图片参数
               <dv-decoration-1 style="width:200px;height:30px;" />
             </div>
+            <ul ref="ul">
+                <li v-for="(item) in infoList" :key="item">{{item }}</li>
+            </ul>
           </div>
 
         </div>
@@ -144,21 +146,31 @@ export default {
       srcList: [],
       imageUrl: '',
       consoleList: ['控制台已开启', '等待上传图片..'],
+      infoList: [''],
       loading: false,
       disabled: true
     }
   },
   methods: {
     success (res) {
-      // console.log(res)
+      console.log(res)
       this.img1 = res.img1
       this.img2 = res.img2
       this.img3 = res.img3
-      this.loading = false
+      this.infoList = []
+      for (const key in res.info) {
+        // console.log(key, res.info[key])
+        this.infoList.push(key + ':' + res.info[key])
+      }
       this.srcList.push(res.img1, res.img2, res.img3)
+      this.consoleList.push('处理完成，用时' + res.detalTime + '毫秒')
+      this.$nextTick(() => {
+        this.$refs.ul.scrollTop = this.$refs.ul.scrollHeight
+      })
+      this.loading = false
     },
     onChange (event) {
-      console.log(event)
+      // console.log(event)
       let URL = null
       if (window.createObjectURL !== undefined) {
         // basic
@@ -173,7 +185,6 @@ export default {
       // 转换后的地址为 blob:http://xxx/7bf54338-74bb-47b9-9a7f-7a7093c716b5
       this.imageUrl = URL
       // console.log(this.imageUrl)
-      this.consoleList.push('选择图片：' + event.name)
       this.disabled = true
       if (event.percentage === 0) {
         this.img1 = ''
@@ -181,11 +192,14 @@ export default {
         this.img3 = ''
         this.disabled = false
         this.srcList = []
+        this.consoleList.push('选择图片：' + event.name)
+        this.infoList = []
       }
     },
     submitUpload () {
       this.$refs.uploadRef.submit()
       this.loading = true
+      this.consoleList.push('开始处理...')
     }
   }
 }
@@ -248,9 +262,15 @@ export default {
             font-weight: 600;
             justify-content: space-between;
           }
-          li{
-            margin:8px;
+          ul{
+            display: block;
+            height:calc(100% - 44px);
+            overflow: auto;
+            li{
+              margin:8px;
+            }
           }
+
         }
     }
 }
