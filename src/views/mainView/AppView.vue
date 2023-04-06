@@ -41,6 +41,8 @@ export default {
   },
   mounted () {
     this.checkToken()
+    this.handleActiveIndex()// 设置刷新后的menu高亮
+    console.log(this.$route.name)
   },
   methods: {
     handleSelect (key, keyPath) {
@@ -60,6 +62,32 @@ export default {
       } else {
         this.$router.push('/pageOne-2')
       }
+    },
+    handleActiveIndex () {
+      const path = this.$route.fullPath
+      console.log(this.$route)
+      let index = 0
+      switch (path) {
+        case '/':
+          index = 1
+          break
+        case '/secondPage':
+          index = 2
+          break
+        case '/imageProcessing':
+          index = 3
+          break
+        case '/pageOne?type=0':
+          index = '4-1'
+          break
+        case '/pageOne?type=1':
+          index = '5-1'
+          break
+        case '/pageOne?type=2':
+          index = '6-1'
+          break
+      }
+      this.activeIndex = index
     },
     checkToken () { // 校验token
       if (!this.token) {
