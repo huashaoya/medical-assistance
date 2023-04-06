@@ -47,12 +47,12 @@ def upload(request):#保存上传的文件并返回绝对路径
 current_path = os.path.dirname(__file__)  # 当前路径
 
 def listorders(request):#图像分割入口函数
-
+    startTime= int(round(time.time() * 1000))
     type=request.POST.dict().get('type')
     img1 =''
     img2=''
     img3=''
-
+    info={}
     filePath = upload(request)#保存上传的文件并返回绝对路径
 
     global y, x
@@ -61,9 +61,12 @@ def listorders(request):#图像分割入口函数
     if(type=='0'):
         modelUrl='models/breast_cancer_promotion/config.yml'
         print('乳腺癌')
-    else:
+    elif(type=='1'):
         modelUrl = 'models/blood_cancer/config.yml'
         print('血癌')
+    else:
+        modelUrl = 'models/pharyngolaryngeal_cancer_512/config.yml'
+        print('下喉癌和咽癌')
 
     with open(os.path.join(current_path,modelUrl), 'r') as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
@@ -169,12 +172,12 @@ def listorders(request):#图像分割入口函数
             top = tuple(cnt[cnt[:, :, 1].argmin()][0])
             bottom = tuple(cnt[cnt[:, :, 1].argmax()][0])
 
-            Area = Area + str(area) + ', '
-            PERIMETER = PERIMETER + str(perimeter) + ', '
-            LEFT = LEFT + str(left) + ', '
-            RIGHT = RIGHT + str(right) + ', '
-            TOP = TOP + str(top) + ', '
-            BOTTOM = BOTTOM + str(bottom) + ', '
+            Area = Area + str(area)
+            PERIMETER = PERIMETER + str(perimeter)
+            LEFT = LEFT + str(left)
+            RIGHT = RIGHT + str(right)
+            TOP = TOP + str(top)
+            BOTTOM = BOTTOM + str(bottom)
 
         # plt.imshow(contour_img)
         # plt.show()
@@ -193,12 +196,13 @@ def listorders(request):#图像分割入口函数
             width = b[2]
             height = b[3]
             start_point, end_point = (x0, y0), (x1, y1)
-            LEFTTOP_POINT = LEFTTOP_POINT + '(' + str(start_point[0]) + ',' + str(start_point[1]) + '), '
-            RIGHTDOWN_POINT = RIGHTDOWN_POINT + '(' + str(end_point[0]) + ',' + str(end_point[1]) + '), '
+            LEFTTOP_POINT = LEFTTOP_POINT + '(' + str(start_point[0]) + ',' + str(start_point[1]) + ')'
+            RIGHTDOWN_POINT = RIGHTDOWN_POINT + '(' + str(end_point[0]) + ',' + str(end_point[1]) + ')'
             CENTER_POINT = CENTER_POINT + '(' + str((start_point[0] + end_point[0]) / 2.0) + ',' + str(
-                (start_point[1] + end_point[1]) / 2.0) + '), '
-            WIDTH = WIDTH + str(width) + ', '
-            HEIGHT = HEIGHT + str(height) + ', '
+                (start_point[1] + end_point[1]) / 2.0) + ')'
+            WIDTH = WIDTH + str(width)
+            HEIGHT = HEIGHT + str(height)
+
 
         print('图像分辨率 : (%d,%d)' % (input_y, input_x))
         print('左上角坐标 : ' + LEFTTOP_POINT)
@@ -212,12 +216,30 @@ def listorders(request):#图像分割入口函数
         print('右极点坐标 : ' + RIGHT)
         print('上极点坐标 : ' + TOP)
         print('下极点坐标 : ' + BOTTOM)
-
+        info={
+            '图像分辨率': '('+str(input_y)+','+str(input_x)+')',
+            '左上角坐标':LEFTTOP_POINT,
+            '右下角坐标':RIGHTDOWN_POINT,
+            '中心坐标':CENTER_POINT,
+            '区域宽度' : WIDTH,
+            '区域高度' : HEIGHT,
+            '区域面积' :Area,
+            '区域周长' : PERIMETER,
+            '左极点坐标' : LEFT,
+            '右极点坐标' : RIGHT,
+            '上极点坐标' : TOP,
+            '下极点坐标' :BOTTOM,
+        }
     torch.cuda.empty_cache()
+    endTime = int(round(time.time() * 1000))
+    detalTime=endTime-startTime
     result = {"message": 'success', "code": '200',
               "img1":'http://127.0.0.1:8000/static/'+img1,
               "img2": 'http://127.0.0.1:8000/static/' + img2,
               "img3": 'http://127.0.0.1:8000/static/' + img3,
+              "detalTime":detalTime,
+              "info":info,
+              "time":endTime
               }
 
     return HttpResponse(json.dumps(result), content_type="application/json")

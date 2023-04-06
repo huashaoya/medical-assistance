@@ -8,22 +8,22 @@
     @select="handleSelect"
   >
     <el-menu-item index="1" style="font-size:20px">-基于癌症治疗的医疗辅助系统-</el-menu-item>
-    <el-menu-item index="2">监控页</el-menu-item>
+    <el-menu-item index="2">科室监控</el-menu-item>
     <el-menu-item index="3">图像处理</el-menu-item>
     <el-sub-menu index="4">
       <template #title>乳腺癌</template>
       <el-menu-item index="4-1">癌症分析</el-menu-item>
-      <el-menu-item index="4-2">目标检测</el-menu-item>
+      <el-menu-item index="4-2">癌症追踪</el-menu-item>
     </el-sub-menu>
     <el-sub-menu index="5">
       <template #title>血癌</template>
       <el-menu-item index="5-1">癌症分析</el-menu-item>
-      <el-menu-item index="5-2">目标检测</el-menu-item>
+      <el-menu-item index="5-2">癌症追踪</el-menu-item>
     </el-sub-menu>
     <el-sub-menu index="6">
       <template #title>喉癌和下咽癌</template>
       <el-menu-item index="6-1">癌症分析</el-menu-item>
-      <el-menu-item index="6-2">目标检测</el-menu-item>
+      <el-menu-item index="6-2">癌症追踪</el-menu-item>
     </el-sub-menu>
   </el-menu>
   <router-view></router-view>
@@ -41,6 +41,8 @@ export default {
   },
   mounted () {
     this.checkToken()
+    this.handleActiveIndex()// 设置刷新后的menu高亮
+    console.log(this.$route.name)
   },
   methods: {
     handleSelect (key, keyPath) {
@@ -60,6 +62,32 @@ export default {
       } else {
         this.$router.push('/pageOne-2')
       }
+    },
+    handleActiveIndex () {
+      const path = this.$route.fullPath
+      console.log(this.$route)
+      let index = 0
+      switch (path) {
+        case '/':
+          index = 1
+          break
+        case '/secondPage':
+          index = 2
+          break
+        case '/imageProcessing':
+          index = 3
+          break
+        case '/pageOne?type=0':
+          index = '4-1'
+          break
+        case '/pageOne?type=1':
+          index = '5-1'
+          break
+        case '/pageOne?type=2':
+          index = '6-1'
+          break
+      }
+      this.activeIndex = index
     },
     checkToken () { // 校验token
       if (!this.token) {

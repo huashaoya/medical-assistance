@@ -13,10 +13,16 @@
 body{
   background-color: rgba(0,0,0,0)!important;
 }
+*::-webkit-scrollbar {
+display: none;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 ul,li{
   list-style-type: none;
