@@ -114,6 +114,10 @@ import { Plus, Picture as IconPicture } from '@element-plus/icons-vue'
 // import http from '@/utils/judge'
 import { ref } from 'vue'
 import { genFileId } from 'element-plus'
+</script>
+
+<script>
+import { formatTime } from '@/utils/index'
 
 const uploadRef = ref()
 
@@ -134,9 +138,6 @@ const svg = `
           L 15 15
         " style="stroke-width: 4px; fill: rgba(0, 0, 0, 0)"/>
       `
-</script>
-
-<script>
 export default {
   data () {
     return {
@@ -149,6 +150,17 @@ export default {
       infoList: [''],
       loading: false,
       disabled: true
+    }
+  },
+  watch: {
+    // 监听query参数变化
+    $route (to, from) {
+      if (to.query.type !== from.query.type) {
+        // param1参数发生变化，触发相应逻辑
+        console.log(to.query.type)
+        this.clear()
+        // this.doSomething()
+      }
     }
   },
   methods: {
@@ -166,6 +178,12 @@ export default {
       this.consoleList.push('处理完成，用时' + res.detalTime + '毫秒')
       this.$nextTick(() => {
         this.$refs.ul.scrollTop = this.$refs.ul.scrollHeight
+      })
+      this.$emit('handleHistory', {
+        img1: res.img1,
+        img2: res.img2,
+        img3: res.img3,
+        time: formatTime(res.time, 'yyyy-MM-dd HH:mm:ss')
       })
       this.loading = false
     },
@@ -200,6 +218,13 @@ export default {
       this.$refs.uploadRef.submit()
       this.loading = true
       this.consoleList.push('开始处理...')
+    },
+    clear () {
+      this.img1 = ''
+      this.img2 = ''
+      this.img3 = ''
+      this.imageUrl = ''
+      this.disabled = true
     }
   }
 }

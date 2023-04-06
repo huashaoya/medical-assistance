@@ -238,7 +238,8 @@ def listorders(request):#图像分割入口函数
               "img2": 'http://127.0.0.1:8000/static/' + img2,
               "img3": 'http://127.0.0.1:8000/static/' + img3,
               "detalTime":detalTime,
-              "info":info
+              "info":info,
+              "time":endTime
               }
 
     return HttpResponse(json.dumps(result), content_type="application/json")
