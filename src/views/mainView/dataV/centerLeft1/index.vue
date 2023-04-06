@@ -6,7 +6,7 @@
           <i class="iconfont icon-tongji4" />
         </span>
         <div class="d-flex">
-          <span class="fs-xl text mx-2">致癌物质数据分类</span>
+          <span class="fs-xl text mx-2">患者痊愈率</span>
           <dv-decoration-3 class="dv-dec-3" />
         </div>
       </div>

@@ -18,15 +18,15 @@
 import * as echarts from 'echarts'
 
 export default {
-  data () {
+  data() {
     return {
       chart: null
     }
   },
-  mounted () {
+  mounted() {
     this.initChart()
   },
-  beforeUnmount () {
+  beforeUnmount() {
     if (!this.chart) {
       return
     }
@@ -34,7 +34,7 @@ export default {
     this.chart = null
   },
   methods: {
-    initChart () {
+    initChart() {
       const chartDom = document.getElementById('chart4')
       const myChart = echarts.init(chartDom)
       const option = {
@@ -49,7 +49,7 @@ export default {
             ['product', '上周人数', '今周人数', '本月总数'],
             ['乳腺癌', 83, 75, 334],
             ['血癌', 48, 54, 188],
-            ['喉癌和下咽癌', 40, 58, 168]
+            ['喉癌下咽癌', 40, 58, 168]
           ]
         },
         xAxis: {
@@ -75,49 +75,55 @@ export default {
 
 </script>
 <style scoped lang="scss" >
-    .box{
-        padding:20px;
-        width:100%;
-        height: 100%;
-        .desc{
-              width:180px;
-              height:30px;
-              padding: 0 5px;
-              color:rgb(229, 229, 229);
-              font-size: 16px;
-        }
-        .content{
-            width:100%;
-            height:calc(100% - 30px);
-            display: flex;
-            .info{
-                width:25%;
-                height:100%;
-                color:rgba(255, 255, 255, 0.719);
-                padding-top:20px;
-                .num{
-                  color:#339999;
-                  font-size: 32px;
-                  font-weight: 600;
-                  margin-top:20px;
-                }
-                .text{
-                  font-size: 12px;
-                }
-            }
-            .chart{
-                width:75%;
-                height:100%;
-                background-color: #0f1325cf;
-                border-radius: 10px;
-                color:white!important;
-            }
-        }
+.box {
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+
+  .desc {
+    width: 180px;
+    height: 30px;
+    padding: 0 5px;
+    color: rgb(229, 229, 229);
+    font-size: 16px;
+  }
+
+  .content {
+    width: 100%;
+    height: calc(100% - 30px);
+    display: flex;
+
+    .info {
+      width: 25%;
+      height: 100%;
+      color: rgba(255, 255, 255, 0.719);
+      padding-top: 20px;
+
+      .num {
+        color: #339999;
+        font-size: 32px;
+        font-weight: 600;
+        margin-top: 20px;
+      }
+
+      .text {
+        font-size: 12px;
+      }
+    }
+
     .chart {
       width: 75%;
       height: 100%;
       background-color: #0f1325cf;
       border-radius: 10px;
+      color: white !important;
     }
-}
-</style>
+  }
+
+  .chart {
+    width: 75%;
+    height: 100%;
+    background-color: #0f1325cf;
+    border-radius: 10px;
+  }
+}</style>

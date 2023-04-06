@@ -13,16 +13,16 @@
         <span>
           <i class="iconfont icon-tongji2"></i>
         </span>
-        <span class="fs-xl text mx-2 mb-1">致癌物质排行榜</span>
+        <span class="fs-xl text mx-2 mb-1">地区癌症人数</span>
         <dv-scroll-ranking-board class="dv-scr-rank-board" :config="ranking" />
       </div>
       <div class="percent">
         <div class="item bg-color-black">
-          <span>中国致癌率</span>
+          <span>今日排队人数</span>
           <chart :tips="rate[0].tips" :colorObj="rate[0].colorData" />
         </div>
         <div class="item bg-color-black">
-          <span>癌症致死率</span>
+          <span>今日已检查人数</span>
           <chart :tips="rate[1].tips" :colorObj="rate[1].colorData" />
         </div>
         <div class="water">
@@ -45,28 +45,28 @@ export default defineComponent({
     // 下层数据
     const titleDate = [
       {
-        number: 1020,
-        text: '今年累计任务建次数'
+        number: 102020,
+        text: '今年累计患癌人数'
       },
       {
-        number: 18,
-        text: '本月累计任务次数'
+        number: 248,
+        text: '本月累计患癌人数'
       },
       {
-        number: 4,
-        text: '今日累计任务次数'
-      },
-      {
-        number: 71,
-        text: '今年失败任务次数'
+        number: 79,
+        text: '今日排队人数'
       },
       {
         number: 949,
-        text: '今年失败成功次数'
+        text: '今年痊愈人数'
       },
       {
-        number: 811,
-        text: '今年达标任务个数'
+        number: 68,
+        text: '本月痊愈人数'
+      },
+      {
+        number: 125,
+        text: '今日已检查人数'
       }
     ]
     const titleItem = reactive([])
@@ -79,44 +79,45 @@ export default defineComponent({
     const ranking = reactive({
       data: [
         {
-          name: '丙二醇',
-          value: 80
+          name: '广州',
+          value: 51482
         },
         {
-          name: '二乙醇胺',
-          value: 80
+          name: '深圳',
+          value: 48957
         },
         {
-          name: '甲苯',
-          value: 80
+          name: '湛江',
+          value: 35842
         },
         {
-          name: '滑石粉',
-          value: 80
+          name: '东莞',
+          value: 35482
         },
         {
-          name: '丙酸钙',
-          value: 80
+          name: '珠海',
+          value: 30101
         },
         {
-          name: '甲醛',
-          value: 80
+          name: '佛山',
+          value: 28857
         },
         {
-          name: '十二烷基硫酸钠',
-          value: 80
+          name: '汕头',
+          value: 24851
+
         },
         {
-          name: '酒精',
-          value: 80
+          name: '肇庆',
+          value: 22467
         },
         {
-          name: '苯二胺',
-          value: 80
+          name: '韶关',
+          value: 14355
         },
         {
-          name: '氟化物',
-          value: 80
+          name: '江门',
+          value: 12846
         }
       ],
       carousel: 'single'
@@ -132,7 +133,7 @@ export default defineComponent({
     const rate = reactive([
       {
         id: 'centerRate1',
-        tips: 20.6,
+        tips: 75.3,
         colorData: {
           textStyle: '#3fc0fb',
           series: {
@@ -146,7 +147,7 @@ export default defineComponent({
       },
       {
         id: 'centerRate2',
-        tips: 23.87,
+        tips: 83.5,
         colorData: {
           textStyle: '#67e0e3',
           series: {
@@ -167,8 +168,8 @@ export default defineComponent({
           title: e.text,
           config: {
             number: [e.number],
-            toFixed: 1,
-            textAlign: 'left',
+            // toFixed: 1,
+            // textAlign: 'left',
             content: '{nt}',
             style: {
               fontSize: 26

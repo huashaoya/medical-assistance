@@ -16,37 +16,90 @@ export default defineComponent({
         }
       },
       {
-        name: '厦门市',
-        value: 900
+        name: '湛江',
+        value: 35842
       },
       {
-        name: '漳州市',
+        name: '茂名',
         value: 8001
       },
       {
-        name: '泉州市',
+        name: '阳江',
         value: 7101
       },
       {
-        name: '三明市',
+        name: '云浮',
         value: 6101
       },
       {
-        name: '莆田市',
-        value: 5101
+        name: '江门',
+        value: 12846
       },
       {
-        name: '南平市',
+        name: '中山',
         value: 4010
       },
       {
-        name: '龙岩市',
+        name: '珠海',
         value: 30101
       },
       {
-        name: '宁德市',
-        value: 2101
+        name: '佛山',
+        value: 28857
+      },
+      {
+        name: '肇庆',
+        value: 22467
+      },
+      {
+        name: '清远',
+        value: 6453
+      },
+      {
+        name: '广州',
+        value: 51482
+      },
+      {
+        name: '深圳',
+        value: 48957
+      },
+      {
+        name: '东莞',
+        value: 35482
+      },
+      {
+        name: '惠州',
+        value: 7687
+      },
+      {
+        name: '韶关',
+        value: 14355
+      },
+      {
+        name: '河源',
+        value: 6851
+      },
+      {
+        name: '梅州',
+        value: 3967
+      },
+      {
+        name: '潮州',
+        value: 4387
+      },
+      {
+        name: '揭阳',
+        value: 5896
+      },
+      {
+        name: '汕尾',
+        value: 1587
+      },
+      {
+        name: '汕头',
+        value: 24851
       }
+
     ])
 
     return () => {

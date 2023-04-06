@@ -8,12 +8,12 @@ export default defineComponent({
     const cdata = reactive({
       indicatorData: [
         // 雷达图
-        { name: '数据1', max: 300 },
-        { name: '数据2', max: 250 },
-        { name: '数据3', max: 300 },
-        { name: '数据4', max: 5 },
-        { name: '数据5', max: 200 },
-        { name: '数据6', max: 100 }
+        { name: '总数', max: 300 },
+        { name: '乳腺癌', max: 250 },
+        { name: '未确诊', max: 300 },
+        { name: '喉癌下咽癌', max: 5 },
+        { name: '有症状', max: 200 },
+        { name: '血癌', max: 100 }
       ],
       dataBJ: [
         [94, 69, 114, 2.08, 73, 39, 22],
