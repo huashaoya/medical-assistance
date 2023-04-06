@@ -44,11 +44,11 @@ export default {
         data: [
           {
             name: '空闲',
-            value: 1
+            value: 2
           },
           {
             name: '忙碌中',
-            value: 8
+            value: 7
           },
           {
             name: '停用',

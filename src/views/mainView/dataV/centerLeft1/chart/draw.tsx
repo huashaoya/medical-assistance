@@ -11,7 +11,7 @@ const PropsType = {
 // 定义主体
 export default defineComponent({
   props: PropsType,
-  setup (props) {
+  setup(props) {
     // 定义 ref
     const chartRef = ref()
     // 配置项

@@ -6,7 +6,7 @@
           <i class="iconfont icon-chart-area" />
         </span>
         <div class="d-flex">
-          <span class="fs-xl text mx-2 mt-1">数据统计图</span>
+          <span class="fs-xl text mx-2 mt-1">我的病人情况</span>
         </div>
       </div>
       <div>
@@ -29,22 +29,27 @@ export default defineComponent({
 <style lang="scss" class>
 $box-height: 520px;
 $box-width: 100%;
+
 .bottomRight {
   padding: 14px 16px;
   height: $box-height;
   width: $box-width;
   border-radius: 5px;
+
   .bg-color-black {
     height: $box-height - 30px;
     border-radius: 10px;
   }
+
   .text {
-    color: #c3cbde;
+    color: #fff;
   }
+
   .chart-box {
     margin-top: 16px;
     width: 170px;
     height: 170px;
+
     .active-ring-name {
       padding-top: 10px;
     }

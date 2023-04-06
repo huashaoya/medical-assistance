@@ -10,7 +10,7 @@ const PropsType = {
 // 定义主体
 export default defineComponent({
   props: PropsType,
-  setup (props) {
+  setup(props) {
     // 定义 ref
     const chartRef = ref()
     // 定义颜色
@@ -114,7 +114,7 @@ export default defineComponent({
             itemGap: 15,
             itemWidth: 12,
             itemHeight: 12,
-            data: ['平均指标', '我的指标'],
+            data: ['已患病人数', '已痊愈人数'],
             textStyle: {
               color: '#fff',
               fontSize: 14
@@ -154,19 +154,19 @@ export default defineComponent({
             },
             indicator: [
               {
-                name: '服务态度',
+                name: '乳腺癌',
                 max: val.maxData
               },
               {
-                name: '产品质量',
+                name: '血癌',
                 max: 10
               },
               {
-                name: '任务效率',
+                name: '喉癌下咽癌',
                 max: 12
               },
               {
-                name: '售后保障',
+                name: '其他',
                 max: 3.5
               }
             ]
@@ -189,7 +189,7 @@ export default defineComponent({
           },
           // 下方Y轴
           yAxis: {
-            name: '工单',
+            name: '人数',
             nameLocation: 'end',
             nameGap: 24,
             nameTextStyle: {
@@ -224,7 +224,7 @@ export default defineComponent({
               data: [
                 {
                   value: val.radarDataAvg[6],
-                  name: '平均指标',
+                  name: '已患病人数',
                   itemStyle: {
                     normal: {
                       color: '#f8d351'
@@ -248,7 +248,7 @@ export default defineComponent({
                 },
                 {
                   value: val.radarData[6],
-                  name: '我的指标',
+                  name: '已痊愈人数',
                   itemStyle: {
                     normal: {
                       color: '#43dfa2'
@@ -318,7 +318,7 @@ export default defineComponent({
               },
               tooltip: {
                 position: 'top',
-                formatter: '{c} m',
+                formatter: '{c}',
                 backgroundColor: 'rgba(28,152,232,.2)',
                 padding: 6
               }

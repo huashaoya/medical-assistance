@@ -11,7 +11,7 @@ const PropsType = {
 // 定义主体
 export default defineComponent({
   props: PropsType,
-  setup (props) {
+  setup(props) {
     // 定义 ref
     const chartRef = ref()
     // 配置项
@@ -80,12 +80,12 @@ export default defineComponent({
           ],
           series: [
             {
-              name: '贯通率',
+              name: '恢复率',
               type: 'line',
               smooth: true,
               showAllSymbol: true,
               symbol: 'emptyCircle',
-              symbolSize: 8,
+              symbolSize: 10,
               yAxisIndex: 1,
               itemStyle: {
                 normal: {
@@ -95,38 +95,70 @@ export default defineComponent({
               data: val.rateData
             },
             {
-              name: '已贯通',
+              name: '未确诊',
               type: 'bar',
-              barWidth: 10,
+              barWidth: 45,
               itemStyle: {
                 normal: {
                   barBorderRadius: 5,
                   color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                    { offset: 0, color: '#956FD4' },
-                    { offset: 1, color: '#3EACE5' }
+                    { offset: 0, color: '#b506cc' },//'#02b9a1'
+                    { offset: 1, color: '#0f00df' }
                   ])
                 }
               },
-              data: val.barData
+              data: val.barData1
             },
             {
-              name: '计划贯通',
+              name: '已患病',
               type: 'bar',
-              barGap: '-100%',
-              barWidth: 10,
+              // barGap: '-100%',
+              barWidth: 45,
               itemStyle: {
                 normal: {
                   barBorderRadius: 5,
                   color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                    { offset: 0, color: 'rgba(156,107,211,0.8)' },
-                    { offset: 0.2, color: 'rgba(156,107,211,0.5)' },
-                    { offset: 1, color: 'rgba(156,107,211,0.2)' }
+                    { offset: 0, color: '#b506cc' },
+                    { offset: 1, color: '#00f7ff' }
+                  ])
+
+                }
+              },
+              // z: -12,
+              data: val.barData2
+            },
+            {
+              name: '已痊愈',
+              type: 'bar',
+              barWidth: 45,
+              itemStyle: {
+                normal: {
+                  barBorderRadius: 5,
+                  color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                    { offset: 0, color: '#83bff6' },
+                    { offset: 0.5, color: '#188df0' },
+                    { offset: 1, color: '#188df0' }
                   ])
                 }
               },
-              z: -12,
-              data: val.lineData
-            }
+              data: val.barData3
+            },
+            {
+              name: '有症状',
+              type: 'bar',
+              barWidth: 45,
+              itemStyle: {
+                normal: {
+                  barBorderRadius: 5,
+                  color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                    { offset: 0, color: '#b506cc' },//'#004a8f'
+                    { offset: 1, color: '#cc8d06' }
+                  ])
+
+                }
+              },
+              data: val.barData4
+            },
           ]
         }
         // 手动触发更新
