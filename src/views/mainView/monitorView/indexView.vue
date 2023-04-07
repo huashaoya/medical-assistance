@@ -108,14 +108,12 @@ export default {
             flex-wrap: wrap;
             height: 100%;
             align-content: flex-start;
-
             .item {
                width: 48%;
                margin: 0 1%;
                height: 48%;
                margin-top: .3%;
                margin-bottom: 0;
-
                .chart {
                   width: 100%;
                   height: calc(100% - 25px);
@@ -124,7 +122,6 @@ export default {
          }
       }
    }
-
    .second {
       width: 30%;
       // background-color: aqua;
@@ -132,7 +129,6 @@ export default {
       padding: 20px;
       display: flex;
       flex-direction: column;
-
       .item {
          width: calc(100% - 40px);
          height: calc(50% - 40px);
