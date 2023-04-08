@@ -11,7 +11,7 @@ const PropsType = {
 // 定义主体
 export default defineComponent({
   props: PropsType,
-  setup(props) {
+  setup (props) {
     // 定义 ref
     const chartRef = ref()
     // 配置项
@@ -34,7 +34,9 @@ export default defineComponent({
             }
           },
           legend: {
-            show: true
+            textStyle: {
+              color: '#fff'
+            }
           },
           grid: {
             x: '8%',
@@ -102,7 +104,7 @@ export default defineComponent({
                 normal: {
                   barBorderRadius: 5,
                   color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                    { offset: 0, color: '#b506cc' },//'#02b9a1'
+                    { offset: 0, color: '#b506cc' }, // '#02b9a1'
                     { offset: 1, color: '#0f00df' }
                   ])
                 }
@@ -151,14 +153,14 @@ export default defineComponent({
                 normal: {
                   barBorderRadius: 5,
                   color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                    { offset: 0, color: '#b506cc' },//'#004a8f'
+                    { offset: 0, color: '#b506cc' }, // '#004a8f'
                     { offset: 1, color: '#cc8d06' }
                   ])
 
                 }
               },
               data: val.barData4
-            },
+            }
           ]
         }
         // 手动触发更新

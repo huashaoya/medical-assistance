@@ -59,8 +59,12 @@ export default {
         this.$router.push({ path: '/pageOne', query: { type: '1' } })
       } else if (key === '6-1') {
         this.$router.push({ path: '/pageOne', query: { type: '2' } })
-      } else {
-        this.$router.push('/pageOne-2')
+      } else if (key === '4-2') {
+        this.$router.push({ path: '/pageOne-2', query: { type: '0' } })
+      } else if (key === '5-2') {
+        this.$router.push({ path: '/pageOne-2', query: { type: '1' } })
+      } else if (key === '6-2') {
+        this.$router.push({ path: '/pageOne-2', query: { type: '2' } })
       }
     },
     handleActiveIndex () {
@@ -85,6 +89,15 @@ export default {
           break
         case '/pageOne?type=2':
           index = '6-1'
+          break
+        case '/pageOne-2?type=0':
+          index = '4-2'
+          break
+        case '/pageOne-2?type=1':
+          index = '5-2'
+          break
+        case '/pageOne-2?type=2':
+          index = '6-2'
           break
       }
       this.activeIndex = index
