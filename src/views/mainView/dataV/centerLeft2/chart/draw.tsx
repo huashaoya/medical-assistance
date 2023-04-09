@@ -11,7 +11,7 @@ const PropsType = {
 // 定义主体
 export default defineComponent({
   props: PropsType,
-  setup (props) {
+  setup(props) {
     // 配置项
     let options = shallowReactive({ showLegendSymbol: null, tooltip: null, geo: null, series: null })
     // 设置点的位置(经纬度)

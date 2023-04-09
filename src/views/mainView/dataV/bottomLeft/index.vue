@@ -6,7 +6,7 @@
           <i class="iconfont icon-chart-line" />
         </span>
         <div class="d-flex">
-          <span class="fs-xl text mx-2 mt-1">患癌病人情况</span>
+          <span class="fs-xl text mx-2 mt-1">医院上月患癌病人情况</span>
         </div>
       </div>
       <div>

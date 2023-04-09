@@ -5,14 +5,14 @@ export default defineComponent({
   components: {
     Draw
   },
-  setup () {
+  setup() {
     const drawTiming = ref(0)
     const cdata = reactive({
       year: null,
       weekCategory: [],
       radarData: [],
       radarDataAvg: [],
-      maxData: 12000,
+      maxData: 10,
       weekMaxData: [],
       weekLineData: []
     })
@@ -36,22 +36,22 @@ export default defineComponent({
 
         // 折线图数据
         cdata.weekMaxData.push(cdata.maxData)
-        const distance = Math.round(Math.random() * 11000 + 500)
+        const distance = Math.round(Math.random() * 4 + 1)
         cdata.weekLineData.push(distance)
 
         // 雷达图数据
         // 我的指标
-        const averageSpeed = +(Math.random() * 5 + 3).toFixed(3)
+        const averageSpeed = +(Math.random() * 2 + 1).toFixed(3)
         const maxSpeed = averageSpeed + +(Math.random() * 3).toFixed(2)
-        const hour = +(distance / 1000 / averageSpeed).toFixed(1)
+        const hour = +(distance / 1 / averageSpeed).toFixed(1)
         const radarDayData = [distance, averageSpeed, maxSpeed, hour]
         cdata.radarData.unshift(radarDayData)
 
         // 平均指标
-        const distanceAvg = Math.round(Math.random() * 8000 + 4000)
-        const averageSpeedAvg = +(Math.random() * 4 + 4).toFixed(3)
+        const distanceAvg = Math.round(Math.random() * 3 + 1)
+        const averageSpeedAvg = +(Math.random() * 4 + 2).toFixed(3)
         const maxSpeedAvg = averageSpeedAvg + +(Math.random() * 2).toFixed(2)
-        const hourAvg = +(distance / 1000 / averageSpeed).toFixed(1)
+        const hourAvg = +(distance / 1 / averageSpeed).toFixed(1)
         const radarDayDataAvg = [
           distanceAvg,
           averageSpeedAvg,

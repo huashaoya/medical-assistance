@@ -26,11 +26,11 @@ export default {
         data: [
           ['门诊楼二楼', '207', '<span style="color:yellow;">忙碌中</span>'],
           ['门诊楼二楼', '208', '<span style="color:yellow;">忙碌中</span>'],
-          ['门诊楼二楼', '209', '<span ><a href="javascript:;" target="_blank" style="color:#00ff22;">空闲|查看</a></span> '],
+          ['门诊楼二楼', '209', '<span ><a href="http://106.55.171.221/medical-assistance/BChaoRoom/BChaoRoom/index.html" target="_blank" style="color:#00ff22;">空闲|查看</a></span> '],
           ['门诊楼二楼', '210', '<span style="color:yellow;">忙碌中</span>'],
           ['门诊楼二楼', '211', '<span style="color:yellow;">忙碌中</span>'],
           ['门诊楼三楼', '301', '<span style="color:yellow;">忙碌中</span>'],
-          ['门诊楼三楼', '302', '<span ><a href="javascript:;" target="_blank" style="color:#00ff22;">空闲|查看</a></span> '],
+          ['门诊楼三楼', '302', '<span ><a href="http://106.55.171.221/medical-assistance/BChaoRoom/BChaoRoom2/index.html" target="_blank" style="color:#00ff22;">空闲|查看</a></span> '],
           ['门诊楼三楼', '303', '<span style="color:yellow;">忙碌中</span>'],
           ['门诊楼三楼', '304', '<span style="color:yellow;">忙碌中</span>'],
           ['门诊楼三楼', '305', '<span style="color:red;">停用</span>']

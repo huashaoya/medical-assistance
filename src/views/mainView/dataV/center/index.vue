@@ -18,7 +18,7 @@
       </div>
       <div class="percent">
         <div class="item bg-color-black">
-          <span>今日排队人数</span>
+          <span>本月痊愈人数</span>
           <chart :tips="rate[0].tips" :colorObj="rate[0].colorData" />
         </div>
         <div class="item bg-color-black">
@@ -45,27 +45,27 @@ export default defineComponent({
     // 下层数据
     const titleDate = [
       {
-        number: 102020,
+        number: 11681,
         text: '今年累计患癌人数'
       },
       {
-        number: 248,
+        number: 1248,
         text: '本月累计患癌人数'
       },
       {
-        number: 79,
+        number: 125,
         text: '今日排队人数'
       },
       {
-        number: 949,
+        number: 1624,
         text: '今年痊愈人数'
       },
       {
-        number: 68,
+        number: 158,
         text: '本月痊愈人数'
       },
       {
-        number: 125,
+        number: 79,
         text: '今日已检查人数'
       }
     ]
@@ -124,7 +124,7 @@ export default defineComponent({
     })
 
     const water = reactive({
-      data: [24, 45],
+      data: [14.3, 14.3],
       shape: 'roundRect',
       formatter: '{value}%',
       waveNum: 3
@@ -133,7 +133,7 @@ export default defineComponent({
     const rate = reactive([
       {
         id: 'centerRate1',
-        tips: 75.3,
+        tips: 12.7,
         colorData: {
           textStyle: '#3fc0fb',
           series: {
@@ -147,7 +147,7 @@ export default defineComponent({
       },
       {
         id: 'centerRate2',
-        tips: 83.5,
+        tips: 63.2,
         colorData: {
           textStyle: '#67e0e3',
           series: {

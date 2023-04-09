@@ -5,7 +5,7 @@ export const WEEK = ['周日', '周一', '周二', '周三', '周四', '周五',
 
 // 主题名称与副标题名称
 export const title = '医院数据实时展示大屏'
-export const subtitle = ['数据分析1', '数据分析2', 'vue-big-screen']
+export const subtitle = ['数据分析1', '数据分析2', 'medical-assistance']
 
 export const moduleInfo: ModuleInfo = [
   // 中间的几个模块

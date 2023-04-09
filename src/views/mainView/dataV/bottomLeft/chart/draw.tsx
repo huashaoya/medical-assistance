@@ -34,6 +34,9 @@ export default defineComponent({
             }
           },
           legend: {
+            textStyle: {
+              color: '#fff'
+            },
             show: true
           },
           grid: {

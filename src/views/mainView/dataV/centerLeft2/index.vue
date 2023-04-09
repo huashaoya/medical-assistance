@@ -1,5 +1,8 @@
 <template>
   <div class="centreLeft1">
+    <span class="drawing-review">
+      <img src="../../../../assets/drawing-review.png" alt="" class="drawing-review-img">2022高德软件GS京(2022)1061号
+    </span>
     <div class="bg-color-black">
       <div class="d-flex pt-2 pl-2">
         <span>
@@ -29,12 +32,29 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .centreLeft1 {
+  position: relative;
   $box-width: 300px;
   $box-height: 410px;
   padding: 16px;
   height: $box-height;
   min-width: $box-width;
   border-radius: 5px;
+
+  .drawing-review {
+    position: absolute;
+    left: 160px;
+    top: 371px;
+    height: 24px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 24px;
+  }
+
+  .drawing-review-img {
+    position: absolute;
+    left: -22px;
+    top: -1px;
+  }
 
   .bg-color-black {
     height: $box-height - 30px;

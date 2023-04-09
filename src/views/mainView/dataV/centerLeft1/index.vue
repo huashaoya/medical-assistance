@@ -6,7 +6,7 @@
           <i class="iconfont icon-tongji4" />
         </span>
         <div class="d-flex">
-          <span class="fs-xl text mx-2">患者痊愈率</span>
+          <span class="fs-xl text mx-2">全国患者痊愈率</span>
           <dv-decoration-3 class="dv-dec-3" />
         </div>
       </div>
@@ -22,7 +22,7 @@
           </div>
           <p>
             <span> {{ item.text }} </span>
-            <span class="colorYellow">(件)</span>
+            <!-- <span class="colorYellow">(人)</span> -->
           </p>
         </div>
       </div>
@@ -41,20 +41,20 @@ export default defineComponent({
     // 下层数据
     const dataArr = [
       {
-        number: 150,
-        text: '今日构建总量'
+        number: 984,
+        text: '今日痊愈人数'
       },
       {
-        number: 144,
-        text: '总共完成数量'
+        number: 544482,
+        text: '全国癌症新增人数'
       },
       {
-        number: 361,
-        text: '正在编译数量'
+        number: 1258,
+        text: '今日新增人数'
       },
       {
-        number: 571,
-        text: '未通过数量'
+        number: 154832,
+        text: '全国癌症死亡人数'
       }
     ]
     // 对应图标
@@ -76,7 +76,7 @@ export default defineComponent({
         numberData.push({
           config: {
             number: [e.number],
-            toFixed: 1,
+            // toFixed: 1,
             content: '{nt}',
             style: {
               fontSize: 24
