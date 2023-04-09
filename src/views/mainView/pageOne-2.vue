@@ -5,7 +5,7 @@
             <div class="video-box">
               <div class="item">
                 <video
-                  src="http://106.55.171.221/medical-assistance/video/pharyngolaryngeal.mp4"
+                  :src="videoUrl[0]"
                   :controls="false"
                   class="video"
                   webkit-playsinline="true"
@@ -24,7 +24,7 @@
               </div>
               <div class="item">
                 <video
-                    src="http://106.55.171.221/medical-assistance/video/pharyngolaryngeal_2.mov"
+                    :src="videoUrl[1]"
                     :controls="false"
                     class="video"
                     webkit-playsinline="true"
@@ -53,18 +53,27 @@ export default {
   data () {
     return {
       videoOptions: {
-        controls: true,
-        src:
-                        'xxxxxxx.mp4' // url地址
+        controls: true
       },
       player: null,
       playTime: '',
       seekTime: '',
-      current: ''
+      current: '',
+
+      videoUrl: ['', '']
     }
   },
   mounted () {
     this.initVideo()
+    this.setUrl(this.$route.query.type)
+  },
+  watch: {
+    // 监听query参数变化
+    $route (to, from) {
+      if (to.query.type !== from.query.type) {
+        this.setUrl(to.query.type)
+      }
+    }
   },
   methods: {
     initVideo () {
@@ -85,6 +94,24 @@ export default {
           myVideo.currentTime = Number(time)
         }
       }
+    },
+    setUrl (type) {
+      let arr
+      switch (type) {
+        case '2':
+          arr = ['http://106.55.171.221/medical-assistance/video/pharyngolaryngeal.mp4',
+            'http://106.55.171.221/medical-assistance/video/pharyngolaryngeal_2.mov']
+          break
+        case '1':
+          arr = ['http://106.55.171.221/medical-assistance/video/blood_original.mp4',
+            'http://106.55.171.221/medical-assistance/video/blood_2.mov']
+          break
+        case '0':
+          arr = ['http://106.55.171.221/medical-assistance/video/breast_original.mp4',
+            'http://106.55.171.221/medical-assistance/video/breast_cancer.mov']
+          break
+      }
+      this.videoUrl = arr
     },
     // 播放回调
     onPlayerPlay (player) {

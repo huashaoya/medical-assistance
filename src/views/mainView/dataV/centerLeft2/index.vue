@@ -16,7 +16,8 @@
       <div class="d-flex jc-center">
         <chart />
       </div>
-    </div>
+      <div class="sth">2022 高德软件 GS京(2022)1061号
+    </div></div>
   </div>
 </template>
 
@@ -31,6 +32,10 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.sth{
+  transform: translateY(-26px);
+  font-size: 14px;
+}
 .centreLeft1 {
   position: relative;
   $box-width: 300px;

@@ -90,7 +90,7 @@ import http from '@/utils/http'
 import { ElNotification } from 'element-plus'
 
 export default {
-  data() {
+  data () {
     return {
       username: null,
       password: null,
@@ -101,7 +101,7 @@ export default {
       nickname: null
     }
   },
-  mounted() {
+  mounted () {
     // 标题跳动
     const labels = document.querySelectorAll('.form-control label')
     labels.forEach(label => {
@@ -112,7 +112,7 @@ export default {
     })
   },
   methods: {
-    pageTurning() {
+    pageTurning () {
       if (this.isActive) {
         this.isActive = false
       } else {
@@ -120,7 +120,7 @@ export default {
       }
     },
 
-    login() {
+    login () {
       // 请求登录接口
       http({
         method: 'post',
@@ -152,7 +152,7 @@ export default {
       })
     },
     // 注册接口
-    register() {
+    register () {
       // 校验完整性
       if (this.password_1 == null || this.password_2 == null) {
         ElNotification({
@@ -219,7 +219,7 @@ export default {
 /* 背景 */
 .area {
   /* background: #4e54c8; */
-  background: #1c82f0;
+  background: #176ac2;
   background: -webkit-linear-gradient(to left, #4094ee, #1c82f0);
   width: 100%;
   height: 100vh;
@@ -376,18 +376,20 @@ strong {
   height: 600px;
   background-color: #f3f3f3;
   margin: 15px auto;
-  border-radius: 5px;
+  border-radius: 10px;
   /* overflow: hidden; */
 }
 
 .area .intermediate-format .format-left {
   height: 100%;
   width: 60%;
+  border-radius: 20px;
 }
 
 .area .intermediate-format .format-left img {
   height: 100%;
   width: 100%;
+  border-radius: 10px;
 }
 
 .area .intermediate-format .contain {
