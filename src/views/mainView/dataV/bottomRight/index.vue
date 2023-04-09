@@ -6,7 +6,7 @@
           <i class="iconfont icon-chart-area" />
         </span>
         <div class="d-flex">
-          <span class="fs-xl text mx-2 mt-1">我的病人情况</span>
+          <span class="fs-xl text mx-2 mt-1">今日病人情况</span>
         </div>
       </div>
       <div>
