@@ -1,5 +1,5 @@
 <template>
-    <div class="body">
+    <div class="body" v-loading="loading"  element-loading-background="rgba(122, 122, 122, 0.6)">
         <div class="box">
           <div class="item">
             <div class="item-content" v-if="6">
@@ -55,6 +55,7 @@ export default {
     return {
       chart: null,
       chart2: null,
+      loading: false,
       X1: [1, 2, 3, 4],
       X2: [1, 2, 3, 4],
       Y1: [0, 0, 0, 0],

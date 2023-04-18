@@ -46,6 +46,9 @@ def upload(request):#保存上传的文件并返回绝对路径
 
 current_path = os.path.dirname(__file__)  # 当前路径
 
+def video(request):#视频处理入口函数
+    return 0
+
 def listorders(request):#图像分割入口函数
     startTime= int(round(time.time() * 1000))
     type=request.POST.dict().get('type')
