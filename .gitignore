@@ -4,6 +4,8 @@ node_modules
 # local env files
 .env.local
 .env.*.local
+ai
+/ai
 /ai/judge/judgeMain/models
 /ai/judge/judgeMain/output
 /ai/judge/judgeMain/uploadFile
