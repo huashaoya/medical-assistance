@@ -1,13 +1,7 @@
 <template>
-  <el-menu
-    :default-active="activeIndex"
-    mode="horizontal"
-    background-color="#0d1223"
-    text-color="#fff"
-    active-text-color="#0199ca"
-    @select="handleSelect"
-  >
-    <el-menu-item index="1" style="font-size:20px">-基于癌症治疗的医疗辅助系统-</el-menu-item>
+  <el-menu :default-active="activeIndex" mode="horizontal" background-color="#0d1223" text-color="#fff"
+    active-text-color="#0199ca" @select="handleSelect">
+    <el-menu-item index="1" style="font-size:20px">-肿瘤图像AI辅助诊断系统-</el-menu-item>
     <el-menu-item index="2">科室监控</el-menu-item>
     <el-menu-item index="3">图像处理</el-menu-item>
     <el-sub-menu index="4">
@@ -33,19 +27,19 @@
 import http from '@/utils/http'
 import { ElNotification } from 'element-plus'
 export default {
-  data () {
+  data() {
     return {
       token: window.localStorage.getItem('token'),
       activeIndex: '1'
     }
   },
-  mounted () {
+  mounted() {
     this.checkToken()
     this.handleActiveIndex()// 设置刷新后的menu高亮
     console.log(this.$route.name)
   },
   methods: {
-    handleSelect (key, keyPath) {
+    handleSelect(key, keyPath) {
       // console.log(key, keyPath)
       if (key === '1') {
         this.$router.push('/')
@@ -67,7 +61,7 @@ export default {
         this.$router.push({ path: '/pageOne-2', query: { type: '2' } })
       }
     },
-    handleActiveIndex () {
+    handleActiveIndex() {
       const path = this.$route.fullPath
       console.log(this.$route)
       let index = 0
@@ -102,7 +96,7 @@ export default {
       }
       this.activeIndex = index
     },
-    checkToken () { // 校验token
+    checkToken() { // 校验token
       if (!this.token) {
         this.$router.push('/login')
       } else {
@@ -137,7 +131,7 @@ export default {
 
 <style scoped>
 /* 取消菜单下边的白条 */
-.el-menu--horizontal{
-  border-bottom:0 solid black !important;
+.el-menu--horizontal {
+  border-bottom: 0 solid black !important;
 }
 </style>
