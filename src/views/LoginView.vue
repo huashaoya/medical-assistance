@@ -16,7 +16,7 @@
         <li></li>
       </ul>
       <!-- 标题 -->
-      <h1 class="headline-text">-基于癌症治疗的医疗辅助系统-</h1>
+      <h1 class="headline-text">-肿瘤图像AI辅助诊断系统-</h1>
       <!-- 中间栏背景 -->
       <div class="intermediate-format">
         <!-- 左侧背景 -->
@@ -90,7 +90,7 @@ import http from '@/utils/http'
 import { ElNotification } from 'element-plus'
 
 export default {
-  data () {
+  data() {
     return {
       username: null,
       password: null,
@@ -101,7 +101,7 @@ export default {
       nickname: null
     }
   },
-  mounted () {
+  mounted() {
     // 标题跳动
     const labels = document.querySelectorAll('.form-control label')
     labels.forEach(label => {
@@ -112,7 +112,7 @@ export default {
     })
   },
   methods: {
-    pageTurning () {
+    pageTurning() {
       if (this.isActive) {
         this.isActive = false
       } else {
@@ -120,7 +120,7 @@ export default {
       }
     },
 
-    login () {
+    login() {
       // 请求登录接口
       http({
         method: 'post',
@@ -152,7 +152,7 @@ export default {
       })
     },
     // 注册接口
-    register () {
+    register() {
       // 校验完整性
       if (this.password_1 == null || this.password_2 == null) {
         ElNotification({
