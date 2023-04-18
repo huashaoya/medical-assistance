@@ -14,14 +14,7 @@ export default {
   name: 'showVideo',
   data () {
     return {
-      videoOptions: {
-        controls: true
-      },
-      player: null,
-      playTime: '',
-      seekTime: '',
-      current: '',
-      videoUrl: ['', '']
+
     }
   },
   components: {

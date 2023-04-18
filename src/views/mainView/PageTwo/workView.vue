@@ -1,6 +1,7 @@
 <template>
     <div class="body">
         <div class="box">
+          <div class="item">
             <el-upload
                 ref="uploadRef"
                 class="upload-demo"
@@ -8,18 +9,21 @@
                 :auto-upload="false"
             >
                 <template #trigger>
-                <el-button type="primary">select file</el-button>
+                <el-button type="primary">选择视频</el-button>
                 </template>
 
                 <el-button class="ml-3" type="success" @click="submitUpload">
-                upload to server
+                开始处理
                 </el-button>
             </el-upload>
+          </div>
         </div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box" id="main">
-            <div ></div>
+        <div class="box">
+          <div class="item"></div>
+        </div>
+        <div class="box" id="chart1"></div>
+        <div class="box" id="chart2">
+
         </div>
     </div>
 </template>
@@ -28,34 +32,76 @@
 import * as echarts from 'echarts'
 
 export default {
-  mounted () {
-    const chartDom = document.getElementById('main')
-    const myChart = echarts.init(chartDom)
-    let option
-    option = {
-      xAxis: {
-        type: 'category',
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-      },
-      yAxis: {
-        type: 'value'
-      },
-      series: [
-        {
-          data: [820, 932, 901, 934, 1290, 1330, 1320],
-          type: 'line',
-          smooth: true
-        }
-      ]
+  data () {
+    return {
+      chart: null,
+      chart2: null
     }
-
-    option && myChart.setOption(option)
+  },
+  mounted () {
+    this.initChart1()
+    this.initChart2()
+  },
+  beforeUnmount () {
+    // if (!this.chart) {
+    //   return
+    // }
+    this.chart.dispose()
+    this.chart = null
+    this.chart2.dispose()
+    this.chart2 = null
+  },
+  methods: {
+    initChart1 () {
+      const chartDom = document.getElementById('chart1')
+      const myChart = echarts.init(chartDom)
+      const option = {
+        xAxis: {
+          type: 'category',
+          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+          type: 'value'
+        },
+        series: [
+          {
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            type: 'line',
+            smooth: true
+          }
+        ]
+      }
+      option && myChart.setOption(option)
+      this.chart = myChart
+    },
+    initChart2 () {
+      const chartDom = document.getElementById('chart2')
+      const myChart = echarts.init(chartDom)
+      const option = {
+        xAxis: {
+          type: 'category',
+          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+          type: 'value'
+        },
+        series: [
+          {
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            type: 'line',
+            smooth: true
+          }
+        ]
+      }
+      option && myChart.setOption(option)
+      this.chart2 = myChart
+    }
   }
 }
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .body{
     width:100%;
     height:100%;
@@ -64,6 +110,16 @@ export default {
     .box{
         width:50%;
         height:50%;
+        padding:50px;
+        border-radius: 10px;
+        .item{
+          width:100%;
+          height:100%;
+          border: 1px dashed var(--el-border-color);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
     }
 }
 </style>

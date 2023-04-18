@@ -18,15 +18,15 @@
 import * as echarts from 'echarts'
 
 export default {
-  data() {
+  data () {
     return {
       chart: null
     }
   },
-  mounted() {
+  mounted () {
     this.initChart()
   },
-  beforeUnmount() {
+  beforeUnmount () {
     if (!this.chart) {
       return
     }
@@ -34,7 +34,7 @@ export default {
     this.chart = null
   },
   methods: {
-    initChart() {
+    initChart () {
       const chartDom = document.getElementById('chart')
       const myChart = echarts.init(chartDom)
       const option = {
