@@ -2,11 +2,13 @@
     <div class="body" v-loading="loading"  element-loading-background="rgba(122, 122, 122, 0.6)">
         <div class="box">
           <div class="item">
-            <div class="item-content" v-if="6">
+            <div class="item-content" v-if="!url1">
               <el-upload
                 ref="uploadRef"
                 class="upload-demo"
-                action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
+                action="http://127.0.0.1:8000/video/"
+                :on-success="success"
+                :data="{type:$route.query.type}"
                 :auto-upload="false"
             >
                 <template #trigger>
@@ -19,7 +21,7 @@
               </el-upload>
             </div>
             <div class="item-content" v-else>
-             <video></video>
+             <video :src="url1" autoplay></video>
             </div>
             <dv-decoration-7 class="desc">原视频</dv-decoration-7>
           </div>
@@ -27,7 +29,7 @@
         <div class="box">
           <div class="item">
             <div class="item-content">
-              <video src="http://106.55.171.221:8888/download?filename=/www/wwwroot/106.55.171.221/bcs/%E5%90%8E%E7%AB%AF/serve/upload/video/processes/%E7%A0%82%E4%BB%81%E7%82%AE%E5%88%B6%E5%8A%A8%E7%94%BB.mp4&play=true"></video>
+              <video :src="url2"  autoplay></video>
             </div>
             <dv-decoration-7 class="desc">检测视频</dv-decoration-7>
           </div>
@@ -59,7 +61,9 @@ export default {
       X1: [1, 2, 3, 4],
       X2: [1, 2, 3, 4],
       Y1: [0, 0, 0, 0],
-      Y2: [0, 0, 0, 0]
+      Y2: [0, 0, 0, 0],
+      url1: '',
+      url2: ''
     }
   },
   mounted () {
@@ -88,6 +92,24 @@ export default {
   },
 
   methods: {
+    success (res) {
+      console.log(res)
+      this.loading = false
+      this.url1 = res.url1
+      this.url2 = res.url2
+      const a = []
+      for (let i = 1; i <= res.X; i++) {
+        a.push(i)
+      }
+      this.X1 = a
+      this.X2 = a
+      this.Y1 = res.area
+      this.Y2 = res.num
+    },
+    submitUpload () {
+      this.$refs.uploadRef.submit()
+      this.loading = true
+    },
     chartChange (chart) {
       let option
       option.xAxis.data = this.xData

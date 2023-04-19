@@ -1,10 +1,8 @@
-from django.shortcuts import render
 from django.http import HttpResponse
 import json
 import os
 import time
 import argparse
-import matplotlib.pyplot as plt
 import numpy as np
 import cv2
 import torch
@@ -15,6 +13,8 @@ from albumentations.core.composition import Compose
 from tqdm import tqdm
 import albumentations as albu
 import judgeMain.archs as archs
+from ultralytics import YOLO
+
 
 def mask_find_bboxs(mask):
     retval, labels, stats, centroids = cv2.connectedComponentsWithStats(mask, connectivity=4)  # connectivity参数的默认值为8
@@ -34,7 +34,8 @@ def upload(request):#保存上传的文件并返回绝对路径
         file_path = os.path.join(current_path, 'uploadFile')
         if not os.path.exists(file_path):  # 文件夹不存在则创建
             os.mkdir(file_path)
-        path=os.path.join(file_path,str('{:.0f}'.format(time.time()))+file.name)
+        fileName=str('{:.0f}'.format(time.time()))+file.name
+        path=os.path.join(file_path,fileName)
         with open(path, 'wb') as fp:  # 写文件
             for i in file.chunks():
                 fp.write(i)
@@ -42,12 +43,75 @@ def upload(request):#保存上传的文件并返回绝对路径
         result = {"message": 'err', "code": '400', "result": e}
         print(e)
         return ''
-    return path#返回文件的保存路径
+    return fileName#返回文件的保存路径
 
 current_path = os.path.dirname(__file__)  # 当前路径
-
 def video(request):#视频处理入口函数
-    return 0
+    type = request.POST.dict().get('type')
+    print(type)
+    file_path = os.path.join(current_path, 'uploadFile')
+    ff=upload(request)
+    filePath = os.path.join(file_path, ff)  # 保存上传的文件并返回绝对路径
+
+    #清空
+    path = r'runs/detect/result1/labels/'
+    data = os.listdir(os.path.join(current_path,'..',path))
+    for i in data:
+        i = path + i
+        os.remove(os.path.join(current_path,'..',i))
+
+    # 加载模型
+    modelurl = r"runs/detect/train/weights/last.pt"
+    model = YOLO(os.path.join(current_path,modelurl))
+    model.track(
+        # 输入视频路径
+        source=filePath,
+        # stream=True,
+        tracker="bytetrack.yaml",  # or 'bytetrack.yaml'
+        save=True,
+        name="result1",
+        conf=0.6,
+        save_txt=True
+    )
+
+    path = r'runs/detect/result1/labels/'
+    data = os.listdir(os.path.join(current_path,'..',path))
+    num = []
+    area = []
+    X = len(data)
+
+    for i in data:
+        i = path + i
+        file = open(i, 'r')
+        p = file.readlines()
+        num_flag = 0
+        position = []
+        max_area = 0.00
+        for k in p:
+            k = k.split('\n')[0]
+            list = k.split(" ")
+            temp = float(list[3]) * float(list[4])
+            if temp > max_area:
+                temp = round(temp, 2)
+                max_area = temp
+            num_flag += 1
+        area.append(max_area)
+        num.append(num_flag)
+    print(X)
+    print(num)
+    print(area)
+    #file.close()
+
+    result = {"message": 'success',
+              "code": '200',
+              "X":X,
+              "num": num,
+              "area":area,
+              "url1":'http://127.0.0.1:8000/static/'+ff,
+              "url2":'http://127.0.0.1:8000/static/detect/result1/'+ff
+              }
+
+    return HttpResponse(json.dumps(result), content_type="application/json")
 
 def listorders(request):#图像分割入口函数
     startTime= int(round(time.time() * 1000))
@@ -56,7 +120,8 @@ def listorders(request):#图像分割入口函数
     img2=''
     img3=''
     info={}
-    filePath = upload(request)#保存上传的文件并返回绝对路径
+    file_path = os.path.join(current_path, 'uploadFile')
+    filePath = os.path.join(file_path,upload(request))#保存上传的文件并返回绝对路径
 
     global y, x
 
@@ -252,7 +317,8 @@ def imageProcessing(request):#图像处理入口函数
     print(props)
     type=props.get('type')
 
-    filePath = upload(request)  # 保存上传的文件并返回绝对路径
+    file_path = os.path.join(current_path, 'uploadFile')
+    filePath = os.path.join(file_path, upload(request))  # 保存上传的文件并返回绝对路径
     img1 = str('{:.0f}'.format(time.time())) + '.jpg'
 
     #高斯滤波
@@ -313,53 +379,4 @@ def imageProcessing(request):#图像处理入口函数
               }
 
     return HttpResponse(json.dumps(result), content_type="application/json")
-# input_1 = 3#一定要单数,高斯卷积核
-# input_2 = 3#一定要单数，高斯卷积核
-# input_3 = 0#x轴标准差
-# input_4 = 0#y轴标准差
-#
-# input_5 = 5#中值滤波，卷积核大小
-#
-# input_6 = 11#领域直径
-# input_7 = 40#灰度值标准差
-# input_8 = 40#空间标准差
-#
-# input_9 = -1#锚点
-# input_10 = -1#锚点
-# input_11 = 5#腐蚀卷积核
-# input_12 = 1#腐蚀次数
-#
-# input_13 = 512#尺寸大小
-# input_14 = 512#尺寸大小
-#
-# input_15 = -1#锚点
-# input_16 = -1#锚点
-# input_17 = 5#膨胀卷积核
-# input_18 = 1#膨胀次数
-#
-# img = cv2.imread(r'图片路径',cv2.IMREAD_COLOR)#高斯滤波输入图片
-# img = cv2.GaussianBlur(img,(input_1,input_2),input_3,input_4)
-# cv2.imwrite(r'保存图片路径',img)#高斯滤波输出图片
-#
-# img = cv2.imread(r'图片路径',cv2.IMREAD_COLOR)#中值滤波输入图片
-# img = cv2.medianBlur(img,input_5)
-# cv2.imwrite(r'保存图片路径',img)#中值滤波输出图片
-#
-# img = cv2.imread(r'图片路径',cv2.IMREAD_COLOR)#双边滤波输入图片
-# img = cv2.bilateralFilter(img,input_6,input_7,input_8)
-# cv2.imwrite(r'保存图片路径',img)#双边滤波输出图片
-#
-# img = cv2.imread(r'图片路径',cv2.IMREAD_COLOR)#形态学腐蚀输入图片
-# kernel_1 = np.ones((input_11,input_11),np.uint8)
-# img = cv2.erode(img,kernel=kernel_1,anchor=(input_9,input_10),iterations=input_12)
-# cv2.imwrite(r'保存图片路径',img)#形态学腐蚀输出图片
-#
-# img = cv2.imread(r'图片路径',cv2.IMREAD_COLOR)#尺寸修改输入图片
-# img = cv2.resize(img,(input_13,input_14))
-# cv2.imwrite(r'保存图片路径',img)#尺寸修改输出图片
-#
-#
-# img = cv2.imread(r'图片路径',cv2.IMREAD_COLOR)#形态学膨胀输入图片
-# kernel_2 = np.ones((input_17,input_17),np.uint8)
-# img = cv2.dilate(img,kernel=kernel_2,anchor=(input_15,input_16),iterations=input_18)
-# cv2.imwrite(r'保存图片路径',img)#形态学膨胀输出图片
+
