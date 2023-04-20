@@ -23,7 +23,11 @@
             <div class="item-content" v-else>
              <video :src="url1" autoplay loop></video>
             </div>
-            <dv-decoration-7 class="desc">原视频</dv-decoration-7>
+            <dv-decoration-7 class="desc">
+              <el-button color="#2c3147" @click="clear">
+                重置原视频
+              </el-button>
+            </dv-decoration-7>
           </div>
         </div>
         <div class="box">
@@ -88,10 +92,26 @@ export default {
     },
     Y2: function () {
       this.initChart2()
+    },
+    $route (to, from) {
+      console.log(to.query.type !== from.query.type)
+      if (to.query.type !== from.query.type) {
+        // param1参数发生变化，触发相应逻辑
+        this.clear()
+        // this.doSomething()
+      }
     }
   },
 
   methods: {
+    clear () {
+      this.url1 = ''
+      this.url2 = ''
+      this.X1 = [1, 2, 3, 4]
+      this.X2 = [1, 2, 3, 4]
+      this.Y1 = [0, 0, 0, 0]
+      this.Y2 = [0, 0, 0, 0]
+    },
     success (res) {
       console.log(res)
       this.loading = false
