@@ -21,7 +21,7 @@
               </el-upload>
             </div>
             <div class="item-content" v-else>
-             <video :src="url1" autoplay></video>
+             <video :src="url1" autoplay loop></video>
             </div>
             <dv-decoration-7 class="desc">原视频</dv-decoration-7>
           </div>
@@ -29,7 +29,7 @@
         <div class="box">
           <div class="item">
             <div class="item-content">
-              <video :src="url2"  autoplay></video>
+              <video :src="url2"  autoplay loop></video>
             </div>
             <dv-decoration-7 class="desc">检测视频</dv-decoration-7>
           </div>

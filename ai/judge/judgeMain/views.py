@@ -15,6 +15,7 @@ import albumentations as albu
 import judgeMain.archs as archs
 from ultralytics import YOLO
 
+current_path = os.path.dirname(__file__)  # 当前路径
 
 def mask_find_bboxs(mask):
     retval, labels, stats, centroids = cv2.connectedComponentsWithStats(mask, connectivity=4)  # connectivity参数的默认值为8
@@ -28,7 +29,7 @@ def parse_args():
     args = parser.parse_args()
     return args
 
-def upload(request):#保存上传的文件并返回绝对路径
+def upload(request):#保存上传的文件并返回文件名
     try:
         file = request.FILES.get('file', '')
         file_path = os.path.join(current_path, 'uploadFile')
@@ -45,7 +46,6 @@ def upload(request):#保存上传的文件并返回绝对路径
         return ''
     return fileName#返回文件的保存路径
 
-current_path = os.path.dirname(__file__)  # 当前路径
 def video(request):#视频处理入口函数
     type = request.POST.dict().get('type')
     print(type)
@@ -59,9 +59,15 @@ def video(request):#视频处理入口函数
     for i in data:
         i = path + i
         os.remove(os.path.join(current_path,'..',i))
-
+    modelurl=''
     # 加载模型
-    modelurl = r"runs/detect/train/weights/last.pt"
+    if (type=='0'):
+        modelurl = r"runs/detect/train/weights/last_0.pt"
+    elif type=='1':
+        modelurl = r"runs/detect/train/weights/last_1.pt"
+    else:
+        modelurl = r"runs/detect/train/weights/last_2.pt"
+
     model = YOLO(os.path.join(current_path,modelurl))
     model.track(
         # 输入视频路径
@@ -94,14 +100,15 @@ def video(request):#视频处理入口函数
             if temp > max_area:
                 temp = round(temp, 2)
                 max_area = temp
+
             num_flag += 1
         area.append(max_area)
         num.append(num_flag)
-    print(X)
-    print(num)
-    print(area)
-    #file.close()
 
+    # print(X)
+    # print(num)
+    # print(area)
+    #file.close()
     result = {"message": 'success',
               "code": '200',
               "X":X,
